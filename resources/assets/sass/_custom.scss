@@ -1,0 +1,285 @@
+//body
+body {
+  font-family: 'Fira Sans', Helvetica, sans-serif !important;
+  padding-top: 2%;
+}
+
+//Buttons
+.btn {
+  background-color: rgb(136,18,8);
+  min-width: 48px;
+}
+
+.btn-create, .btn-back, .btn-submit {
+  margin: 2%;
+}
+
+a, button{
+  color:rgb(239, 243, 241) !important;
+  text-decoration: none;
+}
+
+a:hover {
+  color:rgb(239, 243, 241) !important;
+  text-decoration: none;
+}
+
+//Login page
+#login { 
+padding-top: 100px;
+padding-bottom: 30px;
+}
+
+.login h1 { 
+  color: black; 
+  letter-spacing:1px; 
+  text-align:center; 
+  font-weight: 700;
+  font-size: 30px;
+}
+
+.form-signin {
+  max-width: 330px;
+  padding: 15px;
+  margin: 0 auto;
+}
+
+.form-signin .form-control {
+  position: relative;
+  height: auto;
+  -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+          box-sizing: border-box;
+  padding: 10px;
+  font-size: 16px;
+}
+
+.form-signin .form-control:focus {
+  z-index: 2;
+}
+
+.form-signin input[type="email"] {
+  margin-bottom: -1px;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+.form-signin input[type="password"] {
+  margin-bottom: 1px;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+
+.login > form > .btn {
+  background-color: rgb(136,18,8) !important;
+  font-weight:700;
+  font-size: 20px;
+}
+
+.login > form > .btn:hover {
+  border: 5px solid rgb(255,255,255) !important;
+}
+
+//Navigation
+.navbar {
+  background-color: rgb(136,18,8);
+  
+}
+
+.navbar-brand {
+  font-family: Helvetica, sans-serif;
+  font-size: 20px;
+  line-height: 25px;
+  font-weight: 500;
+  padding: 3% 1% 1% 3%;
+}
+
+.navbar-header {
+  padding: 1% 1% 1% 1%;
+}
+
+.navbar-nav > li > a{
+  font-size: 17px;
+  font-weight: 700;
+  margin: 10px 40% 0% 40%;
+}
+
+.navbar-header > .brand-img > img{
+  max-width:10%; 
+  height:auto; 
+  float:left; 
+  margin: 10px 7px 3.5px 3.5px;
+}
+
+.nav-pills > .dropdown > .dropdown-menu {
+  background-color: rgb(47, 47, 48);
+  min-width: 215px !important;
+  border: 1px solid rgb(255,255,255);
+}
+
+.nav-pills > .dropdown > .dropdown-menu > li > a:hover{
+  background-color: rgb(136,18,8);
+  border: 2px solid rgb(255,255,255);
+}
+
+.navbar > .container > .navbar-header {
+  margin-bottom: !important;
+}
+
+//Links
+.links {
+  margin-top: 3%;
+}
+
+.links > .nav-pills > li > a {
+  border: 2px solid rgb(255,255,255);
+  background-color: rgb(47, 47, 48);
+  border-radius: 10px;
+  font-weight: 700;
+  font-size: 15px;
+}
+
+.links > ul {
+  margin-top: 80px;
+  font-weight: 700;
+}
+
+.links > .nav-pills > li > a:hover { 
+  border: 2px solid rgb(255,255,255);
+  background-color: rgb(136,18,8);
+}
+
+//Styles for cuser.blade.php
+.main {
+  padding: 10px 5px; 
+  max-width: 80%;
+  margin: 0% 10%;
+}
+
+.carousel-inner > .item > img{
+  width: 1140px; 
+  max-height: 400px;
+}
+
+//Responsive tables
+@-moz-document url-prefix() {
+  fieldset { display: table-cell; }
+}
+
+//glyphicons
+i{
+    margin: 2%;
+}
+
+//Responsive Styling
+/********** Medium devices only **********/
+@media (min-width: 300px) and (max-width: 767px) {
+  .col-sm-1, .col-sm-2, .col-sm-3, .col-sm-4, .col-sm-5, .col-sm-6, .col-sm-7, .col-sm-8, .col-sm-9, .col-sm-10, .col-sm-11, .col-sm-12 
+  {
+    float: left;
+  }
+  .navbar-brand {
+      font-size: 85%;
+      line-height: 18.75px;
+      padding: 1.5% .5% .5% 1.5%;
+      font-weight: 700;
+  }
+  .navbar-header > .brand-img > img{
+      max-width:5%; 
+      height:auto; 
+      float:left; 
+      margin: 5px 3.5px 1.75px 1.75px;
+  }
+  .col-sm-1 {
+    width: 8.33%;
+  }
+  .col-sm-2 {
+    width: 16.66%;
+  }
+  .col-sm-3 {
+    width: 25%;
+  }
+  .col-sm-4 {
+    width: 33.33%;
+  }
+  .col-sm-5 {
+    width: 41.66%;
+  }
+  .col-sm-6 {
+    width: 50%;
+  }
+  .col-sm-7 {
+    width: 58.33%;
+  }
+  .col-sm-8 {
+    width: 66.66%;
+  }
+  .col-sm-9 {
+    width: 74.99%;
+  }
+  .col-sm-10 {
+    width: 83.33%;
+  }
+  .col-sm-11 {
+    width: 91.66%;
+  }
+  .col-sm-12 {
+    width: 100%;
+  }
+}
+
+/********** Small devices only **********/
+@media (min-width: 0px) and (max-width: 300px) {
+  .col-sm-1, .col-sm-2, .col-sm-3, .col-sm-4, .col-sm-5, .col-sm-6, .col-sm-7, .col-sm-8, .col-sm-9, .col-sm-10, .col-sm-11, .col-sm-12 
+  {
+    float: left;
+  }
+  .navbar-brand {
+      font-size: 55%;
+      line-height: 12.5px;
+      padding: .75% .25% .25% .75%;
+      font-weight: 700;
+  }
+  .navbar-header > .brand-img > img{
+      max-width:5%; 
+      height:auto; 
+      float:left; 
+      margin: 2.5px 1.75px .875px .875px;
+  }
+  .col-sm-1 {
+    width: 8.33%;
+  }
+  .col-sm-2 {
+    width: 16.66%;
+  }
+  .col-sm-3 {
+    width: 25%;
+  }
+  .col-sm-4 {
+    width: 33.33%;
+  }
+  .col-sm-5 {
+    width: 41.66%;
+  }
+  .col-sm-6 {
+    width: 50%;
+  }
+  .col-sm-7 {
+    width: 58.33%;
+  }
+  .col-sm-8 {
+    width: 66.66%;
+  }
+  .col-sm-9 {
+    width: 74.99%;
+  }
+  .col-sm-10 {
+    width: 83.33%;
+  }
+  .col-sm-11 {
+    width: 91.66%;
+  }
+  .col-sm-12 {
+    width: 100%;
+  }
+}

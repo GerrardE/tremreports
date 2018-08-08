@@ -1,0 +1,19 @@
+.image-picker {
+
+background: #fff;
+border-radius: 25px;
+padding: 10px;
+border: 1px solid #ddd;
+cursor:pointer;
+
+}
+
+#logout button{
+	
+color: #000;
+background: transparent;
+border:none;
+font-weight:bold;
+margin:22px;	
+	
+}
