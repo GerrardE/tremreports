@@ -1,6 +1,9 @@
 @extends('layouts.app')
 @section('content')
 @include('inc.navbar')
+<div class="links">
+    @include('inc.links')   
+</div>
 <div class="main">
     <form class="cbranch" method="POST" action="/save/event">
         

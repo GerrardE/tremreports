@@ -15,21 +15,12 @@
         <ul class="dropdown-menu">
             <li class="dropdown-header">CREATE<span><i class="glyphicon glyphicon-chevron-down"></i></span></li>
             <li class="divider"></li>
-            <li><a href="/cgtwelve">G12</a></li>
+            <li><a href="/cbranch">BRANCH</a></li>
             <li><a href="/cevent">EVENT</a></li>
-            <li><a href="/cpastor">PASTOR</a></li>
-            <li><a href="/cpreacher">PREACHER</a></li>
+            <li><a href="/cgtwelve">G12</a></li>
             <li><a href="/cuser">USER</a></li> 
             <li><a href="/cdownloads">UPLOADS</a></li>
-            <li><a href="/cbranch">BRANCH</a></li>
-            <li class="dropdown" role="presentation">
-                <li class="dropdown-toggle"><a href="#">MAINTENANCE</a></li>
-                <ul class="dropdown-menu">
-                    
-                    <li><a href="#">EDIT</a></li>
-                    <li><a href="#">DELETE</a></li>
-                </ul>
-            </li>                        
+            <li><a href="/maintenance">MAINTENANCE</a></li>                        
         </ul>
     </li>
 </ul>

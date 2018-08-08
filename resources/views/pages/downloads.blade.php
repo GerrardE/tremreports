@@ -12,7 +12,7 @@
             <div class="col-sm-6 input-group">
                 <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt"></i></span>
                 <select name="role" class="form-control">
-                    <option value="none" selected disabled><-- Please choose one--></option>
+                    <option value="none" selected disabled><-- Please choose one --></option>
                     <option>Christian Men Fellowship</option>
                     <option>Christian Women Fellowship</option>
                     <option>Young Adults Fellowship</option>

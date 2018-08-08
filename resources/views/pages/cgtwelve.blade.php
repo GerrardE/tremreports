@@ -1,6 +1,9 @@
 @extends('layouts.app')
 @section('content')
 @include('inc.navbar')
+<div class="links">
+    @include('inc.links')   
+</div>
 <div class="main">
     <form class="cgtwelve" method="POST" action="/create/g12">
         {{ csrf_field() }}
