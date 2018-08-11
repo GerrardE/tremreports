@@ -36,6 +36,7 @@ Route::get('/cevent', 'PagesController@cevent');
 Route::get('/cpastor', 'PagesController@cpastor');
 Route::get('/cpreacher', 'PagesController@cpreacher');
 Route::get('/cdownloads', 'PagesController@cdownloads');
+Route::get('/maintenance', 'PagesController@maintenance');
 
 Auth::routes();
 

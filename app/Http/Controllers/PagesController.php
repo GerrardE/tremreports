@@ -144,4 +144,15 @@ class PagesController extends Controller
       return view('pages.login');
     }
     }
+
+    public function maintenance(){
+  
+    if (auth::check()) {
+      
+        return view('pages.maintenance');
+    
+    } else {
+      return view('pages.login');
+    }
+    }
 }

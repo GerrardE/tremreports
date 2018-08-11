@@ -22,6 +22,7 @@
         <div class="col-lg-4 col-md-6 col-sm-6 col-xs-6"></div>
         <footer class="container page-header">
             <p>&copy; <code>tremhq webteam</code> 2018</p>
+            <p></p>
         </footer>
         <!-- Scripts -->
         <script src="{{ asset('js/app.js') }}"></script>
