@@ -132,5 +132,16 @@ class PagesController extends Controller
 			return view('pages.login');
 		}
 		
-    } 
+    }
+    
+    public function viewr(){
+		
+    if (auth::check()) {
+      
+        return view('pages.viewr');
+    
+    } else {
+      return view('pages.login');
+    }
+    }
 }

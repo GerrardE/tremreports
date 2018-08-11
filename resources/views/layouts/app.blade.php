@@ -9,7 +9,8 @@
 		 <!-- CSRF Token -->
         <meta name="csrf-token" content="{{ csrf_token() }}">]
 		<link rel="stylesheet" href="{{ asset('css/app.css') }}">
-		<link rel="stylesheet" href="{{ asset('css/main.css') }}">
+        <link rel="stylesheet" href="{{ asset('css/main.css') }}">
+        <link rel="stylesheet" href="{{ asset('css/bootstrap-form-helpers.min.scss') }}">
         <link href="https://fonts.googleapis.com/css?family=Fira+Sans|Noto+Sans|Source+Sans+Pro" rel="stylesheet">
     </head>
     <body>
@@ -25,6 +26,7 @@
         <!-- Scripts -->
         <script src="{{ asset('js/app.js') }}"></script>
         <script src="{{ asset('js/notify.min.js') }}"></script>
+        <script src="{{ asset('js/bootstrap-formhelpers.min.js') }}"></script>
         <script>
             @if(Session::has('success'))
             $.notify("{{Session::get('success')}}", { position:"right top" });  

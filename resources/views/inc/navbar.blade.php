@@ -17,7 +17,7 @@
                 <ul class="nav navbar-nav navbar-right">
                     <li><a href="https://www.trem.org">HOME</a></li>
                     <li><a href="#">LOGOUT</a></li>
-                    <!-- @if (auth::check())
+                    <!-- @if (auth::check()) TERRY, work on this logout button above. this here is not layout compliant
                         <li id="logout"><a>
                             <form  method="post" action="/logout">
                             {{ csrf_field() }}

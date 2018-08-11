@@ -45,8 +45,8 @@
                             <label for="role" class="col-sm-2 control-label">User Role</label>
                             <div class="col-sm-6 input-group">
                             <select name="role" class="form-control">
-                                <option value="none" selected disabled>-- Please choose one--</option>
-                                <option value="0" selected>Admin</option>
+                                <option value="none" selected disabled><-- Please choose one --></option>
+                                <option value="0">Admin</option>
                                 <option value="1">Super Admin</option>
                                 <option value="2">Head Admin</option>
                                 <option value="3">Pastor</option>
@@ -68,7 +68,7 @@
                             <div class="col-sm-6 input-group">
                             <span class="input-group-addon"><i class="glyphicon glyphicon-home"></i></span>
                             <select name="branch"  class="form-control">
-                                <option value="none" selected disabled>-- Please choose one--</option>
+                                <option value="none" selected disabled><-- Please choose one --></option>
                                 <option value="1" >Headquarters</option> 
                                 <option value="2"  >Victoria Island</option>
                                 <option value="3" >Akoka</option>

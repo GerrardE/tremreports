@@ -7,8 +7,8 @@
         </div>
 
         <div class="header">
-            <h1>Welcome!</h1>
-            <h5>This is the official TREM world entries platform. You can perform various actions by accessing contents via displayed links. Shalom!</h5>
+            <center><h1>Welcome!</h1></center>
+            <center><h4>This is the official TREM world entries platform. You can perform various actions by accessing contents via displayed links. Shalom!</h4></center>
         </div>
         <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
             <ol class="carousel-indicators">

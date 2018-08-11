@@ -22,6 +22,9 @@ Route::get('/monthly', 'PagesController@monthly');
 Route::get('/weekly', 'PagesController@weekly');
 Route::get('/downloads', 'PagesController@downloads');
 
+//Route the view pages
+Route::get('/viewr', 'PagesController@viewr');
+
 //Route the create pages
 
 Route::get('/cuser', 'PagesController@cuser');
@@ -33,6 +36,7 @@ Route::get('/cevent', 'PagesController@cevent');
 Route::get('/cpastor', 'PagesController@cpastor');
 Route::get('/cpreacher', 'PagesController@cpreacher');
 Route::get('/cdownloads', 'PagesController@cdownloads');
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');

@@ -7,6 +7,7 @@
             <li><a href="/monthly">MONTHLY</a></li>
             <li><a href="/weekly">WEEKLY</a></li>
             <li><a href="/gtwelve">G12</a></li>
+            <li><a href="/viewr">VIEW REPORTS</a></li>
         </ul>
     </li>
     <li role="presentation"><a href="/downloads">DOWNLOADS</a></li>

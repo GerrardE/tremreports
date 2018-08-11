@@ -8,13 +8,12 @@
     <form class="cgtwelve" method="POST" action="/create/g12">
         {{ csrf_field() }}
 		
-		<h3>CREATE A G-12 NETWORK</h3><hr>
-		
+        <h3>CREATE A G-12 NETWORK</h3><hr>
 		<div class="form-group col-sm-12">
             <label for="city" class="col-sm-2 control-label">Name</label>                
             <div class="col-sm-6 input-group">
                 <span class="input-group-addon"><i class="glyphicon glyphicon-home"></i></span>
-                <input type="text" name="name" value="{{ old('name') }}"class="form-control" id="inputCity" placeholder="City">
+                <input type="text" name="name" value="{{ old('name') }}"class="form-control" id="inputCity" placeholder="eg: Zone 2">
             </div>
         </div>
 		
@@ -22,7 +21,7 @@
             <label for="country" class="col-sm-2 control-label">Country</label>                
             <div class="col-sm-6 input-group">
                 <span class="input-group-addon"><i class="glyphicon glyphicon-globe"></i></span>
-                <input type="text" name="country" value="{{ old('country') }}" class="form-control" id="inputCountry" placeholder="Country">
+                <select class="input-medium bfh-countries form-control" data-country="NG" name="country" value="{{ old('country') }}" id="inputCountry"></select>
             </div>
         </div>
         
@@ -30,7 +29,7 @@
             <label for="state" class="col-sm-2 control-label">State</label>                
             <div class="col-sm-6 input-group">
                 <span class="input-group-addon"><i class="glyphicon glyphicon-pushpin"></i></span>
-                <input type="text" name="state" value="{{ old('state') }}" class="form-control" id="inputState" placeholder="State">
+                <select class="input-medium bfh-states form-control" data-country="inputCountry" name="state" value="{{ old('state') }}" ></select>
             </div>
         </div>
 
