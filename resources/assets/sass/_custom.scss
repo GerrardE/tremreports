@@ -4,6 +4,10 @@ body {
   padding-top: 2%;
 }
 
+span.divider{
+  min-height: 10px;
+}
+
 //Buttons
 .btn {
   background-color: rgb(136,18,8);
@@ -22,6 +26,15 @@ a, button{
 a:hover {
   color:rgb(239, 243, 241) !important;
   text-decoration: none;
+}
+
+.nav-tabs > li > a{
+  color: black !important;
+}
+
+.nav-tabs > li > a:visited{
+  color: #fff !important;
+  background-color: rgb(136,18,8);
 }
 
 //Login page

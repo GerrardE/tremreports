@@ -8355,6 +8355,10 @@ body {
   padding-top: 2%;
 }
 
+span.divider {
+  min-height: 10px;
+}
+
 .btn {
   background-color: #881208;
   min-width: 48px;
@@ -8375,6 +8379,15 @@ button {
 a:hover {
   color: #eff3f1 !important;
   text-decoration: none;
+}
+
+.nav-tabs > li > a {
+  color: black !important;
+}
+
+.nav-tabs > li > a:visited {
+  color: #fff !important;
+  background-color: #881208;
 }
 
 #login {

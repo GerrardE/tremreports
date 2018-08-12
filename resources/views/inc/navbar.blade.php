@@ -16,16 +16,13 @@
             <div id="navbar" class="navbar-collapse collapse">
                 <ul class="nav navbar-nav navbar-right">
                     <li><a href="https://www.trem.org">HOME</a></li>
-                    <li><a href="#">LOGOUT</a></li>
-                    <!-- @if (auth::check()) TERRY, work on this logout button above. this here is not layout compliant
-                        <li id="logout"><a>
+                    <li @if (auth::check()) id="logout">
                             <form  method="post" action="/logout">
                             {{ csrf_field() }}
                             <button>LOGOUT</button>
                             </form>
-                            </a>
-                        </li>
-                    @endif -->
+                    </li>
+                    @endif 
 				</ul>
             </div><!--/.nav-collapse -->
     </div>
