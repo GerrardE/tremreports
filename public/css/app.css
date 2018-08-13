@@ -8381,15 +8381,6 @@ a:hover {
   text-decoration: none;
 }
 
-.nav-tabs > li > a {
-  color: black !important;
-}
-
-.nav-tabs > li > a:visited {
-  color: #fff !important;
-  background-color: #881208;
-}
-
 #login {
   padding-top: 100px;
   padding-bottom: 30px;
@@ -8481,11 +8472,19 @@ a:hover {
 
 .nav-pills > .dropdown > .dropdown-menu > li > a:hover {
   background-color: #881208;
-  border: 2px solid white;
 }
 
 .navbar > .container > .navbar-header {
   margin-bottom: !important;
+}
+
+.nav-tabs > li > a {
+  color: black !important;
+}
+
+.nav-tabs > li > a:focus-visible {
+  color: #fff !important;
+  background-color: #881208;
 }
 
 .links {
@@ -8506,7 +8505,7 @@ a:hover {
 }
 
 .links > .nav-pills > li > a:hover {
-  border: 2px solid white;
+  border-color: white;
   background-color: #881208;
 }
 

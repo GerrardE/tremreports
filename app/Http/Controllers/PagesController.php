@@ -145,11 +145,11 @@ class PagesController extends Controller
     }
     }
 
-    public function maintenance(){
+    public function czone(){
   
     if (auth::check()) {
       
-        return view('pages.maintenance');
+        return view('pages.czone');
     
     } else {
       return view('pages.login');

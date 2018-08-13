@@ -108,7 +108,6 @@
         <!-- edit event tab starts here -->
             <div class="tab-pane fade" id="edit">
                 <h3>EDIT EVENT</h3><hr>
-                
                 <form class="cbranch" method="POST" action=" ">       
                     {{ csrf_field() }}
                     <div class="form-group col-sm-12">
@@ -124,11 +123,11 @@
                         </div>
                     </div>
 
-                    <p>Now, Edit details</p>
+                    <p>Now, Edit:</p>
                     <div class="form-group col-sm-12">
-                        <label for="eventName" class="col-sm-2 control-label">Edit Name Of Event</label>                
+                        <label for="eventName" class="col-sm-2 control-label">Name Of Event</label>                
                         <div class="col-sm-6 input-group">
-                            <span class="input-group-addon"><i class="glyphicon glyphicon-bookmark"></i></span>
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-font"></i></span>
                             <input type="text" name="name" value="{{ old('name') }}" class="form-control" id="inputEvent" placeholder="e.g Sunday School Service">
                         </div>
                     </div>
@@ -206,7 +205,7 @@
 
                 <div class="col-sm-8">
                     <h5><strong>Modify Event?</strong></h5>
-                    <button class="btn btn-create pull-right" type=" ">YES<i class="glyphicon glyphicon-send"></i></button>
+                    <button class="btn btn-create pull-right" type=" ">YES<i class="glyphicon glyphicon-pencil"></i></button>
                     <button type="button" class="btn btn-back pull-left"><i class="glyphicon glyphicon-arrow-left"></i><a href="/cevent">NO</a></button> 
                 </div>
                 </form>
@@ -231,7 +230,7 @@
                 
                 <div class="col-sm-8">
                     <h5><strong>Delete Forever?</strong></h5>
-                    <button class="btn btn-create pull-right" type=" ">YES<i class="glyphicon glyphicon-send"></i></button>
+                    <button class="btn btn-create pull-right" type=" ">YES<i class="glyphicon glyphicon-trash"></i></button>
                     <button type="button" class="btn btn-back pull-left"><i class="glyphicon glyphicon-arrow-left"></i><a href="/cevent">NO</a></button> 
                 </div>
             </div>

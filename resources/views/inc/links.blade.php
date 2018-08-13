@@ -14,6 +14,7 @@
     <li class="dropdown" role="presentation">
         <a class="dropdown-toggle" data-toggle="dropdown">SETTINGS<span><i class="glyphicon glyphicon-chevron-down"></i></span></a>
         <ul class="dropdown-menu">
+            <li><a href="/czone">ZONE</a></li>
             <li><a href="/cbranch">BRANCH</a></li>
             <li><a href="/cevent">EVENT</a></li>
             <li><a href="/cgtwelve">G12</a></li>
