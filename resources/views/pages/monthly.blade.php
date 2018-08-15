@@ -6,7 +6,7 @@
     </div>
     <div class="main">
 
-        <h3 class="page-header"><strong>MONTHLY REPORTS</strong></h3>
+        <h3 class="page-header"><strong>MONTHLY ENTRIES</strong></h3>
         <form class="monthly" method="POST" action="/save/monthly">
             {{ csrf_field() }}
             <div class="form-group col-md-4 {{ $errors->has('month') ? ' has-error' : '' }}">

@@ -5,7 +5,7 @@
         @include('inc.links')   
     </div>
     <div class="main">
-    <h3><strong>WEEKLY REPORTS</strong></h3><hr>
+    <h3><strong>WEEKLY ENTRIES</strong></h3><hr>
         <form class="weekly" method="POST" action="/save/weekly">	
         {{ csrf_field() }}		
             <!-- "wmen" = week's men, wchildren = week's children, etc - just to differenciate from same name in monthly reports -->

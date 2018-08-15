@@ -5,7 +5,7 @@
         @include('inc.links')   
     </div>
     <div class="main">
-        <h3><strong>G12 WEEKLY REPORTS</strong></h3><hr>
+        <h3><strong>G12 WEEKLY ENTRIES</strong></h3><hr>
             <!-- "weekt" = week title, g12a = g12 attendance -->
             <p><em>Fill in the numbers as in your branch register</em></p>
             <form class="gtwelve" method="POST" action="/save/g12">
