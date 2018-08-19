@@ -8452,9 +8452,13 @@ a:hover {
 }
 
 .navbar-nav > li > a {
-  font-size: 17px;
+  font-size: 20px;
   font-weight: 700;
-  margin: 10px 40% 0% 40%;
+  margin: 15px 30% 10% 40%;
+}
+
+#logout button {
+  font-size: 20px;
 }
 
 .navbar-header > .brand-img > img {
@@ -8562,6 +8566,18 @@ i {
     margin: 5px 3.5px 1.75px 1.75px;
   }
 
+  .navbar-nav > li > a {
+    font-size: 15px;
+    margin: 0% 44% 0% 44%;
+    padding: auto;
+  }
+
+  #logout button {
+    font-size: 15px;
+    margin: 0% 44% 0% 44% !important;
+    padding: auto;
+  }
+
   .col-sm-1 {
     width: 8.33%;
   }
@@ -8641,6 +8657,18 @@ i {
     height: auto;
     float: left;
     margin: 2.5px 1.75px .875px .875px;
+  }
+
+  .navbar-nav > li > a {
+    font-size: 15px;
+    margin: 0% 35% 0% 35%;
+    padding: auto;
+  }
+
+  #logout button {
+    font-size: 15px;
+    margin: 0% 35% 0% 35% !important;
+    padding: auto;
   }
 
   .col-sm-1 {

@@ -8,8 +8,9 @@
     <table class="table">
     <h3>REPORTS SECTION</h3><hr>
         <div class="form-group col-sm-12">
-            <label for="role" class="col-sm-2 control-label">Select Category</label>
-            <div class="col-sm-6 input-group">
+            <div class="form-group col-md-4">
+            <label for="role" class="control-label">Select Category</label>
+            <div class="input-group">
                 <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt"></i></span>
                 <select name="role" class="form-control">
                     <option value="none" selected disabled><-- Please choose one --></option>
@@ -19,7 +20,60 @@
                     <option>Country</option>
                 </select>
             </div>
+            </div>
+
+            <div class="form-group col-md-4 {{ $errors->has('month') ? ' has-error' : '' }}">
+                <label for="month" class="control-label">Select Month:</label>
+                <div class="input-group">
+                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt"></i></span>
+                <select name="month"  class="form-control">
+                    <option value="none" selected disabled><-- Please choose one --></option>
+                    <option value="January" >January</option> 
+                    <option value="Febuary" >February</option>
+                    <option value="March" >March</option>
+                    <option value="April" >April</option> 
+                    <option value="May" >May</option>
+                    <option value="June" >June</option>
+                    <option value="July" >July</option> 
+                    <option value="August" >August</option>
+                    <option value="September" >September</option>
+                    <option value="October" >October</option> 
+                    <option value="November" >November</option>
+                    <option value="December" >December</option>
+                </select>
+                
+                @if ($errors->has('month'))
+                <span class="help-block">
+                <strong>{{ $errors->first('month') }}</strong>
+                </span>
+                @endif
+                </div>
+            </div>
+
+            <div class="form-group col-md-4 {{ $errors->has('year') ? ' has-error' : '' }}">
+                <label for="year" class="control-label">Select Year:</label>
+                <div class="input-group">
+                <span class="input-group-addon"><i class="glyphicon glyphicon-yen"></i></span>
+                <select name="year"  class="form-control">
+                    <option value="none" selected disabled>-- Please choose one--</option>   
+                    <option value="2018">2018</option>
+                    <option value="2019">2019</option>
+                    <option value="2020">2020</option>
+                    <option value="2021">2021</option>
+                    <option value="2022">2022</option>
+                    <option value="2023">2023</option>
+                    <option value="2025">2024</option>
+                </select>
+                    
+                @if ($errors->has('year'))
+                    <span class="help-block">
+                    <strong>{{ $errors->first('year') }}</strong>
+                    </span>
+                @endif
+                </div>
+            </div>
         </div>
+
         <thead>
             <tr>
                 <th scope="col"></th>

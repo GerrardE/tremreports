@@ -73,7 +73,7 @@
 
                     <div class="col-sm-8">
                         <button type="button" class="btn btn-back pull-left"><i class="glyphicon glyphicon-arrow-left"></i><a href="/cgtwelve">BACK</a></button>
-                        <button class="btn btn-create pull-right" type="submit">CREATE<i class="glyphicon glyphicon-thumbs-up"></i></button>
+                        <button class="btn btn-create pull-right" type="submit">CREATE<i class="glyphicon glyphicon-send"></i></button>
                     </div>
                     
                 </form>
