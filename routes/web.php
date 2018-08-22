@@ -90,6 +90,53 @@ Route::post('/create/g12', [
 	'uses' => 'SaveController@createG12',
 	'as' => 'createG12'
 	]);
+
+Route::post('/create/category', [
+	'uses' => 'SaveController@createCategory',
+	'as' => 'createCategory'
+	]);
+
+Route::post('/create/zone', [
+	'uses' => 'SaveController@createZone',
+	'as' => 'createZone'
+	]);
+
+Route::post('/edit/zone', [
+	'uses' => 'SaveController@editZone',
+	'as' => 'editZone'
+	]);
+
+Route::post('/edit/user', [
+	'uses' => 'SaveController@editUser',
+	'as' => 'editUser'
+	]);
+
+Route::post('/edit/g12', [
+	'uses' => 'SaveController@editG12',
+	'as' => 'editG12'
+	]);
+
+	Route::post('/edit/download', [
+		'uses' => 'SaveController@editDownload',
+		'as' => 'editDownoad'
+		]);
+
+
+	Route::post('/edit/event', [
+		'uses' => 'SaveController@editEvent',
+		'as' => 'editEvent'
+		]);
+
+	Route::post('/delete/download', [
+		'uses' => 'SaveController@deleteDownload',
+		'as' => 'deleteDownload'
+		]);
+
+	Route::post('/delete/category', [
+		'uses' => 'SaveController@deleteCategory',
+		'as' => 'deleteCategory'
+		]);
+
 	
 Route::post('/upload/file', [
 	'uses' => 'SaveController@uploadFile',
@@ -100,4 +147,42 @@ Route::get('/get/all/downloads', [
 	'uses' => 'SaveController@allDownloads',
 	'as' => 'allDownloads'
 	]);
+
+Route::get('/get/all/categories', [
+	'uses' => 'SaveController@allCategories',
+	'as' => 'allCategories'
+	]);
+
+Route::get('/get/all/users', [
+	'uses' => 'SaveController@allUsers',
+	'as' => 'allUsers'
+	]);
+
+Route::get('/get/country/zones/{country}', [
+	'uses' => 'SaveController@countryZones',
+	'as' => 'countryZones'
+	]);
+
+Route::get('/get/branch/events/{branch}', [
+	'uses' => 'SaveController@branchEvents',
+	'as' => 'branchEvents'
+	]);
+
+Route::get('/get/category/uploads/{category}', [
+	'uses' => 'SaveController@categoryUploads',
+	'as' => 'categoryUploads'
+	]);
+
+Route::get('/get/branch/g12s/{branch}', [
+	'uses' => 'SaveController@branchG12s',
+	'as' => 'branchG12s'
+	]);
+
+
+Route::get('/get/country/branches/{country}', [
+	'uses' => 'SaveController@countryBranches',
+	'as' => 'countryBranches'
+	]);
+
+
 	

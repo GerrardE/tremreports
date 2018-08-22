@@ -19,6 +19,15 @@
                         <h3>CREATE USER</h3><hr>
                         <form class="cuser" method="POST" action="/custom/register">
                             {{ csrf_field() }}
+
+                            <div class="form-group col-sm-12 {{ $errors->has('country') ? ' has-error' : '' }}">
+                                <label for="country" class="col-sm-2 control-label ">Country</label>                
+                                <div class="col-sm-6 input-group">
+                                 <span class="input-group-addon"><i class="glyphicon glyphicon-globe"></i></span>
+                                <select class="input-medium bfh-countries form-control" data-country="NG" name="country"  id="inputCountry3" v-model="country" @change=getCountryBranches></select>
+                                </div>
+                            </div>
+
                             <div class="form-group col-sm-12 {{ $errors->has('name') ? ' has-error' : '' }}">
                                 <label for="name" class="col-sm-2 control-label">Full Name</label>                
                                 <div class="col-sm-6 input-group">
@@ -57,12 +66,12 @@
                                     <span class="input-group-addon"><i class="glyphicon glyphicon-briefcase"></i></span>
                                     <select name="role" class="form-control">
                                         <option value="none" selected disabled><-- Please choose one --></option>
-                                        <option value="0">Admin</option>
-                                        <option value="1">Super Admin</option>
-                                        <option value="2">Head Admin</option>
+                                        <option value="1">G12 Leader</option>
+                                        <option value="2">Preacher</option>
                                         <option value="3">Pastor</option>
-                                        <option value="4">Preacher</option>
-                                        <option value="5">G12 Leader</option>
+                                        <option value="4">Admin</option>
+                                        <option value="5">Head Admin</option>
+                                        <option value="6">Super Admin</option>
                                     </select>
                                 
                                 @if ($errors->has('role'))
@@ -78,11 +87,10 @@
                                 <label for="branch" class="col-sm-2 control-label">Select TREM Branch:</label>
                                 <div class="col-sm-6 input-group">
                                 <span class="input-group-addon"><i class="glyphicon glyphicon-home"></i></span>
-                                <select name="branch"  class="form-control">
-                                    <option value="none" selected disabled><-- Please choose one --></option>
-                                    <option value="1" >Headquarters</option> 
-                                    <option value="2"  >Victoria Island</option>
-                                    <option value="3" >Akoka</option>
+                               <select name="branch"  class="form-control"  v-model="activeBranch" >
+                                    <option value="0" selected disabled><-- Please choose one --></option>
+                                    <option v-for="branch in countryBranches" :value="branch.id">@{{branch.name}}</option>
+                                     <option v-if="countryBranches.length==0" value="">No branch to display</option>
                                 </select>
                                 
                                 @if ($errors->has('branch'))
@@ -151,17 +159,25 @@
                 <!-- edit user tab starts here -->
                     <div class="tab-pane fade" id="edit">
                         <h3>EDIT USER</h3><hr>
-                        <form class="cuser" method="POST" action=" ">
+                        <form class="cuser" method="POST" action="/edit/user">
                             {{ csrf_field() }}
+
+                            <div class="form-group col-sm-12 {{ $errors->has('country') ? ' has-error' : '' }}">
+                                <label for="country" class="col-sm-2 control-label ">Country</label>                
+                                <div class="col-sm-6 input-group">
+                                 <span class="input-group-addon"><i class="glyphicon glyphicon-globe"></i></span>
+                                <select class="input-medium bfh-countries form-control" data-country="NG" name="country"  id="inputCountry3" v-model="country" @change=getCountryBranches></select>
+                                </div>
+                            </div>
+
                             <div class="form-group col-sm-12">
                                 <label for="suser" class="col-sm-2 control-label">Select User:</label>
                                 <div class="col-sm-6 input-group">
                                     <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt"></i></span>
-                                    <select name="event"  class="form-control">
-                                        <option value="none" selected disabled><-- Please choose one --></option>
-                                        <option>Rev. Akintola Oni</option> 
-                                        <option>Pastor Sayo Adebayo</option>
-                                        <option>Rev. Akaninyene Effiong</option>
+                                    <select name="user"  class="form-control" v-model="userId" @change="getUserDetails">
+                                        <option value="0" selected disabled><-- Please choose one --></option>
+                                         <option v-for="user in allUsers" :value="user.id">@{{user.name}}</option>
+                                         <option v-if="allUsers.length==0" value="">No user to display</option>
                                     </select>
                                 </div>
                             </div>
@@ -171,7 +187,7 @@
                                 <label for="name" class="col-sm-2 control-label">Full Name</label>                
                                 <div class="col-sm-6 input-group">
                                     <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-                                    <input name="name" type="text" class="form-control" value="{{ old('name') }}"  id="inputUserFullName" placeholder="Full Name">
+                                    <input name="name" type="text" class="form-control" v-model="fullName"  id="inputUserFullName" placeholder="Full Name">
                                 
                             
                             @if ($errors->has('name'))
@@ -187,7 +203,7 @@
                                 <label for="username" class="col-sm-2 control-label">Username</label>                
                                 <div class="col-sm-6 input-group">
                                     <span class="input-group-addon"><i class="glyphicon glyphicon-font"></i></span>
-                                    <input type="text" name="username" value="{{ old('username') }}" class="form-control" id="inputUserUsername" placeholder="Username">
+                                    <input type="text" name="username" v-model="userName" class="form-control" id="inputUserUsername" placeholder="Username">
                                 
                                     @if ($errors->has('username'))
                                         <span class="help-block">
@@ -203,14 +219,14 @@
                                 <label for="role" class="col-sm-2 control-label">User Role</label>
                                 <div class="col-sm-6 input-group">
                                     <span class="input-group-addon"><i class="glyphicon glyphicon-briefcase"></i></span>
-                                    <select name="role" class="form-control">
+                                    <select name="role" class="form-control" v-model="userRole">
                                         <option value="none" selected disabled><-- Please choose one --></option>
-                                        <option value="0">Admin</option>
-                                        <option value="1">Super Admin</option>
-                                        <option value="2">Head Admin</option>
+                                        <option value="1">G12 Leader</option>
+                                        <option value="2">Preacher</option>
                                         <option value="3">Pastor</option>
-                                        <option value="4">Preacher</option>
-                                        <option value="5">G12 Leader</option>
+                                        <option value="4">Admin</option>
+                                        <option value="5">Head Admin</option>
+                                        <option value="6">Super Admin</option>
                                     </select>
                                 
                                 @if ($errors->has('role'))
@@ -226,11 +242,10 @@
                                 <label for="branch" class="col-sm-2 control-label">Select TREM Branch:</label>
                                 <div class="col-sm-6 input-group">
                                 <span class="input-group-addon"><i class="glyphicon glyphicon-home"></i></span>
-                                <select name="branch"  class="form-control">
-                                    <option value="none" selected disabled><-- Please choose one --></option>
-                                    <option value="1" >Headquarters</option> 
-                                    <option value="2"  >Victoria Island</option>
-                                    <option value="3" >Akoka</option>
+                                <select name="branch"  class="form-control"  v-model="userBranch" >
+                                <option value="0" selected disabled><-- Please choose one --></option>
+                                <option v-for="branch in countryBranches" :value="branch.id">@{{branch.name}}</option>
+                                <option v-if="countryBranches.length==0" value="">No branch to display</option>
                                 </select>
                                 
                                 @if ($errors->has('branch'))
@@ -245,7 +260,7 @@
                                 <label for="phone" class="col-sm-2 control-label">Mobile Phone</label>                
                                 <div class="col-sm-6 input-group">
                                     <span class="input-group-addon"><i class="glyphicon glyphicon-phone"></i></span>
-                                    <input type="number" name="mobile" value="{{ old('mobile') }}" class="form-control" id="inputUserPhone" placeholder="e.g 2348010000001">
+                                    <input type="number" name="mobile" value="{{ old('mobile') }}" class="form-control" v-model="userMobile" id="inputUserPhone" placeholder="e.g 2348010000001">
                                 
                                 @if ($errors->has('mobile'))
                                 <span class="help-block">
@@ -260,30 +275,7 @@
                                 <label for="email" class="col-sm-2 control-label">Email</label>                
                                 <div class="col-sm-6 input-group">
                                     <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
-                                    <input type="email" value="{{ old('email') }}" class="form-control" name="email" id="inputUserEmail" placeholder="Email">
-                                </div>
-                            </div>
-
-                            <div class="form-group col-sm-12 {{ $errors->has('password') ? ' has-error' : '' }}">
-                                <label for="password" class="col-sm-2 control-label">Password</label>                
-                                <div class="col-sm-6 input-group">
-                                    <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
-                                    <input type="password" class="form-control" name="password" id="inputUserPassword" placeholder="Password">
-                                
-                                @if ($errors->has('password'))
-                                <span class="help-block">
-                                <strong>{{ $errors->first('password') }}</strong>
-                                </span>
-                                @endif
-                                
-                                </div>
-                            </div>
-                            
-                            <div class="form-group col-sm-12">
-                                <label for="password-confirm" class="col-sm-2 control-label">Confirm Password</label>                
-                                <div class="col-sm-6 input-group">
-                                    <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
-                                    <input type="password" name="password_confirmation" class="form-control" id="confirmPassword" placeholder="Confirm Password">
+                                    <input type="email" value="{{ old('email') }}" class="form-control" name="email" v-model="userEmail"id="inputUserEmail" placeholder="Email">
                                 </div>
                             </div>
 

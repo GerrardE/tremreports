@@ -61,13 +61,15 @@ class PagesController extends Controller
     }
 
     public function cbranch(){
-        if (auth::check()) {
-			
-     return view('pages.cbranch');
-		
-		} else {
-			return view('pages.login');
-		}
+      $user= User::first();
+      if(empty($user)){
+      return view('pages.cbranch');	
+      }
+          if (auth::check()) {
+          return view('pages.cbranch');
+      } else {
+        return view('pages.login');
+      }
     } 
 
     public function cgtwelve(){
@@ -147,12 +149,14 @@ class PagesController extends Controller
 
     public function czone(){
   
-    if (auth::check()) {
-      
-        return view('pages.czone');
-    
-    } else {
-      return view('pages.login');
-    }
+      $user= User::first();
+      if(empty($user)){
+      return view('pages.czone');	
+      }
+          if (auth::check()) {
+          return view('pages.czone');
+      } else {
+        return view('pages.login');
+      }
     }
 }

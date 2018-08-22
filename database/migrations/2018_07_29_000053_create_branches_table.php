@@ -16,7 +16,8 @@ class CreateBranchesTable extends Migration
         Schema::create('branches', function (Blueprint $table) {
             $table->increments('id');
 			$table->integer('user_id');
-			 $table->text('country');
+             $table->text('country');
+             $table->integer('zone');
 			 $table->text('city');
 			 $table->text('address');
 			  $table->text('state');

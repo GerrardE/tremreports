@@ -32,7 +32,51 @@ const app = new Vue({
 	
 	allDownloads: [],
 
+	countryZones: [],
+	zoneName: "",
+	activeZone: 0,
 
+	country: "NG",
+	countryBranches: [],
+	activeCountry: "NG",
+	activeBranch:0,
+	activeBranch2:0,
+	activeState:"none",
+	activeBranchDetails:[],
+	activeEventDetails:[],
+	activeBranchName:"",
+	activeBranchAddress:"",
+	activeBranchCity:"",
+	branchEvents:[],
+	branchG12s:[],
+	activeEvent: 0,
+	oldBranch: "none",
+	activeMonth: "none",
+	activeYear: 0,
+	activeEventName: "",
+	activeEventDescription: "",
+	activeG12: 0,
+	activeName: "",
+	activeAddress: "",
+	activeCity: "",
+	activeState: "",
+	activeActiveCountry: "",
+	allUsers: [],
+	userId: 0,
+	fullName:"",
+	userName: "",
+	userRole: "",
+	userBranch: "",
+	userMobile: "",
+	userEmail: "",
+	allCategories: [],
+	categoryUploads: [],
+	activeCategory: 0,
+	activeUpload: 0,
+	uploadCategory: 0,
+	activeName: "",
+	activeDescription: "",
+	
 	}
 		
 		
@@ -42,8 +86,10 @@ const app = new Vue({
 	mounted() {	
 	
 	this.getAllDownloads()
-	
-	
+	this.getCountryZones()
+	this.getCountryBranches()
+	this.getAllUsers();
+	this.getAllCategories();
 	},
 	
 	methods: {
@@ -62,6 +108,209 @@ const app = new Vue({
 			
 			
 		},
+
+
+		getAllCategories() {
+			
+			axios.get('/get/all/categories').then(response=>{
+		
+		response.data.forEach((category) => {
+		this.allCategories.push(category)
+		
+		})
+		 
+	})
+	
+			
+			
+		},
+
+		getAllUsers() {
+			
+			axios.get('/get/all/users').then(response=>{
+		
+		response.data.forEach((user) => {
+		this.allUsers.push(user)
+		
+		})
+		 
+	})
+	
+			
+			
+		},
+
+		getCountryZones() {
+
+			axios.get('/get/country/zones/' + this.country).then(response=>{
+				
+				this.countryZones= []
+				response.data.forEach((zone) => {
+				this.countryZones.push(zone)
+				
+				})
+
+				this.getCountryBranches()
+				 
+			})
+
+
+		},
+
+		getCategoryUploads() {
+
+			axios.get('/get/category/uploads/' + this.activeCategory).then(response=>{
+				
+				this.categoryUploads= []
+				response.data.forEach((upload) => {
+				this.categoryUploads.push(upload)
+				this.allDownloads=[]
+				this.allDownloads.push(upload)
+				
+				})
+				 
+			})
+
+
+		},
+
+
+		getBranchEvents() {
+			
+			axios.get('/get/branch/events/' + this.activeBranch).then(response=>{
+				
+				this.branchEvents= []
+				response.data.forEach((event) => {
+				this.branchEvents.push(event)
+				
+				})
+				 
+			})
+
+
+		},
+
+
+		getBranchG12s() {
+			this.activeBranch2= this.activeBranch
+			axios.get('/get/branch/g12s/' + this.activeBranch).then(response=>{
+				
+				this.branchG12s= []
+				response.data.forEach((g12) => {
+				this.branchG12s.push(g12)
+				
+				})
+				 
+			})
+
+
+		},
+
+
+		getCountryBranches() {
+			this.activeCountry=this.country
+			axios.get('/get/country/branches/' + this.country).then(response=>{
+				
+				this.countryBranches= []
+				response.data.forEach((branch) => {
+				this.countryBranches.push(branch)
+				
+				})
+
+				this.getCountryZones()
+				 
+			})
+
+
+		},
+
+		getZoneName() {
+
+		this.zoneName=this.activeZone
+
+		},
+
+		getActiveBranch() {
+			
+		var branch= this.countryBranches.find((p)=> {
+
+			return p.id === this.activeBranch
+
+		});
+		this.activeState= branch.state
+		this.activeZone= branch.zone
+		this.activeBranchName=branch.name
+		this.activeBranchAddress=branch.address
+		this.activeBranchCity=branch.city
+		},
+
+
+		getUserDetails() {
+			
+			var user= this.allUsers.find((u)=> {
+	
+				return u.id === this.userId
+	
+			});
+			this.fullName= user.name
+			this.userName= user.username
+			this.userRole=user.role
+			this.userBranch= user.branch
+			this.userMobile= user.mobile
+			this.userEmail=user.email
+			},
+
+
+			getUploadDetails() {
+			
+				var upload= this.categoryUploads.find((u)=> {
+		
+					return u.id === this.activeUpload
+		
+				});
+				this.uploadCategory= upload.category
+				this.activeName= upload.name
+				this.activeMonth=upload.month
+				this.activeYear= upload.year
+				this.activeDescription= upload.description
+				this.url=upload.url
+				},
+	
+
+
+		getActiveEvent() {
+			
+			var event= this.branchEvents.find((e)=> {
+	
+				return e.id === this.activeEvent
+	
+			});
+
+			this.activeEventDetails=[]
+			this.activeEventDetails.push(event)
+			this.oldBranch=event.branch
+			this.activeMonth=event.month
+			this.activeYear=event.year
+			this.activeEventName=event.name
+			this.activeEventDescription=event.description
+			},
+
+			getActiveG12() {
+			
+				var g12= this.branchG12s.find((g)=> {
+		
+					return g.id === this.activeG12
+		
+				});
+	
+				
+				this.oldBranch=g12.branch
+				this.activeName=g12.name
+				this.activeAddress=g12.address
+				this.activeCity=g12.city
+				this.activeState=g12.state
+				this.activeActiveCountry=g12.country
+				},
 		
 		showFilePicker() {
 	    var select = document.getElementById('productimage')	

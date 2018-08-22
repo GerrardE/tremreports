@@ -17,7 +17,9 @@ use App\sectiond;
 use App\sectione;
 use App\cg12;
 use App\cdownloads;
+use App\UploadCategory;
 use App\event;
+use App\Zone;
 Use Auth;
 Use Session;
 use Storage;
@@ -219,18 +221,26 @@ class SaveController extends Controller
 		'country' => 'required',
 		'state' => 'required',
 		'city' => 'required',
+		'zone' => 'required',
 		'name' => 'required',
 		'address' => 'required',
 		'name' => 'required',
 	
 	]);	
 	
+	if(auth::check()){
+	 $auth= auth::id();	
+	} else {
+
+		$auth= 1;
+	}
 		
 	Branch::create([
-		'user_id' => Auth::id(),
+		'user_id' => $auth,
 		'country' => $r->country,
 		'state' => $r->state,
 		'city' => $r->city,
+		'zone' => $r->zone,
 		'name' => $r->name,
 		'address' => $r->address,
 		]);
@@ -268,6 +278,248 @@ class SaveController extends Controller
 	return redirect()->back();
 	
 	}
+
+
+public function createZone(Request $r)
+	{
+	
+ $this->validate($r, [
+ 
+		'name' => 'required',
+		'country' => 'required',
+	
+	]);	
+	
+	if(auth::check()){
+		$auth= auth::id();	
+	   } else {
+   
+		   $auth= 1;
+	   }
+	
+	Zone::create([
+		'user_id' => $auth,
+		'name' => $r->name,
+		'country' => $r->country,
+		]);
+		
+		Session::flash('success', 'Zone created successfully.');
+	return redirect()->back();
+	
+	}
+
+
+	public function editZone(Request $r)
+	{
+	
+ $this->validate($r, [
+ 
+		'name' => 'required',
+		'country' => 'required',
+		'old' => 'required',
+	
+	]);	
+	
+	$zone= Zone::where('name', $r->old)->where('country', $r->country)->first()		
+	->update([
+		'name' => $r->name,
+		]);
+		
+		Session::flash('success', 'Zone edited successfully.');
+	return redirect()->back();
+	
+	}
+
+
+	public function editBranch(Request $r)
+	{
+	
+ $this->validate($r, [
+ 
+		'name' => 'required',
+		'country' => 'required',
+		'branch' => 'required',
+		'city'=> 'required',
+		'address'=> 'required',
+		'state'=> 'required',
+		'zone'=> 'required',
+	]);	
+	
+	$branch= Branch::where('id', $r->branch)->first()		
+	->update([
+		'name' => $r->name,
+		'city'=> $r->city,
+		'address'=>$r->address,
+		'state'=> $r->state,
+		'zone'=> $r->zone,
+		]);
+		
+		Session::flash('success', 'Branch edited successfully.');
+	    return redirect()->back();
+	
+	}
+
+
+	public function editDownload(Request $r)
+	{
+	
+ $this->validate($r, [
+ 
+		'name' => 'required',
+		'category' => 'required',
+		'month' => 'required',
+		'year'=> 'required',
+		'description' => 'required',
+		'url' => 'required',
+		'upload' => 'required',
+		
+	]);	
+	
+	$upload= Cdownloads::where('id', $r->upload)->first()		
+	->update([
+		'name' => $r->name,
+		'category'=> $r->category,
+		'month'=>$r->month,
+		'year'=> $r->year,
+		'description'=> $r->description,
+		'url'=> $r->url,
+		]);
+		
+		Session::flash('success', 'Upload edited successfully.');
+	    return redirect()->back();
+	
+	}
+
+	public function deleteDownload(Request $r)
+	{
+	
+ $this->validate($r, [
+ 
+		'upload' => 'required',
+		
+	]);	
+	
+	$upload= Cdownloads::where('id', $r->upload)->first()		
+	->delete();
+		
+		Session::flash('success', 'Upload deleted successfully.');
+	    return redirect()->back();
+	
+	}
+
+
+	public function deleteCategory(Request $r)
+	{
+	
+ $this->validate($r, [
+ 
+		'category' => 'required',
+		
+	]);	
+	
+	$category= UploadCategory::where('id', $r->category)->first()		
+	->delete();
+		
+		Session::flash('success', 'Category deleted successfully.');
+	    return redirect()->back();
+	
+	}
+
+
+	public function editG12(Request $r)
+	{
+	
+ $this->validate($r, [
+ 
+		'name' => 'required',
+		'country' => 'required',
+		'branch' => 'required',
+		'city'=> 'required',
+		'address'=> 'required',
+		'state'=> 'required',
+		'old'=> 'required',
+		'g12'=> 'required',
+	]);	
+	
+	$branch= Cg12::where('id', $r->g12)->first()		
+	->update([
+		'name' => $r->name,
+		'city'=> $r->city,
+		'address'=>$r->address,
+		'state'=> $r->state,
+		'branch'=> $r->branch,
+		]);
+		
+		Session::flash('success', 'G12 edited successfully.');
+	    return redirect()->back();
+	
+	}
+
+
+	public function editUser(Request $r)
+	{
+	
+	 $this->validate($r, [
+ 
+		'name' => 'required',
+		'country' => 'required',
+		'branch' => 'required',
+		'user'=> 'required',
+		'role'=> 'required',
+		'mobile'=> 'required',
+		'email'=> 'required',
+		'username'=> 'required',
+	]);	
+	
+	$user= User::where('id', $r->user)->first()		
+	->update([
+		'name' => $r->name,
+		'username'=> $r->username,
+		'role'=>$r->role,
+		'mobile'=> $r->mobile,
+		'branch'=> $r->branch,
+		'email'=> $r->email,
+		]);
+		
+		Session::flash('success', 'User edited successfully.');
+	    return redirect()->back();
+	
+	}
+
+
+
+
+
+	public function editEvent(Request $r)
+	{
+	
+ $this->validate($r, [
+ 
+		'name' => 'required',
+		'country' => 'required',
+		'branch' => 'required',
+		'old' => 'required',
+		'event' => 'required',
+		'description'=> 'required',
+		'month'=> 'required',
+		'year'=> 'required',
+	]);	
+	
+	$event= Event::where('id', $r->event)->first()		
+	->update([
+		'name' => $r->name,
+		'description'=> $r->description,
+		'branch'=>$r->branch,
+		'year'=> $r->year,
+		'month'=> $r->month,
+		]);
+		
+		Session::flash('success', 'Event edited successfully.');
+	    return redirect()->back();
+	
+	}
+	
+	
 	
 	
 	public function createDownload(Request $r)
@@ -276,6 +528,7 @@ class SaveController extends Controller
  $this->validate($r, [
  
 		'name' => 'required',
+		'category' => 'required',
 		'description' => 'required',
 		'month' => 'required',
 		'year' => 'required',
@@ -287,6 +540,7 @@ class SaveController extends Controller
 	Cdownloads::create([
 		'user_id' => Auth::id(),
 		'name' => $r->name,
+		'category' => $r->category,
 		'description' => $r->description,
 		'month' => $r->month,
 		'year' => $r->year,
@@ -294,6 +548,26 @@ class SaveController extends Controller
 		]);
 		
 		Session::flash('success', 'Download created successfully.');
+	return redirect()->back();
+	
+	}
+
+
+	public function createCategory(Request $r)
+	{
+	
+ $this->validate($r, [
+ 
+		'name' => 'required',
+	
+	]);	
+	
+		
+	UploadCategory::create([
+		'name' => $r->name,
+		]);
+		
+		Session::flash('success', 'Category created successfully.');
 	return redirect()->back();
 	
 	}
@@ -335,6 +609,135 @@ public function allDownloads()
 	 foreach ($downloads as $download):
 		
 		 array_push($all, $download); 
+		
+	 endforeach;
+	 
+	 return $all;
+	
+	}
+
+
+	public function allCategories()
+	
+	{
+	
+	$categories = UploadCategory::get();
+	
+	$all = array();
+	
+	 foreach ($categories as $category):
+		
+		 array_push($all, $category); 
+		
+	 endforeach;
+	 
+	 return $all;
+	
+	}
+
+	public function allUsers()
+	
+	{
+	
+	$users = User::get();
+	
+	$all = array();
+	
+	 foreach ($users as $user):
+		
+		 array_push($all, $user); 
+		
+	 endforeach;
+	 
+	 return $all;
+	
+	}
+
+	public function countryZones($country)
+	
+	{
+	
+	$zones = Zone::where('country', $country)->get();
+	
+	$all = array();
+	
+	 foreach ($zones as $zone):
+		
+		 array_push($all, $zone); 
+		
+	 endforeach;
+	 
+	 return $all;
+	
+	}
+
+
+	public function branchEvents($branch)
+	
+	{
+	
+	$events = Event::where('branch', $branch)->get();
+	
+	$all = array();
+	
+	 foreach ($events as $event):
+		
+		 array_push($all, $event); 
+		
+	 endforeach;
+	 
+	 return $all;
+	
+	}
+
+	public function categoryUploads($category)
+	
+	{
+	
+	$uploads = Cdownloads::where('category', $category)->get();
+	
+	$all = array();
+	
+	 foreach ($uploads as $upload):
+		
+		 array_push($all, $upload); 
+		
+	 endforeach;
+	 
+	 return $all;
+	
+	}
+
+
+	public function branchG12s($branch)
+	
+	{
+	
+	$G12s = Cg12::where('branch', $branch)->get();
+	
+	$all = array();
+	
+	 foreach ($G12s as $G12):
+		
+		 array_push($all, $G12); 
+		
+	 endforeach;
+	 
+	 return $all;
+	
+	}
+
+	public function countryBranches($country)
+	
+	{
+	
+	$branches = Branch::where('country', $country)->get();
+	
+	$all = array();
+	
+	 foreach ($branches as $branch):
+		
+		 array_push($all, $branch); 
 		
 	 endforeach;
 	 

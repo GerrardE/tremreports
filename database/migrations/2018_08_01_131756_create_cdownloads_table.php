@@ -15,7 +15,8 @@ class CreateCdownloadsTable extends Migration
     {
         Schema::create('cdownloads', function (Blueprint $table) {
             $table->increments('id');
-			$table->integer('user_id');
+            $table->integer('user_id');
+            $table->integer('category');
 			$table->string('month');
 			$table->integer('year');
 			$table->text('url');

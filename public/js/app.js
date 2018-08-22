@@ -970,6 +970,7 @@ module.exports = __webpack_require__(42);
 /* 10 */
 /***/ (function(module, exports, __webpack_require__) {
 
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 /**
  * First we will load all of this project's JavaScript dependencies which
@@ -993,8 +994,9 @@ var app = new Vue({
 	el: '#app',
 
 	data: function data() {
+		var _ref;
 
-		return {
+		return _ref = {
 
 			url: "",
 
@@ -1002,13 +1004,44 @@ var app = new Vue({
 
 			form: new FormData(),
 
-			allDownloads: []
+			allDownloads: [],
 
-		};
+			countryZones: [],
+			zoneName: "",
+			activeZone: 0,
+
+			country: "NG",
+			countryBranches: [],
+			activeCountry: "NG",
+			activeBranch: 0,
+			activeBranch2: 0,
+			activeState: "none",
+			activeBranchDetails: [],
+			activeEventDetails: [],
+			activeBranchName: "",
+			activeBranchAddress: "",
+			activeBranchCity: "",
+			branchEvents: [],
+			branchG12s: [],
+			activeEvent: 0,
+			oldBranch: "none",
+			activeMonth: "none",
+			activeYear: 0,
+			activeEventName: "",
+			activeEventDescription: "",
+			activeG12: 0,
+			activeName: "",
+			activeAddress: "",
+			activeCity: ""
+		}, _defineProperty(_ref, 'activeState', ""), _defineProperty(_ref, 'activeActiveCountry', ""), _defineProperty(_ref, 'allUsers', []), _defineProperty(_ref, 'userId', 0), _defineProperty(_ref, 'fullName', ""), _defineProperty(_ref, 'userName', ""), _defineProperty(_ref, 'userRole', ""), _defineProperty(_ref, 'userBranch', ""), _defineProperty(_ref, 'userMobile', ""), _defineProperty(_ref, 'userEmail', ""), _defineProperty(_ref, 'allCategories', []), _defineProperty(_ref, 'categoryUploads', []), _defineProperty(_ref, 'activeCategory', 0), _defineProperty(_ref, 'activeUpload', 0), _defineProperty(_ref, 'uploadCategory', 0), _defineProperty(_ref, 'activeName', ""), _defineProperty(_ref, 'activeDescription', ""), _ref;
 	},
 	mounted: function mounted() {
 
 		this.getAllDownloads();
+		this.getCountryZones();
+		this.getCountryBranches();
+		this.getAllUsers();
+		this.getAllCategories();
 	},
 
 
@@ -1023,12 +1056,171 @@ var app = new Vue({
 				});
 			});
 		},
+		getAllCategories: function getAllCategories() {
+			var _this2 = this;
+
+			axios.get('/get/all/categories').then(function (response) {
+
+				response.data.forEach(function (category) {
+					_this2.allCategories.push(category);
+				});
+			});
+		},
+		getAllUsers: function getAllUsers() {
+			var _this3 = this;
+
+			axios.get('/get/all/users').then(function (response) {
+
+				response.data.forEach(function (user) {
+					_this3.allUsers.push(user);
+				});
+			});
+		},
+		getCountryZones: function getCountryZones() {
+			var _this4 = this;
+
+			axios.get('/get/country/zones/' + this.country).then(function (response) {
+
+				_this4.countryZones = [];
+				response.data.forEach(function (zone) {
+					_this4.countryZones.push(zone);
+				});
+
+				_this4.getCountryBranches();
+			});
+		},
+		getCategoryUploads: function getCategoryUploads() {
+			var _this5 = this;
+
+			axios.get('/get/category/uploads/' + this.activeCategory).then(function (response) {
+
+				_this5.categoryUploads = [];
+				response.data.forEach(function (upload) {
+					_this5.categoryUploads.push(upload);
+					_this5.allDownloads = [];
+					_this5.allDownloads.push(upload);
+				});
+			});
+		},
+		getBranchEvents: function getBranchEvents() {
+			var _this6 = this;
+
+			axios.get('/get/branch/events/' + this.activeBranch).then(function (response) {
+
+				_this6.branchEvents = [];
+				response.data.forEach(function (event) {
+					_this6.branchEvents.push(event);
+				});
+			});
+		},
+		getBranchG12s: function getBranchG12s() {
+			var _this7 = this;
+
+			this.activeBranch2 = this.activeBranch;
+			axios.get('/get/branch/g12s/' + this.activeBranch).then(function (response) {
+
+				_this7.branchG12s = [];
+				response.data.forEach(function (g12) {
+					_this7.branchG12s.push(g12);
+				});
+			});
+		},
+		getCountryBranches: function getCountryBranches() {
+			var _this8 = this;
+
+			this.activeCountry = this.country;
+			axios.get('/get/country/branches/' + this.country).then(function (response) {
+
+				_this8.countryBranches = [];
+				response.data.forEach(function (branch) {
+					_this8.countryBranches.push(branch);
+				});
+
+				_this8.getCountryZones();
+			});
+		},
+		getZoneName: function getZoneName() {
+
+			this.zoneName = this.activeZone;
+		},
+		getActiveBranch: function getActiveBranch() {
+			var _this9 = this;
+
+			var branch = this.countryBranches.find(function (p) {
+
+				return p.id === _this9.activeBranch;
+			});
+			this.activeState = branch.state;
+			this.activeZone = branch.zone;
+			this.activeBranchName = branch.name;
+			this.activeBranchAddress = branch.address;
+			this.activeBranchCity = branch.city;
+		},
+		getUserDetails: function getUserDetails() {
+			var _this10 = this;
+
+			var user = this.allUsers.find(function (u) {
+
+				return u.id === _this10.userId;
+			});
+			this.fullName = user.name;
+			this.userName = user.username;
+			this.userRole = user.role;
+			this.userBranch = user.branch;
+			this.userMobile = user.mobile;
+			this.userEmail = user.email;
+		},
+		getUploadDetails: function getUploadDetails() {
+			var _this11 = this;
+
+			var upload = this.categoryUploads.find(function (u) {
+
+				return u.id === _this11.activeUpload;
+			});
+			this.uploadCategory = upload.category;
+			this.activeName = upload.name;
+			this.activeMonth = upload.month;
+			this.activeYear = upload.year;
+			this.activeDescription = upload.description;
+			this.url = upload.url;
+		},
+		getActiveEvent: function getActiveEvent() {
+			var _this12 = this;
+
+			var event = this.branchEvents.find(function (e) {
+
+				return e.id === _this12.activeEvent;
+			});
+
+			this.activeEventDetails = [];
+			this.activeEventDetails.push(event);
+			this.oldBranch = event.branch;
+			this.activeMonth = event.month;
+			this.activeYear = event.year;
+			this.activeEventName = event.name;
+			this.activeEventDescription = event.description;
+		},
+		getActiveG12: function getActiveG12() {
+			var _this13 = this;
+
+			var g12 = this.branchG12s.find(function (g) {
+
+				return g.id === _this13.activeG12;
+			});
+
+			this.oldBranch = g12.branch;
+			this.activeName = g12.name;
+			this.activeAddress = g12.address;
+			this.activeCity = g12.city;
+			this.activeState = g12.state;
+			this.activeActiveCountry = g12.country;
+		},
 		showFilePicker: function showFilePicker() {
 			var select = document.getElementById('productimage');
 			select.click();
 		},
 		fileChange: function fileChange(e) {
-			var _this2 = this;
+			var _this14 = this;
 
 			var selected = e.target.files[0];
 
@@ -1049,14 +1241,14 @@ var app = new Vue({
 
 
 				if (response.data.length == 0) {
-					_this2.uploadDelay = [];
+					_this14.uploadDelay = [];
 
 					return;
 				}
 
-				_this2.url = [];
-				_this2.uploadDelay = [];
-				_this2.url = response.data.URL;
+				_this14.url = [];
+				_this14.uploadDelay = [];
+				_this14.url = response.data.URL;
 			}).catch(function (response) {
 				//errors
 			});

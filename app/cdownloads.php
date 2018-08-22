@@ -7,6 +7,6 @@ use Illuminate\Database\Eloquent\Model;
 class cdownloads extends Model
 {
       protected $fillable = [
-       'user_id', 'month', 'year', 'name', 'description', 'url', 
+       'user_id', 'category', 'month', 'year', 'name', 'description', 'url', 
     ];
 }

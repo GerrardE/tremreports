@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class branch extends Model
 {
     protected $fillable = [
-       'user_id', 'country', 'state', 'city', 'address', 'name'
+       'user_id', 'country', 'zone', 'state', 'city', 'address', 'name'
     ];
 }
 
