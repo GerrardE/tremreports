@@ -121,6 +121,7 @@ class SaveController extends Controller
 	$this->validate($r, [
 	
 		'branch' => 'required',
+		'week' => 'required',
 		'month' => 'required',
 		'year' => 'required',
 		'event' =>  'required',
@@ -136,6 +137,7 @@ class SaveController extends Controller
 	Weekly::create([
 		'user_id' => Auth::id(),
 		'branch' => $r->branch,
+		'week' => $r->week,
 		'month' => $r->month,
 		'year' => $r->year,
 		'event' => $r->event,

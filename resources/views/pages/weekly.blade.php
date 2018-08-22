@@ -4,12 +4,45 @@
     <div class="links">
         @include('inc.links')   
     </div>
-    <div class="main">
+    <div class="main" id="app">
     <h3><strong>WEEKLY ENTRIES</strong></h3><hr>
         <form class="weekly" method="POST" action="/save/weekly">	
         {{ csrf_field() }}		
             <!-- "wmen" = week's men, wchildren = week's children, etc - just to differenciate from same name in monthly reports -->
             <p><strong>Weekly Attendance<em>(Fill in the numbers as in your branch register)</em></strong></p><hr>
+                <div class="col-sm-12">
+                   
+                   
+                <div class="form-group col-md-8 {{ $errors->has('country') ? ' has-error' : '' }}">
+                                <label for="country" class="col-sm-2 control-label ">Select Country:</label>                
+                                <div class="col-sm-6 input-group">
+                                 <span class="input-group-addon"><i class="glyphicon glyphicon-globe"></i></span>
+                                <select class="input-medium bfh-countries form-control" data-country="NG" name="country"  id="inputCountry3" v-model="country" @change=getCountryBranches></select>
+                                </div>
+                            </div>
+
+                    <div class="form-group col-md-4">
+                        <label for="weekt" class="control-label">Select Week:</label>
+                        <div class="input-group">
+                        <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt"></i></span>
+                        <select name="week"  class="form-control">
+                            <option value="0" selected disabled><-- Please choose one --></option>
+                            <option value="1" >Week 1</option> 
+                            <option value="2" >Week 2</option>
+                            <option value="3" >Week 3</option>
+                            <option value="4" >Week 4</option>
+                            <option value="5" >Week 5</option>
+                        </select>
+                        
+                        @if ($errors->has('week'))
+                        <span class="help-block">
+                        <strong>{{ $errors->first('week') }}</strong>
+                        </span>
+                        @endif
+                        </div>
+                    </div>
+                </div>
+
                 <div class="col-sm-12">
                     <div class="form-group col-md-4 {{ $errors->has('month') ? ' has-error' : '' }}">
                         <label for="month" class="control-label">Select Month:</label>
@@ -66,12 +99,11 @@
                         <label for="branch" class="control-label">Select Branch:</label>
                         <div class="input-group">
                         <span class="input-group-addon"><i class="glyphicon glyphicon-home"></i></span>
-                        <select name="branch"  class="form-control">
-                            <option value="none" selected disabled><-- Please choose one --></option>
-                            <option value="1" >Headquarters</option> 
-                            <option value="2" >Victoria Island</option>
-                            <option value="3" >Akoka</option>
-                        </select>
+                        <select name="branch"  class="form-control"  v-model="activeBranch" @change="getBranchEvents">
+                            <option value="0" selected disabled><-- Please choose one --></option>
+                             <option v-for="branch in countryBranches" :value="branch.id">@{{branch.name}}</option>
+                             <option v-if="countryBranches.length==0" value="">No branch to display</option>
+                         </select>
                         
                         @if ($errors->has('branch'))
                         <span class="help-block">
@@ -87,11 +119,10 @@
                         <label for="wevent" class="control-label">Event:</label>
                         <div class="input-group">
                             <span class="input-group-addon"><i class="glyphicon glyphicon-bookmark"></i></span>	
-                            <select name="event" class="form-control">
-                                <option value="none" selected disabled>-- Please choose one--</option>
-                                <option value="klwc">KLWC</option>
-                                <option value="woc">WOC</option>
-                                <option value="metathesis">METATHESIS</option>
+                            <select name="event"  class="form-control" v-model="activeEvent">
+                            <option value="0" selected disabled><-- Please choose one --></option>
+                            <option v-for="event in branchEvents" :value="event.id">@{{event.name}}</option>
+                            <option v-if="branchEvents.length==0" value="">No event to display</option>
                             </select>
                         </div>
                     </div>
@@ -100,7 +131,7 @@
                         <label for="wmen">Men:</label>
                         <div class="input-group">
                             <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>		
-                            <input type="number" id="wmen" name="men" value="{{ old('men') }}" class="form-control" placeholder="Number Of Men">
+                            <input type="number" id="wmen" name="men" v-model="men" class="form-control" placeholder="Number Of Men">
                         </div>
                     </div>
 
@@ -108,7 +139,7 @@
                         <label for="wwomen">Women:</label>
                         <div class="input-group">	
                             <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-                            <input type="number" id="women" name="women" value="{{ old('women') }}" class="form-control" placeholder="Number Of Women">
+                            <input type="number" id="women" name="women" v-model="women" class="form-control" placeholder="Number Of Women">
                         </div>
                     </div>
                 </div>
@@ -118,7 +149,15 @@
                         <label for="wchildren">Children:</label>
                         <div class="input-group">
                             <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-                            <input type="number" id="children" name="children" value="{{ old('children') }}" class="form-control" placeholder="Number Of Children">
+                            <input type="number" id="children" name="children" v-model="children" class="form-control" placeholder="Number Of Children">
+                        </div>
+                    </div>
+
+                    <div class="form-group col-md-4">
+                        <label for="wtotal">Total:</label>
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-plus"></i></span>
+                            <input type="number" id="wtotal" name="total" :value="total" class="form-control" placeholder="Total">
                         </div>
                     </div>
 
@@ -130,13 +169,7 @@
                         </div>
                     </div>
 
-                    <div class="form-group col-md-4">
-                        <label for="wtotal">Total:</label>
-                        <div class="input-group">
-                            <span class="input-group-addon"><i class="glyphicon glyphicon-plus"></i></span>
-                            <input type="number" id="wtotal" name="total" value="{{ old('total') }}" class="form-control" placeholder="Total">
-                        </div>
-                    </div>
+                    
                 </div>
 
             <div class="col-md-12">

@@ -15,7 +15,8 @@ class CreateWeekliesTable extends Migration
     {
         Schema::create('weeklies', function (Blueprint $table) {
             $table->increments('id');
-			$table->integer('user_id');
+            $table->integer('user_id');
+            $table->integer('week');
 			 $table->string('month');
 			 $table->integer('year');
 			  $table->integer('branch');

@@ -81,6 +81,7 @@
                 <th scope="col">Week 2</th>
                 <th scope="col">Week 3</th>
                 <th scope="col">Week 4</th>
+                <th scope="col">Week 5</th>
                 <th scope="col">MONTHLY TOTAL</th>
             </tr>
         </thead>
@@ -94,10 +95,12 @@
                 <td>100</td>
                 <td>100</td>
                 <td>100</td>
-                <td>400</td>
+                <td>100</td>
+                <td>500</td>
             </tr>
             <tr>
                 <td>First-Timers</td>
+                <td>100</td>
                 <td>100</td>
                 <td>100</td>
                 <td>100</td>
@@ -114,10 +117,12 @@
                 <td>100</td>
                 <td>100</td>
                 <td>100</td>
+                <td>100</td>
                 <td>400</td>
             </tr>
             <tr>
                 <td>Children</td>
+                <td>100</td>
                 <td>100</td>
                 <td>100</td>
                 <td>100</td>
@@ -134,6 +139,7 @@
                 <td>100</td>
                 <td>100</td>
                 <td>100</td>
+                <td>100</td>
                 <td>400</td>
             </tr>
             <tr>
@@ -142,10 +148,12 @@
                 <td>100</td>
                 <td>100</td>
                 <td>100</td>
+                <td>100</td>
                 <td>400</td>
             </tr>
             <tr>
                 <td>Children</td>
+                <td>100</td>
                 <td>100</td>
                 <td>100</td>
                 <td>100</td>
@@ -162,6 +170,7 @@
                 <td>100</td>
                 <td>100</td>
                 <td>100</td>
+                <td>100</td>
                 <td>400</td>
             </tr>
 
@@ -170,6 +179,7 @@
             </tr>
             <tr>
                 <td>MIT</td>
+                <td>100</td>
                 <td>100</td>
                 <td>100</td>
                 <td>100</td>
@@ -186,6 +196,7 @@
                 <td>100</td>
                 <td>100</td>
                 <td>100</td>
+                <td>100</td>
                 <td>400</td>
             </tr>
 
@@ -198,10 +209,12 @@
                 <td>100</td>
                 <td>100</td>
                 <td>100</td>
+                <td>100</td>
                 <td>400</td>
             </tr>
             <tr>
                 <td>CWF (Christian Women)</td>
+                <td>100</td>
                 <td>100</td>
                 <td>100</td>
                 <td>100</td>
@@ -214,10 +227,12 @@
                 <td>100</td>
                 <td>100</td>
                 <td>100</td>
+                <td>100</td>
                 <td>400</td>
             </tr>
             <tr>
                 <td>RCF (Royal Children)</td>
+                <td>100</td>
                 <td>100</td>
                 <td>100</td>
                 <td>100</td>
@@ -230,6 +245,7 @@
             </tr>
             <tr>
                 <td>TITHERS</td>
+                <td>100</td>
                 <td>100</td>
                 <td>100</td>
                 <td>100</td>
@@ -247,6 +263,7 @@
                 <td>100</td>
                 <td>100</td>
                 <td>100</td>
+                <td>100</td>
                 <td>400</td>
             </tr>
             <tr>
@@ -255,10 +272,12 @@
                 <td>100</td>
                 <td>100</td>
                 <td>100</td>
+                <td>100</td>
                 <td>400</td>
             </tr>
             <tr>
                 <td scope="row"><h4>GRAND TOTAL</h4></td>
+                <td></td>
                 <td></td>
                 <td></td>
                 <td></td>

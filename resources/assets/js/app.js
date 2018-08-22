@@ -76,7 +76,12 @@ const app = new Vue({
 	uploadCategory: 0,
 	activeName: "",
 	activeDescription: "",
-	
+	adult:0,
+	children:0,
+	men:0,
+	women:0,
+	total:0,
+
 	}
 		
 		
@@ -365,7 +370,41 @@ const app = new Vue({
 		
 		
 		
-	}
+	},
+
+	watch: {
+
+		adult() {
+			if (this.adult >0) {
+				this.total = parseInt(this.adult) + parseInt(this.men) + parseInt(this.women)+ parseInt(this.children)
+			}
+			
+		},
+
+		men() {
+
+			if (this.men >0) {
+				this.total = parseInt(this.adult) + parseInt(this.men) + parseInt(this.women)+ parseInt(this.children)
+			}
+		},
+
+		women() {
+
+			if (this.women >0) {
+				this.total = parseInt(this.adult) + parseInt(this.men) + parseInt(this.women)+ parseInt(this.children)
+			}
+		},
+
+		children() {
+
+			if (this.children >0) {
+				this.total = parseInt(this.adult) + parseInt(this.men) + parseInt(this.women)+ parseInt(this.children)
+			}
+		}
+
+
+
+	},
 });
 
 

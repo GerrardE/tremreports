@@ -4,11 +4,21 @@
     <div class="links">
         @include('inc.links')   
     </div>
-    <div class="main">
+    <div class="main" id="app">
 
         <h3 class="page-header"><strong>MONTHLY ENTRIES</strong></h3>
         <form class="monthly" method="POST" action="/save/monthly">
             {{ csrf_field() }}
+            
+            
+              <div class="form-group col-sm-12 {{ $errors->has('country') ? ' has-error' : '' }}">
+                                <label for="country" class="col-sm-2 control-label ">Select Country:</label>                
+                                <div class="col-sm-6 input-group">
+                                 <span class="input-group-addon"><i class="glyphicon glyphicon-globe"></i></span>
+                                <select class="input-medium bfh-countries form-control" data-country="NG" name="country"  id="inputCountry3" v-model="country" @change=getCountryBranches></select>
+                                </div>
+                            </div>
+            
             <div class="form-group col-md-4 {{ $errors->has('month') ? ' has-error' : '' }}">
                 <label for="month" class="control-label">Select Month:</label>
                 <div class="input-group">
@@ -65,10 +75,9 @@
                 <div class="input-group">
                 <span class="input-group-addon"><i class="glyphicon glyphicon-home"></i></span>
                 <select name="branch"  class="form-control">
-                    <option value="none" selected disabled><-- Please choose one --></option>
-                    <option value="1" >Headquarters</option> 
-                    <option value="2" >Victoria Island</option>
-                    <option value="3" >Akoka</option>
+                <option value="0" selected disabled><-- Please choose one --></option>
+                 <option v-for="branch in countryBranches" :value="branch.id">@{{branch.name}}</option>
+                  <option v-if="countryBranches.length==0" value="">No branch to display</option>
                 </select>
                 
                 @if ($errors->has('branch'))
@@ -84,15 +93,15 @@
                 <h6>Membership: <em>(Fill in the numbers as in your branch register)</em></h6>
                 <div class="col-sm-12 col-md-4">	
                     <label for="adults">Adults:</label>
-                    <input type="number" id="adult" name="adults" value="{{ old('adults') }}"class="form-control" placeholder="Number Of Adults" required>
+                    <input type="number" id="adult" name="adults"v-model="adult" class="form-control" placeholder="Number Of Adults" required>
                 </div>
                 <div class="col-sm-12 col-md-4">
                     <label for="children">Children:</label>
-                    <input type="number" id="children" name="children" value="{{ old('children') }}"class="form-control" placeholder="Number Of Children" required>
+                    <input type="number" id="children" v-model="children" name="children" class="form-control" placeholder="Number Of Children" required>
                 </div>
                 <div class="col-sm-12 col-md-4">
                     <label for="total">Total:</label>
-                    <input type="number" id="total" name="total" value="{{ old('total') }}" class="form-control" placeholder="Total" required>
+                    <input type="number" id="total" name="total" :value="total" class="form-control" placeholder="Total" required>
                 </div>
             </div>
             

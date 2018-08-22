@@ -4,13 +4,22 @@
     <div class="links">
         @include('inc.links')   
     </div>
-    <div class="main">
+    <div class="main" id="app">
         <h3><strong>G12 WEEKLY ENTRIES</strong></h3><hr>
             <!-- "weekt" = week title, g12a = g12 attendance -->
             <p><em>Fill in the numbers as in your branch register</em></p>
             <form class="gtwelve" method="POST" action="/save/g12">
                 {{ csrf_field() }}
                 <div class="col-sm-12">
+
+                <div class="form-group col-sm-12 {{ $errors->has('country') ? ' has-error' : '' }}">
+                                <label for="country" class="col-sm-2 control-label ">Select Country:</label>                
+                                <div class="col-sm-6 input-group">
+                                 <span class="input-group-addon"><i class="glyphicon glyphicon-globe"></i></span>
+                                <select class="input-medium bfh-countries form-control" data-country="NG" name="country"  id="inputCountry3" v-model="country" @change=getCountryBranches></select>
+                                </div>
+                            </div>
+
                     <div class="form-group col-md-4 {{ $errors->has('month') ? ' has-error' : '' }}">
                         <label for="month" class="control-label">Select Month:</label>
                         <div class="input-group">
@@ -67,10 +76,9 @@
                         <div class="input-group">
                         <span class="input-group-addon"><i class="glyphicon glyphicon-home"></i></span>
                         <select name="branch"  class="form-control">
-                            <option value="none" selected disabled>-- Please choose one--</option>
-                            <option value="1" >Headquarters</option> 
-                            <option value="2" >Victoria Island</option>
-                            <option value="3" >Akoka</option>
+                            <option value="0" selected disabled><-- Please choose one --></option>
+                            <option v-for="branch in countryBranches" :value="branch.id">@{{branch.name}}</option>
+                             <option v-if="countryBranches.length==0" value="">No branch to display</option>
                         </select>
                         
                         @if ($errors->has('branch'))
@@ -83,16 +91,31 @@
                 </div>
 
                 <div class="col-sm-12">
-					<div class="form-group col-md-4">
-						<label for="weekt">Week Title:</label>
-						<div class="input-group">
-							<input type="number" id="week" name="week" value="{{ old('week') }}" class="form-control" placeholder="eg: 1">
-						</div>
-					</div>
+                    <div class="form-group col-md-4">
+                        <label for="weekt" class="control-label">Select Week:</label>
+                        <div class="input-group">
+                        <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt"></i></span>
+                        <select name="week"  class="form-control">
+                            <option value="0" selected disabled><-- Please choose one --></option>
+                            <option value="1" >Week 1</option> 
+                            <option value="2" >Week 2</option>
+                            <option value="3" >Week 3</option>
+                            <option value="4" >Week 4</option>
+                            <option value="5" >Week 5</option>
+                        </select>
+                        
+                        @if ($errors->has('week'))
+                        <span class="help-block">
+                        <strong>{{ $errors->first('week') }}</strong>
+                        </span>
+                        @endif
+                        </div>
+                    </div>
 				
 					<div class="form-group col-md-4">
 						<label for="gtwelvea">Attendance:</label>
 						<div class="input-group">
+                        <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt"></i></span>
 						<input type="number" id="gtwelvea" name="attendance" value="{{ old('attendance') }}"class="form-control" placeholder="Number for this week">
 						</div>
 					</div>

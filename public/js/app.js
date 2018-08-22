@@ -1033,7 +1033,7 @@ var app = new Vue({
 			activeName: "",
 			activeAddress: "",
 			activeCity: ""
-		}, _defineProperty(_ref, 'activeState', ""), _defineProperty(_ref, 'activeActiveCountry', ""), _defineProperty(_ref, 'allUsers', []), _defineProperty(_ref, 'userId', 0), _defineProperty(_ref, 'fullName', ""), _defineProperty(_ref, 'userName', ""), _defineProperty(_ref, 'userRole', ""), _defineProperty(_ref, 'userBranch', ""), _defineProperty(_ref, 'userMobile', ""), _defineProperty(_ref, 'userEmail', ""), _defineProperty(_ref, 'allCategories', []), _defineProperty(_ref, 'categoryUploads', []), _defineProperty(_ref, 'activeCategory', 0), _defineProperty(_ref, 'activeUpload', 0), _defineProperty(_ref, 'uploadCategory', 0), _defineProperty(_ref, 'activeName', ""), _defineProperty(_ref, 'activeDescription', ""), _ref;
+		}, _defineProperty(_ref, 'activeState', ""), _defineProperty(_ref, 'activeActiveCountry', ""), _defineProperty(_ref, 'allUsers', []), _defineProperty(_ref, 'userId', 0), _defineProperty(_ref, 'fullName', ""), _defineProperty(_ref, 'userName', ""), _defineProperty(_ref, 'userRole', ""), _defineProperty(_ref, 'userBranch', ""), _defineProperty(_ref, 'userMobile', ""), _defineProperty(_ref, 'userEmail', ""), _defineProperty(_ref, 'allCategories', []), _defineProperty(_ref, 'categoryUploads', []), _defineProperty(_ref, 'activeCategory', 0), _defineProperty(_ref, 'activeUpload', 0), _defineProperty(_ref, 'uploadCategory', 0), _defineProperty(_ref, 'activeName', ""), _defineProperty(_ref, 'activeDescription', ""), _defineProperty(_ref, 'adult', 0), _defineProperty(_ref, 'children', 0), _defineProperty(_ref, 'men', 0), _defineProperty(_ref, 'women', 0), _defineProperty(_ref, 'total', 0), _ref;
 	},
 	mounted: function mounted() {
 
@@ -1252,6 +1252,32 @@ var app = new Vue({
 			}).catch(function (response) {
 				//errors
 			});
+		}
+	},
+
+	watch: {
+		adult: function adult() {
+			if (this.adult > 0) {
+				this.total = parseInt(this.adult) + parseInt(this.men) + parseInt(this.women) + parseInt(this.children);
+			}
+		},
+		men: function men() {
+
+			if (this.men > 0) {
+				this.total = parseInt(this.adult) + parseInt(this.men) + parseInt(this.women) + parseInt(this.children);
+			}
+		},
+		women: function women() {
+
+			if (this.women > 0) {
+				this.total = parseInt(this.adult) + parseInt(this.men) + parseInt(this.women) + parseInt(this.children);
+			}
+		},
+		children: function children() {
+
+			if (this.children > 0) {
+				this.total = parseInt(this.adult) + parseInt(this.men) + parseInt(this.women) + parseInt(this.children);
+			}
 		}
 	}
 });
