@@ -9,9 +9,9 @@
 		 <!-- CSRF Token -->
         <meta name="csrf-token" content="{{ csrf_token() }}">
 		<link rel="stylesheet" href="{{ asset('css/app.css') }}">
-        <link rel="stylesheet" href="{{ asset('css/main.css') }}">
         <link rel="stylesheet" href="{{ asset('css/bootstrap-form-helpers.min.scss') }}">
         <link href="https://fonts.googleapis.com/css?family=Fira+Sans|Noto+Sans|Source+Sans+Pro" rel="stylesheet">
+        <link rel="stylesheet" href="{{ asset('css/main.css') }}">
     </head>
     <body>
         <!-- Navigation -->

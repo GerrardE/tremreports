@@ -1,6 +1,6 @@
 <ul class="nav nav-pills nav-justified" role="tablist">
     <li class="dropdown" role="presentation">
-        <a class="dropdown-toggle" data-toggle="dropdown">ENTRIES<span><i class="glyphicon glyphicon-chevron-down"></i></span></a>
+        <a class="dropdown-toggle" data-toggle="dropdown" class="pointer">ENTRIES<span><i class="glyphicon glyphicon-chevron-down"></i></span></a>
         <ul class="dropdown-menu">
             <li class="dropdown-header">SELECT<span><i class="glyphicon glyphicon-chevron-down"></i></span></li>
             <li class="divider"></li>
@@ -11,7 +11,7 @@
     </li>
    <!-- <li><a href="/viewr">VIEW REPORTS</a></li>-->
     <li role="presentation"><a href="/downloads">DOWNLOADS</a></li>
-    <li class="dropdown" role="presentation">
+    <li class="dropdown" class="pointer" role="presentation">
         <a class="dropdown-toggle" data-toggle="dropdown">CREATE<span><i class="glyphicon glyphicon-chevron-down"></i></span></a>
         <ul class="dropdown-menu">
             <li><a href="/czone">ZONE</a></li>
