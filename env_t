@@ -1,16 +1,16 @@
-APP_NAME=trem_reports
+APP_NAME="Report and Download Center"
 APP_ENV=local
-APP_KEY=base64:sQnAaYUXUQaJDvVcdYov4YFK7WfPvzT/F/AhWXZ0nNw=
+APP_KEY=base64:gkEn/wl83E9LDLemgjGCbOjESwYHPfCtHl4oUi+XsnA=
 APP_DEBUG=true
 APP_LOG_LEVEL=debug
-APP_URL=https://entry.trem.org/
+APP_URL=https://localhost:8000/
 
 DB_CONNECTION=mysql
 DB_HOST=127.0.0.1
 DB_PORT=3306
-DB_DATABASE=tremhq_tremdev
-DB_USERNAME=tremhq
-DB_PASSWORD=Sh@lom001
+DB_DATABASE=tremdev
+DB_USERNAME=root
+DB_PASSWORD=
 
 BROADCAST_DRIVER=log
 CACHE_DRIVER=file

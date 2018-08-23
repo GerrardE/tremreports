@@ -25,6 +25,7 @@
             <p></p>
         </footer>
         <!-- Scripts -->
+        <script src="{{ asset('js/script.js') }}"></script>
         <script src="{{ asset('js/app.js') }}"></script>
         <script src="{{ asset('js/notify.min.js') }}"></script>
         <script src="{{ asset('js/bootstrap-formhelpers.min.js') }}"></script>

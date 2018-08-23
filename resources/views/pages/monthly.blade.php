@@ -5,25 +5,40 @@
         @include('inc.links')   
     </div>
     <div class="main" id="app">
-
         <h3 class="page-header"><strong>MONTHLY ENTRIES</strong></h3>
         <form class="monthly" method="POST" action="/save/monthly">
             {{ csrf_field() }}
+            <div class="form-group col-md-3 {{ $errors->has('country') ? ' has-error' : '' }}">
+                <label for="country" class="control-label ">Select Country:</label>                
+                <div class="input-group">
+                    <span class="input-group-addon"><i class="glyphicon glyphicon-globe"></i></span>
+                <select class="input-medium bfh-countries form-control" required data-country="NG" name="country"  id="inputCountry3" v-model="country" @change=getCountryBranches></select>
+                </div>
+            </div>
+
+            <div class="form-group col-md-3 {{ $errors->has('branch') ? ' has-error' : '' }}">
+                <label for="branch" class="control-label">Select Branch:</label>
+                <div class="input-group">
+                <span class="input-group-addon"><i class="glyphicon glyphicon-home"></i></span>
+                <select name="branch" required class="form-control">
+                <option value="0" selected disabled><-- Please choose one --></option>
+                    <option v-for="branch in countryBranches" :value="branch.id">@{{branch.name}}</option>
+                    <option v-if="countryBranches.length==0" value="">No branch to display</option>
+                </select>
+                
+                @if ($errors->has('branch'))
+                <span class="help-block">
+                <strong>{{ $errors->first('branch') }}</strong>
+                </span>
+                @endif
+                </div>
+            </div>
             
-            
-              <div class="form-group col-sm-12 {{ $errors->has('country') ? ' has-error' : '' }}">
-                                <label for="country" class="col-sm-2 control-label ">Select Country:</label>                
-                                <div class="col-sm-6 input-group">
-                                 <span class="input-group-addon"><i class="glyphicon glyphicon-globe"></i></span>
-                                <select class="input-medium bfh-countries form-control" data-country="NG" name="country"  id="inputCountry3" v-model="country" @change=getCountryBranches></select>
-                                </div>
-                            </div>
-            
-            <div class="form-group col-md-4 {{ $errors->has('month') ? ' has-error' : '' }}">
+            <div class="form-group col-md-3 {{ $errors->has('month') ? ' has-error' : '' }}">
                 <label for="month" class="control-label">Select Month:</label>
                 <div class="input-group">
                     <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt"></i></span>
-                    <select name="month"  class="form-control">
+                    <select name="month" required class="form-control">
                         <option value="none" selected disabled><-- Please choose one --></option>
                         <option value="January" >January</option> 
                         <option value="Febuary" >February</option>
@@ -47,11 +62,11 @@
                 </div>
             </div>
         
-            <div class="form-group col-md-4 {{ $errors->has('year') ? ' has-error' : '' }}">
+            <div class="form-group col-md-3 {{ $errors->has('year') ? ' has-error' : '' }}">
                 <label for="year" class="control-label">Select Year:</label>
                 <div class="input-group">
                 <span class="input-group-addon"><i class="glyphicon glyphicon-yen"></i></span>
-                <select name="year"  class="form-control">
+                <select name="year" required class="form-control">
                     <option value="none" selected disabled><-- Please choose one --></option>   
                     <option value="2018">2018</option>
                     <option value="2019">2019</option>
@@ -70,23 +85,7 @@
                 </div>
             </div>
         
-            <div class="form-group col-md-4 {{ $errors->has('branch') ? ' has-error' : '' }}">
-                <label for="branch" class="control-label">Select Branch:</label>
-                <div class="input-group">
-                <span class="input-group-addon"><i class="glyphicon glyphicon-home"></i></span>
-                <select name="branch"  class="form-control">
-                <option value="0" selected disabled><-- Please choose one --></option>
-                 <option v-for="branch in countryBranches" :value="branch.id">@{{branch.name}}</option>
-                  <option v-if="countryBranches.length==0" value="">No branch to display</option>
-                </select>
-                
-                @if ($errors->has('branch'))
-                <span class="help-block">
-                <strong>{{ $errors->first('branch') }}</strong>
-                </span>
-                @endif
-                </div>
-            </div><hr>
+            <hr>
             
             <div class="form-group col-md-12">
                 <strong>SECTION A</strong><hr>
@@ -136,7 +135,7 @@
                 
                 <div class="col-sm-12 col-md-4">
                     <label for="branchp">Branch Project:</label>
-                        <input type="number" id="branchp" name="branchp" value="{{ old('branchp') }}" class="form-control" placeholder="Branch project "><br>
+                        <input type="number" id="branchp" name="branchp" value="{{ old('branchp') }}" class="form-control" placeholder="Branch project" required><br>
                     <label for="branchpc"><em>Comment on project</em></label>
                         <input type="text" id="cbranchp" name="cbranchp" value="{{ old('cbranchp') }}" class="form-control" placeholder="Comment on branch projects on hand" required>
                 </div>

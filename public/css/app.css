@@ -8486,9 +8486,9 @@ a:hover {
   color: black !important;
 }
 
-.nav-tabs > li > a:focus-visible {
+.nav-tabs > li.active > a {
   color: #fff !important;
-  background-color: #881208;
+  background-color: #881208 !important;
 }
 
 .links {

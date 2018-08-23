@@ -2,14 +2,12 @@
     <li class="dropdown" role="presentation">
         <a class="dropdown-toggle" data-toggle="dropdown" class="pointer">ENTRIES<span><i class="glyphicon glyphicon-chevron-down"></i></span></a>
         <ul class="dropdown-menu">
-            <li class="dropdown-header">SELECT<span><i class="glyphicon glyphicon-chevron-down"></i></span></li>
-            <li class="divider"></li>
             <li><a href="/monthly">MONTHLY</a></li>
             <li><a href="/weekly">WEEKLY</a></li>
             <li><a href="/gtwelve">G12</a></li>
         </ul>
     </li>
-   <!-- <li><a href="/viewr">VIEW REPORTS</a></li>-->
+   <li><a href="/viewr">VIEW REPORTS</a></li>
     <li role="presentation"><a href="/downloads">DOWNLOADS</a></li>
     <li class="dropdown" class="pointer" role="presentation">
         <a class="dropdown-toggle" data-toggle="dropdown">CREATE<span><i class="glyphicon glyphicon-chevron-down"></i></span></a>

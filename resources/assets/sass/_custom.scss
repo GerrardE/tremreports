@@ -136,9 +136,9 @@ padding-bottom: 30px;
   color: black !important;
 }
 
-.nav-tabs > li > a:focus-visible {
+.nav-tabs > li.active > a {
   color: #fff !important;
-  background-color: rgb(136,18,8);
+  background-color: rgb(136,18,8) !important;
 }
 
 //Links
