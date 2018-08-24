@@ -13,10 +13,10 @@ paper work and more with simple solutions such as:
 
 [Spiritual Reports] was built with the power of Laravel, Jquery, Bootstrap and full-stack Vue.Js by;
 
-- [Ezeugwa Gerrard](gerrarde.github.io/gerrard).
+- [Ezeugwa Gerrard](https://gerrarde.github.io/gerrard).
 - [Ebieto Terry].
 
-The application is hosted at [Spiritual Reports](entry.trem.org).
+The application is hosted at [Spiritual Reports](https://entry.trem.org).
 
 ## Contributing
 
