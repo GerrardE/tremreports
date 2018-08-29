@@ -176,24 +176,42 @@
         <div class="tab-pane fade" id="delete">
             <!-- delete g12 tab starts here -->
                 <h3>DELETE G-12 NETWORK</h3><hr>
-                <div class="form-group col-sm-12">
-                    <label for="sgtwelve" class="col-sm-2 control-label">Select G-12:</label>
-                    <div class="col-sm-6 input-group">
-                        <span class="input-group-addon"><i class="glyphicon glyphicon-flag"></i></span>
-                        <select name="gtwelve"  class="form-control">
-                            <option value="none" selected disabled><-- Please choose one --></option>
-                            <option>Akoka</option> 
-                            <option>Jesus House</option>
-                            <option>Omolara Close</option>
-                        </select>
+                <form class="dgtwelve">
+                    <div class="form-group col-sm-12 {{ $errors->has('country') ? ' has-error' : '' }}">
+                        <label for="country" class="col-sm-2 control-label">Country</label>                
+                        <div class="col-sm-6 input-group">
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-globe"></i></span>
+                            <select class="input-medium bfh-countries form-control" data-country="NG" name="country" id="inputCountry"></select>
+                        </div>
                     </div>
-                </div>
-                
-                <div class="col-sm-8">
-                    <h5><strong>Delete Forever?</strong></h5>
-                    <button class="btn btn-create pull-right" type=" ">YES<i class="glyphicon glyphicon-trash"></i></button>
-                    <button type="button" class="btn btn-back pull-left"><i class="glyphicon glyphicon-arrow-left"></i><a href="/cgtwelve">NO</a></button> 
-                </div>
+
+                    <div class="form-group col-sm-12 {{ $errors->has('state') ? ' has-error' : '' }}">
+                        <label for="state" class="col-sm-2 control-label ">Select State</label>                
+                        <div class="col-sm-6 input-group">
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-pushpin"></i></span>
+                            <select class="input-medium bfh-states form-control" data-country="inputCountry" name="state"></select>
+                        </div>
+                    </div>
+
+                    <div class="form-group col-sm-12">
+                        <label for="sgtwelve" class="col-sm-2 control-label">Select G-12:</label>
+                        <div class="col-sm-6 input-group">
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-flag"></i></span>
+                            <select name="gtwelve"  class="form-control">
+                                <option value="none" selected disabled><-- Please choose one --></option>
+                                <option>Akoka</option> 
+                                <option>Jesus House</option>
+                                <option>Omolara Close</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div class="col-sm-8">
+                        <h5><strong>Delete Forever?</strong></h5>
+                        <button class="btn btn-create pull-right" type=" ">YES<i class="glyphicon glyphicon-trash"></i></button>
+                        <button type="button" class="btn btn-back pull-left"><i class="glyphicon glyphicon-arrow-left"></i><a href="/cgtwelve">NO</a></button> 
+                    </div>
+                </form>
             <!-- delete g12 tab ends here -->
         </div>
     </div>

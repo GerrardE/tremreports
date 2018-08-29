@@ -164,11 +164,16 @@ padding-bottom: 30px;
   background-color: rgb(136,18,8);
 }
 
-//Styles for cuser.blade.php
+//Styles for app.blade.php
 .main {
-  padding: 10px 5px; 
+  padding: 5px 5px 10px 5px; 
   max-width: 80%;
   margin: 0% 10%;
+}
+
+.alert {
+  margin-top: 10px;
+  margin-bottom: 10px !important;
 }
 
 .carousel-inner > .item > img{

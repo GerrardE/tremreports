@@ -11,7 +11,6 @@
             <li><a data-toggle="tab" href="#edit">EDIT</a></li>
             <li><a data-toggle="tab" href="#delete">DELETE</a></li>
         </ul>
-
         <div class="tab-content">
         <!-- create zone tab starts here -->
             <div id="create" class="tab-pane fade in active">

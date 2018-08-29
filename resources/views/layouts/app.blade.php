@@ -15,11 +15,10 @@
     </head>
     <body>
         <!-- Navigation -->
-        <div class="col-lg-4 col-md-6 col-sm-6 col-xs-6"></div>
         <div class="container">
             @yield('content')
         </div>
-        <div class="col-lg-4 col-md-6 col-sm-6 col-xs-6"></div>
+
         <footer class="container page-header">
             <p>&copy; <code>tremhq webteam</code> 2018</p>
             <p></p>
@@ -30,9 +29,9 @@
         <script src="{{ asset('js/notify.min.js') }}"></script>
         <script src="{{ asset('js/bootstrap-formhelpers.min.js') }}"></script>
         <script>
-            @if(Session::has('success'))
-            $.notify("{{Session::get('success')}}", { position:"right top" });  
-            @endif
+          //@if(Session::has('success'))
+            //$.notify("{{Session::get('success')}}", { position:"right top" });  
+            //@endif
 	    </script>
 	</body>
 </html>

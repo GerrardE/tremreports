@@ -165,29 +165,50 @@
         <!-- edit branch tab ends here -->
 
         <!-- delete branch tab starts here -->
-        <div id="delete" class="tab-pane fade">
-            <h3 class="page-header">DELETE BRANCH</h3>
-            <div class="form-group col-sm-12">
-                <!-- Load all branches -->
-                <label for="branch" class="col-sm-2 control-label">Select Branch:</label>
-                <div class="col-sm-6 input-group">
-                <span class="input-group-addon"><i class="glyphicon glyphicon-home"></i></span>
-                <select name="branch"  class="form-control">
-                    <option value="none" selected disabled><-- Please choose one --></option>
-                    <option value="1">Headquarters</option> 
-                    <option value="2">Victoria Island</option>
-                    <option value="3">Akoka</option>
-                </select>
+            
+                <div id="delete" class="tab-pane fade">
+                <form class="dbranch">
+                    <h3 class="page-header">DELETE BRANCH</h3>
+                    <div class="form-group col-sm-12 {{ $errors->has('country') ? ' has-error' : '' }}">
+                        <label for="country" class="col-sm-2 control-label">Country</label>                
+                        <div class="col-sm-6 input-group">
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-globe"></i></span>
+                            <select class="input-medium bfh-countries form-control" data-country="NG" name="country" id="inputCountry"></select>
+                        </div>
+                    </div>
+
+                    <div class="form-group col-sm-12 {{ $errors->has('state') ? ' has-error' : '' }}">
+                        <label for="state" class="col-sm-2 control-label ">Select State</label>                
+                        <div class="col-sm-6 input-group">
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-pushpin"></i></span>
+                            <select class="input-medium bfh-states form-control" data-country="inputCountry" name="state"></select>
+                        </div>
+                    </div>
+
+                    <div class="form-group col-sm-12">
+                        <!-- Load all branches -->
+                        <label for="branch" class="col-sm-2 control-label">Select Branch:</label>
+                        <div class="col-sm-6 input-group">
+                        <span class="input-group-addon"><i class="glyphicon glyphicon-home"></i></span>
+                        <select name="branch"  class="form-control">
+                            <option value="none" selected disabled><-- Please choose one --></option>
+                            <option value="1">Headquarters</option> 
+                            <option value="2">Victoria Island</option>
+                            <option value="3">Akoka</option>
+                        </select>
+                        </div>
+                    </div>
+                
+                    <div class="col-sm-8">
+                        <h5><strong>Delete Forever?</strong></h5>
+                        <button class="btn btn-create pull-right" type=" ">YES<i class="glyphicon glyphicon-send"></i></button>
+                        <button type="button" class="btn btn-back pull-left"><i class="glyphicon glyphicon-arrow-left"></i><a href="/cbranch">NO</a></button> 
+                    </div>
+                </form>
                 </div>
-            </div>
-        
-            <div class="col-sm-8">
-                <h5><strong>Delete Forever?</strong></h5>
-                <button class="btn btn-create pull-right" type=" ">YES<i class="glyphicon glyphicon-send"></i></button>
-                <button type="button" class="btn btn-back pull-left"><i class="glyphicon glyphicon-arrow-left"></i><a href="/cbranch">NO</a></button> 
-            </div>
-        </div>
+            
         <!-- delete branch tab ends here -->
         </div>
+    
     </div>
 @endsection

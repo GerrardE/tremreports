@@ -1,4 +1,4 @@
-<p align="center"><img src="http://trem.org/home/wp-content/uploads/2012/10/trem2.jpg"></p>
+<p align="center">Spiritual Reports<img src="http://trem.org/home/wp-content/uploads/2012/10/trem2.jpg"></p>
 
 ## About Spiritual Reports
 

@@ -21,3 +21,4 @@
         </ul>
     </li>
 </ul>
+<div class="">@include('inc.messages')</div>

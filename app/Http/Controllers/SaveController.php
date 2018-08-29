@@ -107,10 +107,9 @@ class SaveController extends Controller
 	
 	
 	
-	Session::flash('success', 'Report submitted successfully.');
-	return redirect()->back();
-	
-	
+	//Session::flash('success', 'Report submitted successfully.');
+	//return redirect()->back();
+	return redirect('/monthly')->with('success', 'Report Submitted Successfully');
 	}
 	
 	
@@ -149,9 +148,9 @@ class SaveController extends Controller
 		
 		]);
 		
-		Session::flash('success', 'Report submitted successfully.');
-	return redirect()->back();
-	
+		//Session::flash('success', 'Report submitted successfully.');
+	//return redirect()->back();
+	return redirect('/weekly')->with('success', 'Report Submitted Successfully');
 	}
 	
 	
@@ -179,9 +178,9 @@ class SaveController extends Controller
 		'attendance' => $r->attendance,
 		]);
 		
-		Session::flash('success', 'Report submitted successfully.');
-	return redirect()->back();
-	
+	//Session::flash('success', 'Report submitted successfully.');
+	//return redirect()->back();
+	return redirect('/gtwelve')->with('success', 'Report Submitted Successfully');
 	}
 	
 	public function createG12(Request $r)
@@ -210,9 +209,9 @@ class SaveController extends Controller
 		'branch' => $r->branch
 		]);
 		
-		Session::flash('success', 'G12 created successfully.');
-	return redirect()->back();
-	
+		//Session::flash('success', 'G12 created successfully.');
+	//return redirect()->back();
+	return redirect('/cgtwelve')->with('success', 'G12 Created Successfully');
 	}
 	
 	public function saveBranch(Request $r)
@@ -247,9 +246,9 @@ class SaveController extends Controller
 		'address' => $r->address,
 		]);
 		
-		Session::flash('success', 'Branch created successfully.');
-	return redirect()->back();
-	
+		//Session::flash('success', 'Branch created successfully.');
+	//return redirect()->back();
+	return redirect('/cbranch')->with('success', 'Branch Created Successfully');
 	}
 	
 	
@@ -276,9 +275,9 @@ class SaveController extends Controller
 		'branch' => $r->branch,
 		]);
 		
-		Session::flash('success', 'Event created successfully.');
-	return redirect()->back();
-	
+		//Session::flash('success', 'Event created successfully.');
+	//return redirect()->back();
+	return redirect('/cevent')->with('success', 'Event Created Successfully');
 	}
 
 
@@ -305,9 +304,10 @@ public function createZone(Request $r)
 		'country' => $r->country,
 		]);
 		
-		Session::flash('success', 'Zone created successfully.');
-	return redirect()->back();
-	
+	//Session::flash('success', 'Zone created successfully.');
+	//return redirect()->back();
+	return redirect('/czone')->with('success', 'Zone created successfully');
+
 	}
 
 
@@ -327,9 +327,9 @@ public function createZone(Request $r)
 		'name' => $r->name,
 		]);
 		
-		Session::flash('success', 'Zone edited successfully.');
-	return redirect()->back();
-	
+	//Session::flash('success', 'Zone edited successfully.');
+	//return redirect()->back();
+	return redirect('/czone')->with('success', 'Zone Edited Successfully');
 	}
 
 
@@ -356,9 +356,9 @@ public function createZone(Request $r)
 		'zone'=> $r->zone,
 		]);
 		
-		Session::flash('success', 'Branch edited successfully.');
-	    return redirect()->back();
-	
+		//Session::flash('success', 'Branch edited successfully.');
+	    //return redirect()->back();
+		return redirect('/cbranch')->with('success', 'Branch Edited Successfully');
 	}
 
 
@@ -387,9 +387,9 @@ public function createZone(Request $r)
 		'url'=> $r->url,
 		]);
 		
-		Session::flash('success', 'Upload edited successfully.');
-	    return redirect()->back();
-	
+		//Session::flash('success', 'Upload edited successfully.');
+	    //return redirect()->back();
+		return redirect('/cdownloads')->with('success', 'Upload Edited Successfully');
 	}
 
 	public function deleteDownload(Request $r)
@@ -404,9 +404,9 @@ public function createZone(Request $r)
 	$upload= Cdownloads::where('id', $r->upload)->first()		
 	->delete();
 		
-		Session::flash('success', 'Upload deleted successfully.');
-	    return redirect()->back();
-	
+		//Session::flash('success', 'Upload deleted successfully.');
+	    //return redirect()->back();
+		return redirect('/cdownloads')->with('success', 'Upload Deleted Successfully');
 	}
 
 
@@ -422,9 +422,9 @@ public function createZone(Request $r)
 	$category= UploadCategory::where('id', $r->category)->first()		
 	->delete();
 		
-		Session::flash('success', 'Category deleted successfully.');
-	    return redirect()->back();
-	
+		//Session::flash('success', 'Category deleted successfully.');
+	    //return redirect()->back();
+		return redirect('/cdownloads')->with('success', 'Category Deleted Successfully');
 	}
 
 
@@ -452,9 +452,9 @@ public function createZone(Request $r)
 		'branch'=> $r->branch,
 		]);
 		
-		Session::flash('success', 'G12 edited successfully.');
-	    return redirect()->back();
-	
+		//Session::flash('success', 'G12 edited successfully.');
+	    //return redirect()->back();
+		return redirect('/cgtwelve')->with('success', 'G12 Edited Successfully');
 	}
 
 
@@ -483,9 +483,9 @@ public function createZone(Request $r)
 		'email'=> $r->email,
 		]);
 		
-		Session::flash('success', 'User edited successfully.');
-	    return redirect()->back();
-	
+		//Session::flash('success', 'User edited successfully.');
+	    //return redirect()->back();
+		return redirect('/cuser')->with('success', 'User Edited Successfully');
 	}
 
 
@@ -516,9 +516,9 @@ public function createZone(Request $r)
 		'month'=> $r->month,
 		]);
 		
-		Session::flash('success', 'Event edited successfully.');
-	    return redirect()->back();
-	
+		//Session::flash('success', 'Event edited successfully.');
+	    //return redirect()->back();
+		return redirect('/cevent')->with('success', 'Event Edited Successfully');
 	}
 	
 	
@@ -549,9 +549,9 @@ public function createZone(Request $r)
 		'url' => $r->url,
 		]);
 		
-		Session::flash('success', 'Download created successfully.');
-	return redirect()->back();
-	
+		//Session::flash('success', 'Download created successfully.');
+	//return redirect()->back();
+	return redirect('/cdownloads')->with('success', 'Download Created Successfully');
 	}
 
 
@@ -569,9 +569,9 @@ public function createZone(Request $r)
 		'name' => $r->name,
 		]);
 		
-		Session::flash('success', 'Category created successfully.');
-	return redirect()->back();
-	
+		//Session::flash('success', 'Category created successfully.');
+	//return redirect()->back();
+	return redirect('/cdownloads')->with('success', 'Category Created Successfully');
 	}
 	
 	
