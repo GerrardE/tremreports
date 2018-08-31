@@ -17,11 +17,11 @@
                 <input name="name" type="text" class="form-control" value="{{ old('name') }}"  id="inputUserFullName" placeholder="Full Name">
             
 		
-		@if ($errors->has('name'))
-             <span class="help-block">
-              <strong>{{ $errors->first('name') }}</strong>
-             </span>
-        @endif
+            <!--@if ($errors->has('name'))
+                <span class="help-block">
+                <strong>{{ $errors->first('name') }}</strong>
+                </span>
+            @endif-->
 		
 			</div>
         </div>
@@ -34,11 +34,11 @@
                 <span class="input-group-addon"><i class="glyphicon glyphicon-thumbs-up"></i></span>
                 <input type="text" name="username" value="{{ old('username') }}" class="form-control" id="inputUserUsername" placeholder="Username">
             
-		@if ($errors->has('username'))
-             <span class="help-block">
-               <strong>{{ $errors->first('username') }}</strong>
-             </span>
-        @endif
+            <!--@if ($errors->has('username'))
+                <span class="help-block">
+                <strong>{{ $errors->first('username') }}</strong>
+                </span>
+            @endif-->
 		
 			</div>
         </div>
@@ -50,11 +50,11 @@
                 <option value="5" selected>Pastor</option> 
              </select>
 			
-			@if ($errors->has('role'))
+			<!--@if ($errors->has('role'))
              <span class="help-block">
                <strong>{{ $errors->first('role') }}</strong>
              </span>
-            @endif
+            @endif-->
 		
             </div>
         </div>
@@ -70,11 +70,11 @@
                 <option value="3"  >Akoka</option>
             </select>
 			
-			@if ($errors->has('branch'))
+			<!--@if ($errors->has('branch'))
              <span class="help-block">
                <strong>{{ $errors->first('branch') }}</strong>
              </span>
-			@endif
+			@endif-->
             </div>
         </div>
 
@@ -84,11 +84,11 @@
                 <span class="input-group-addon"><i class="glyphicon glyphicon-phone"></i></span>
                 <input type="number" name="mobile" value="{{ old('mobile') }}" class="form-control" id="inputUserPhone" placeholder="e.g 2348010000001">
 			
-			@if ($errors->has('mobile'))
+			<!--@if ($errors->has('mobile'))
              <span class="help-block">
                <strong>{{ $errors->first('mobile') }}</strong>
              </span>
-			@endif
+			@endif-->
 			
 			</div>
         </div>
@@ -107,11 +107,11 @@
                 <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
                 <input type="password" class="form-control" name="password" id="inputUserPassword" placeholder="Password">
              
-			 @if ($errors->has('password'))
+			 <!--@if ($errors->has('password'))
              <span class="help-block">
                <strong>{{ $errors->first('password') }}</strong>
              </span>
-			@endif
+			@endif-->
 			 
 			</div>
         </div>

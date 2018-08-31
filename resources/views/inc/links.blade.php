@@ -7,7 +7,7 @@
             <li><a href="/gtwelve">G12</a></li>
         </ul>
     </li>
-   <!--li><a href="/viewr">VIEW REPORTS</a></li-->
+   <li><a href="/viewr">VIEW REPORTS</a></li-->
     <li role="presentation"><a href="/downloads">DOWNLOADS</a></li>
     <li class="dropdown" class="pointer" role="presentation">
         <a class="dropdown-toggle" data-toggle="dropdown">CREATE<span><i class="glyphicon glyphicon-chevron-down"></i></span></a>

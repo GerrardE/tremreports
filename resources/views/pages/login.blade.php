@@ -6,20 +6,20 @@
                 <h1>SPIRITUAL REPORT</h2>
                 <hr>
                <form class="form-signin" method="POST" action="/custom/login">
+                @include('inc.messages') 
                         {{ csrf_field() }}
 						
 						<div class="form-group">
                         <label for="username" class="control-label">USERNAME</label>
                         <div class="input-group">
                             <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-                            <input type="text" name="username" class="form-control" placeholder="Username" required autofocus/>
+                            <input type="text" name="username" class="form-control" placeholder="Username" autofocus/>
 							
-						@if (session('error'))
-							<tr>
-								<td><strong>{{ session('error') }}</strong></td>
-							</tr>
-						@endif	
-							
+                            <!--@if (session('error'))
+                                <tr>
+                                    <strong>{{ session('error') }}</strong></td>
+                                </tr>
+                            @endif-->	
 						</div>
                     </div>
                     
@@ -27,7 +27,7 @@
                         <label for="password" class="control-label">PASSWORD</label>
                         <div class="input-group">
                             <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
-                            <input name="password" type="password" class="form-control" placeholder="Password" required/>
+                            <input name="password" type="password" class="form-control" placeholder="Password"/>
                         </div>
                     </div>
 

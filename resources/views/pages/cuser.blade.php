@@ -190,11 +190,11 @@
                                     <input name="name" type="text" class="form-control" v-model="fullName"  id="inputUserFullName" placeholder="Full Name">
                                 
                             
-                            @if ($errors->has('name'))
+                            <!--@if ($errors->has('name'))
                                 <span class="help-block">
                                 <strong>{{ $errors->first('name') }}</strong>
                                 </span>
-                            @endif
+                            @endif-->
                             
                                 </div>
                             </div>
@@ -205,11 +205,11 @@
                                     <span class="input-group-addon"><i class="glyphicon glyphicon-font"></i></span>
                                     <input type="text" name="username" v-model="userName" class="form-control" id="inputUserUsername" placeholder="Username">
                                 
-                                    @if ($errors->has('username'))
+                                    <!--@if ($errors->has('username'))
                                         <span class="help-block">
                                         <strong>{{ $errors->first('username') }}</strong>
                                         </span>
-                                    @endif
+                                    @endif-->
                             
                                 </div>
                             </div>
@@ -229,11 +229,11 @@
                                         <option value="6">Super Admin</option>
                                     </select>
                                 
-                                @if ($errors->has('role'))
+                                <!--@if ($errors->has('role'))
                                 <span class="help-block">
                                 <strong>{{ $errors->first('role') }}</strong>
                                 </span>
-                                @endif
+                                @endif-->
                             
                                 </div>
                             </div>
@@ -248,11 +248,11 @@
                                 <option v-if="countryBranches.length==0" value="">No branch to display</option>
                                 </select>
                                 
-                                @if ($errors->has('branch'))
+                                <!--@if ($errors->has('branch'))
                                 <span class="help-block">
                                 <strong>{{ $errors->first('branch') }}</strong>
                                 </span>
-                                @endif
+                                @endif-->
                                 </div>
                             </div>
 
@@ -262,11 +262,11 @@
                                     <span class="input-group-addon"><i class="glyphicon glyphicon-phone"></i></span>
                                     <input type="number" name="mobile" value="{{ old('mobile') }}" class="form-control" v-model="userMobile" id="inputUserPhone" placeholder="e.g 2348010000001">
                                 
-                                @if ($errors->has('mobile'))
+                                <!--@if ($errors->has('mobile'))
                                 <span class="help-block">
                                 <strong>{{ $errors->first('mobile') }}</strong>
                                 </span>
-                                @endif
+                                @endif-->
                                 
                                 </div>
                             </div>

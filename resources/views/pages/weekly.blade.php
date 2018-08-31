@@ -30,11 +30,11 @@
                                 <option v-if="countryBranches.length==0" value="">No branch to display</option>
                             </select>
                         
-                        @if ($errors->has('branch'))
+                        <!--@if ($errors->has('branch'))
                         <span class="help-block">
                         <strong>{{ $errors->first('branch') }}</strong>
                         </span>
-                        @endif
+                        @endif-->
                         </div>
                     </div>
                 </div>
@@ -53,11 +53,11 @@
                             <option value="5" >Week 5</option>
                         </select>
                         
-                        @if ($errors->has('week'))
+                        <!--@if ($errors->has('week'))
                         <span class="help-block">
                         <strong>{{ $errors->first('week') }}</strong>
                         </span>
-                        @endif
+                        @endif-->
                         </div>
                     </div>
 
@@ -81,11 +81,11 @@
                                 <option value="December">December</option>
                             </select>
                             
-                            @if ($errors->has('month'))
+                            <!--@if ($errors->has('month'))
                             <span class="help-block">
                                 <strong>{{ $errors->first('month') }}</strong>
                             </span>
-                            @endif
+                            @endif-->
                         </div>
                     </div>
                 
@@ -104,11 +104,11 @@
                             <option value="2025">2024</option>
                         </select>
                         
-                        @if ($errors->has('year'))
+                        <!--@if ($errors->has('year'))
                             <span class="help-block">
                             <strong>{{ $errors->first('year') }}</strong>
                             </span>
-                        @endif
+                        @endif-->
                         </div>
                     </div>
 

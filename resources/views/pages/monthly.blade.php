@@ -26,11 +26,11 @@
                     <option v-if="countryBranches.length==0" value="">No branch to display</option>
                 </select>
                 
-                @if ($errors->has('branch'))
+                <!--@if ($errors->has('branch'))
                 <span class="help-block">
                 <strong>{{ $errors->first('branch') }}</strong>
                 </span>
-                @endif
+                @endif-->
                 </div>
             </div>
             
@@ -54,11 +54,11 @@
                         <option value="December" >December</option>
                     </select>
                     
-                    @if ($errors->has('month'))
+                    <!--@if ($errors->has('month'))
                     <span class="help-block">
                     <strong>{{ $errors->first('month') }}</strong>
                     </span>
-                    @endif
+                    @endif-->
                 </div>
             </div>
         
@@ -77,11 +77,11 @@
                     <option value="2025">2024</option>
                 </select>
                 
-                @if ($errors->has('year'))
+                <!--@if ($errors->has('year'))
                 <span class="help-block">
                 <strong>{{ $errors->first('year') }}</strong>
                 </span>
-                @endif
+                @endif-->
                 </div>
             </div>
         
@@ -176,6 +176,14 @@
                 <div class="col-sm-12 col-md-4">
                     <label for="totalnc">Total number of cells:</label>
                     <input type="number" id="totalnc" name="totalnc" value="{{ old('totalnc') }}"  class="form-control" placeholder="Total " required>
+                </div>
+            </div>
+
+            <!-- included 31/08/2018 -->
+            <div class="form-group col-md-12"><hr>
+                <label for="challenges" class="col-sm-4">State Any Challenges Encountered this Month</label>                
+                <div class="col-md-8">
+                    <textarea name="challenges"  value="{{ old('challenges') }}" class="form-control" rows="3"></textarea>
                 </div>
             </div>
             
