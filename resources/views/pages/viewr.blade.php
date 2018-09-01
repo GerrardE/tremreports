@@ -8,21 +8,65 @@
     <table class="table">
     <h3>REPORTS SECTION</h3><hr>
         <div class="form-group col-sm-12">
-            <div class="form-group col-md-4">
-            <label for="role" class="control-label">Select Category</label>
-            <div class="input-group">
-                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt"></i></span>
-                <select name="role" class="form-control">
-                    <option value="none" selected disabled><-- Please choose one --></option>
-                    <option>Branch</option>
-                    <option>State</option>
-                    <option>Zone</option>
-                    <option>Country</option>
-                </select>
-            </div>
+            <div class="form-group col-md-3">
+                <label for="role" class="control-label">Select Category</label>
+                <div class="input-group">
+                    <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt"></i></span>
+                    <select name="role" class="form-control">
+                        <option value="none" selected disabled><-- Please choose one --></option>
+                        <option>Branch</option>
+                        <option>Zone</option>
+                        <option>Country</option>
+                    </select>
+                </div>
             </div>
 
-            <div class="form-group col-md-4 {{ $errors->has('month') ? ' has-error' : '' }}">
+            <!-- This part will load depending on what the user selected as the category --> 
+            <!-- If zone, load zone, if branch, load branch, if state, load state... etc -->
+            <div class="form-group col-md-3 {{ $errors->has('branch') ? ' has-error' : '' }}">
+                <label for="branch" class="control-label">Select TREM Branch:</label>
+                <div class="input-group">
+                    <span class="input-group-addon"><i class="glyphicon glyphicon-home"></i></span>
+                    <select name="branch"  class="form-control"  v-model="activeBranch" >
+                        <option value="0" selected disabled><-- Please choose one --></option>
+                        <option v-for="branch in countryBranches" :value="branch.id">@{{branch.name}}</option>
+                        <option v-if="countryBranches.length==0" value="">No branch to display</option>
+                    </select>
+                </div>
+            </div>
+
+            <!--
+            <div class="form-group col-md-3">
+                <label for="zone" class="control-label">Select Zone:</label>
+                <div class="input-group">
+                <span class="input-group-addon"><i class="glyphicon glyphicon-map-marker"></i></span>
+                <select name="old"  class="form-control" @change="getZoneName" v-model="activeZone">
+                    <option value="none" selected disabled><-- Please choose one --></option>
+                  <!--  <option v-for="zone in countryZones" :value="zone.name">@{{zone.name}}</option> 
+                    <option v-if="countryZones.length==0" value="none">No zone to display</option>
+                </select>
+                </div>
+            </div>
+
+            !-- Remember the state is tied to country --
+            <div class="form-group col-md-3 {{ $errors->has('country') ? ' has-error' : '' }}">
+                <label for="country" class="control-label ">Country</label>                
+                <div class="input-group">
+                    <span class="input-group-addon"><i class="glyphicon glyphicon-globe"></i></span>
+                    <select class="input-medium bfh-countries form-control" data-country="NG" name="country"  id="inputCountry"v-model="country" @change="getCountryZones"></select>
+                </div>
+            </div>
+            !-- State and country are loaded together --
+            <div class="form-group col-md-3{{ $errors->has('state') ? ' has-error' : '' }}">
+                <label for="state" class="control-label ">Select State</label>                
+                <div class="input-group">
+                    <span class="input-group-addon"><i class="glyphicon glyphicon-pushpin"></i></span>
+                    <select class="input-medium bfh-states form-control" data-country="inputCountry" name="state"></select>
+                </div>
+            </div>
+
+            -->
+            <div class="form-group col-md-3 {{ $errors->has('month') ? ' has-error' : '' }}">
                 <label for="month" class="control-label">Select Month:</label>
                 <div class="input-group">
                 <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt"></i></span>
@@ -50,7 +94,7 @@
                 </div>
             </div>
 
-            <div class="form-group col-md-4 {{ $errors->has('year') ? ' has-error' : '' }}">
+            <div class="form-group col-md-3 {{ $errors->has('year') ? ' has-error' : '' }}">
                 <label for="year" class="control-label">Select Year:</label>
                 <div class="input-group">
                 <span class="input-group-addon"><i class="glyphicon glyphicon-yen"></i></span>

@@ -93,11 +93,11 @@
                                      <option v-if="countryBranches.length==0" value="">No branch to display</option>
                                 </select>
                                 
-                                @if ($errors->has('branch'))
+                                <!--@if ($errors->has('branch'))
                                 <span class="help-block">
                                 <strong>{{ $errors->first('branch') }}</strong>
                                 </span>
-                                @endif
+                                @endif-->
                                 </div>
                             </div>
 
