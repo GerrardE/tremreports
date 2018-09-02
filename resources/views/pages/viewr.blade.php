@@ -118,6 +118,7 @@
             </div>
         </div>
 
+    
         <thead>
             <tr>
                 <th scope="col"></th>
@@ -328,7 +329,7 @@
                 <td></td>
                 <td>4,000</td>
             </tr>
-    </tbody>
+        </tbody>
     </table>
 
     <div class="col-sm-12">
