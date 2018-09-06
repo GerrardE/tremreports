@@ -292,24 +292,35 @@
                 <!-- delete user tab starts here -->
                     <div class="tab-pane fade" id="delete">
                         <h3>DELETE USER</h3><hr>
-                        <div class="form-group col-sm-12">
-                            <label for="suser" class="col-sm-2 control-label">Select User:</label>
-                            <div class="col-sm-6 input-group">
-                                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt"></i></span>
-                                <select name="event"  class="form-control">
-                                    <option value="none" selected disabled><-- Please choose one --></option>
-                                    <option>Rev. Akintola Oni</option> 
-                                    <option>Pastor Sayo Adebayo</option>
-                                    <option>Rev. Akaninyene Effiong</option>
-                                </select>
+                        
+                        <form class="cuser" method="POST" action="/delete/user">
+                            {{ csrf_field() }}
+                        <div class="form-group col-sm-12 {{ $errors->has('country') ? ' has-error' : '' }}">
+                                <label for="country" class="col-sm-2 control-label ">Country</label>                
+                                <div class="col-sm-6 input-group">
+                                 <span class="input-group-addon"><i class="glyphicon glyphicon-globe"></i></span>
+                                <select class="input-medium bfh-countries form-control" data-country="NG" name="country"  id="inputCountry3" v-model="country" @change=getCountryBranches></select>
+                                </div>
                             </div>
-                        </div>
+
+                            <div class="form-group col-sm-12">
+                                <label for="suser" class="col-sm-2 control-label">Select User:</label>
+                                <div class="col-sm-6 input-group">
+                                    <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt"></i></span>
+                                    <select name="user"  class="form-control" v-model="userId" @change="getUserDetails">
+                                        <option value="0" selected disabled><-- Please choose one --></option>
+                                         <option v-for="user in allUsers" :value="user.id">@{{user.name}}</option>
+                                         <option v-if="allUsers.length==0" value="">No user to display</option>
+                                    </select>
+                                </div>
+                            </div>
                         
                         <div class="col-sm-8">
                             <h5><strong>Delete Forever?</strong></h5>
                             <button class="btn btn-create pull-right" type=" ">YES<i class="glyphicon glyphicon-trash"></i></button>
                             <button type="button" class="btn btn-back pull-left"><i class="glyphicon glyphicon-arrow-left"></i><a href="/cuser">NO</a></button> 
                         </div>
+                        </form>
                     </div>
                 <!-- delete user tab ends here -->
             </div>

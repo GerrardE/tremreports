@@ -246,9 +246,9 @@ class SaveController extends Controller
 		'address' => $r->address,
 		]);
 		
-		//Session::flash('success', 'Branch created successfully.');
-	//return redirect()->back();
-	return redirect('/cbranch')->with('success', 'Branch Created Successfully');
+		Session::flash('success', 'Branch created successfully.');
+		return redirect()->back();
+	
 	}
 	
 	
@@ -407,6 +407,97 @@ public function createZone(Request $r)
 		//Session::flash('success', 'Upload deleted successfully.');
 	    //return redirect()->back();
 		return redirect('/cdownloads')->with('success', 'Upload Deleted Successfully');
+	}
+
+
+	public function deleteBranch(Request $r)
+	{
+	
+ $this->validate($r, [
+ 
+		'country' => 'required',
+		'branch' => 'required',
+		
+	]);	
+	
+	$zone= Branch::where('id', $r->branch)->first()		
+	->delete();
+		
+		Session::flash('success', 'Branch deleted successfully.');
+	    return redirect()->back();
+	}
+
+	public function deleteZone(Request $r)
+	{
+	
+ 	$this->validate($r, [
+ 
+		'country' => 'required',
+		'zone' => 'required',
+		
+	]);	
+	
+	$zone= Zone::where('name', $r->zone)->first()		
+	->delete();
+		
+		Session::flash('success', 'Zone deleted successfully.');
+	    return redirect()->back();
+	
+	}
+
+
+	public function deleteEvent(Request $r)
+	{
+	
+ 	$this->validate($r, [
+ 
+		'country' => 'required',
+		'event' => 'required',
+		
+	]);	
+	
+	$event= Event::where('id', $r->event)->first()		
+	->delete();
+		
+		Session::flash('success', 'Event deleted successfully.');
+	    return redirect()->back();
+	
+	}
+
+	public function deleteG12(Request $r)
+	{
+	
+ 	$this->validate($r, [
+ 
+		'country' => 'required',
+		'g12' => 'required',
+		
+	]);	
+	
+	$g12= Cg12::where('id', $r->g12)->first()		
+	->delete();
+		
+		Session::flash('success', 'G12 deleted successfully.');
+	    return redirect()->back();
+	
+	}
+
+	public function deleteUser(Request $r)
+	{
+	
+ 	$this->validate($r, [
+ 
+		'country' => 'required',
+		'user' => 'required',
+		
+	]);	
+	
+	$g12= User::where('id', $r->user)->first()		
+	->delete();
+		
+		Session::flash('success', 'User deleted successfully.');
+	    return redirect()->back();
+	
 	}
 
 

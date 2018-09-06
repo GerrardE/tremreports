@@ -29,9 +29,9 @@
         <script src="{{ asset('js/notify.min.js') }}"></script>
         <script src="{{ asset('js/bootstrap-formhelpers.min.js') }}"></script>
         <script>
-          //@if(Session::has('success'))
-            //$.notify("{{Session::get('success')}}", { position:"right top" });  
-            //@endif
+          @if(Session::has('success'))
+            $.notify("{{Session::get('success')}}", { position:"right top" });  
+          @endif
 	    </script>
 	</body>
 </html>

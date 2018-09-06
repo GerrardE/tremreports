@@ -65,7 +65,7 @@ class PagesController extends Controller
       if(empty($user)){
       return view('pages.cbranch');	
       }
-          if (auth::check()) {
+          if (auth::check() && auth::user()->role==6) {
           return view('pages.cbranch');
       } else {
         return view('pages.login');
@@ -73,7 +73,7 @@ class PagesController extends Controller
     } 
 
     public function cgtwelve(){
-        if (auth::check()) {
+        if (auth::check() && auth::user()->role==6) {
 			
       return view('pages.cgtwelve');
 		
@@ -83,7 +83,7 @@ class PagesController extends Controller
     } 
 
     public function cevent(){
-        if (auth::check()) {
+        if (auth::check() && auth::user()->role==6) {
 			
        return view('pages.cevent');
 		
@@ -93,7 +93,7 @@ class PagesController extends Controller
     } 
 
     public function cpastor(){
-       if (auth::check()) {
+       if (auth::check() && auth::user()->role==6) {
 			
        return view('pages.cpastor');
 		
@@ -103,7 +103,7 @@ class PagesController extends Controller
     } 
 
     public function cpreacher(){
-        if (auth::check()) {
+        if (auth::check() && auth::user()->role==6) {
 			
        return view('pages.cpreacher');
 		
@@ -117,7 +117,7 @@ class PagesController extends Controller
 		if(empty($user)){
 		return view('pages.cuser');	
 		}
-        if (auth::check()) {
+        if (auth::check() && auth::user()->role==6) {
         return view('pages.cuser');
 		} else {
 			return view('pages.login');
@@ -138,7 +138,7 @@ class PagesController extends Controller
     
     public function viewr(){
 		
-    if (auth::check()) {
+    if (auth::check() && auth::user()->role==6 ) {
       
         return view('pages.viewr');
     
@@ -153,7 +153,7 @@ class PagesController extends Controller
       if(empty($user)){
       return view('pages.czone');	
       }
-          if (auth::check()) {
+          if (auth::check() && auth::user()->role==6) {
           return view('pages.czone');
       } else {
         return view('pages.login');

@@ -167,34 +167,26 @@
         <!-- delete branch tab starts here -->
             
                 <div id="delete" class="tab-pane fade">
-                <form class="dbranch">
+                <form class="dbranch" method="POST" action="/delete/branch">
+                    {{ csrf_field() }}
                     <h3 class="page-header">DELETE BRANCH</h3>
                     <div class="form-group col-sm-12 {{ $errors->has('country') ? ' has-error' : '' }}">
-                        <label for="country" class="col-sm-2 control-label">Country</label>                
+                        <label for="country" class="col-sm-2 control-label ">Country</label>                
                         <div class="col-sm-6 input-group">
                             <span class="input-group-addon"><i class="glyphicon glyphicon-globe"></i></span>
-                            <select class="input-medium bfh-countries form-control" data-country="NG" name="country" id="inputCountry"></select>
+                            <select class="input-medium bfh-countries form-control" data-country="NG" name="country"  id="inputCountry3" v-model="country" @change=getCountryBranches></select>
                         </div>
                     </div>
-
-                    <div class="form-group col-sm-12 {{ $errors->has('state') ? ' has-error' : '' }}">
-                        <label for="state" class="col-sm-2 control-label ">Select State</label>                
-                        <div class="col-sm-6 input-group">
-                            <span class="input-group-addon"><i class="glyphicon glyphicon-pushpin"></i></span>
-                            <select class="input-medium bfh-states form-control" data-country="inputCountry" name="state"></select>
-                        </div>
-                    </div>
-
+                    
+                    
                     <div class="form-group col-sm-12">
-                        <!-- Load all branches -->
                         <label for="branch" class="col-sm-2 control-label">Select Branch:</label>
                         <div class="col-sm-6 input-group">
                         <span class="input-group-addon"><i class="glyphicon glyphicon-home"></i></span>
-                        <select name="branch"  class="form-control">
-                            <option value="none" selected disabled><-- Please choose one --></option>
-                            <option value="1">Headquarters</option> 
-                            <option value="2">Victoria Island</option>
-                            <option value="3">Akoka</option>
+                        <select name="branch"  class="form-control"  v-model="activeBranch" @change="getActiveBranch" required>
+                            <option value="0" selected disabled><-- Please choose one --></option>
+                            <option v-for="branch in countryBranches" :value="branch.id">@{{branch.name}}</option>
+                            <option v-if="countryBranches.length==0" value="">No branch to display</option>
                         </select>
                         </div>
                     </div>

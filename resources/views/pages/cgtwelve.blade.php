@@ -176,20 +176,26 @@
         <div class="tab-pane fade" id="delete">
             <!-- delete g12 tab starts here -->
                 <h3>DELETE G-12 NETWORK</h3><hr>
-                <form class="dgtwelve">
-                    <div class="form-group col-sm-12 {{ $errors->has('country') ? ' has-error' : '' }}">
-                        <label for="country" class="col-sm-2 control-label">Country</label>                
+                <form class="cgtwelve" method="POST" action="/delete/g12">
+                    {{ csrf_field() }}
+                <div class="form-group col-sm-12 {{ $errors->has('country') ? ' has-error' : '' }}">
+                        <label for="country" class="col-sm-2 control-label ">Country</label>                
                         <div class="col-sm-6 input-group">
                             <span class="input-group-addon"><i class="glyphicon glyphicon-globe"></i></span>
-                            <select class="input-medium bfh-countries form-control" data-country="NG" name="country" id="inputCountry"></select>
+                            <select class="input-medium bfh-countries form-control" data-country="NG" name="country"  id="inputCountry" v-model="country" @change=getCountryBranches></select>
                         </div>
                     </div>
-
-                    <div class="form-group col-sm-12 {{ $errors->has('state') ? ' has-error' : '' }}">
-                        <label for="state" class="col-sm-2 control-label ">Select State</label>                
+                    
+                    
+                    <div class="form-group col-sm-12">
+                        <label for="branch" class="col-sm-2 control-label">Select Branch:</label>
                         <div class="col-sm-6 input-group">
-                            <span class="input-group-addon"><i class="glyphicon glyphicon-pushpin"></i></span>
-                            <select class="input-medium bfh-states form-control" data-country="inputCountry" name="state"></select>
+                        <span class="input-group-addon"><i class="glyphicon glyphicon-home"></i></span>
+                        <select name="old"  class="form-control"  v-model="activeBranch" @change="getBranchG12s">
+                            <option value="0" selected disabled><-- Please choose one --></option>
+                            <option v-for="branch in countryBranches" :value="branch.id">@{{branch.name}}</option>
+                            <option v-if="countryBranches.length==0" value="">No branch to display</option>
+                        </select>
                         </div>
                     </div>
 
@@ -197,11 +203,10 @@
                         <label for="sgtwelve" class="col-sm-2 control-label">Select G-12:</label>
                         <div class="col-sm-6 input-group">
                             <span class="input-group-addon"><i class="glyphicon glyphicon-flag"></i></span>
-                            <select name="gtwelve"  class="form-control">
-                                <option value="none" selected disabled><-- Please choose one --></option>
-                                <option>Akoka</option> 
-                                <option>Jesus House</option>
-                                <option>Omolara Close</option>
+                            <select name="g12"  class="form-control" v-model="activeG12" @change="getActiveG12">
+                            <option value="0" selected disabled><-- Please choose one --></option>
+                            <option v-for="g12 in branchG12s" :value="g12.id">@{{g12.name}}</option>
+                            <option v-if="branchG12s.length==0" value="">No G12 to display</option>
                             </select>
                         </div>
                     </div>

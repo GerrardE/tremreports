@@ -132,6 +132,33 @@ Route::post('/edit/g12', [
 		'as' => 'deleteDownload'
 		]);
 
+	Route::post('/delete/branch', [
+		'uses' => 'SaveController@deleteBranch',
+		'as' => 'deleteBranch'
+		]);
+
+	Route::post('/delete/zone', [
+		'uses' => 'SaveController@deleteZone',
+		'as' => 'deleteZone'
+		]);
+
+	Route::post('/delete/event', [
+		'uses' => 'SaveController@deleteEvent',
+		'as' => 'deleteEvent'
+		]);
+
+	Route::post('/delete/g12', [
+		'uses' => 'SaveController@deleteG12',
+		'as' => 'deleteG12'
+		]);
+
+	Route::post('/delete/user', [
+		'uses' => 'SaveController@deleteUser',
+		'as' => 'deleteUser'
+		]);
+
+		
+
 	Route::post('/delete/category', [
 		'uses' => 'SaveController@deleteCategory',
 		'as' => 'deleteCategory'

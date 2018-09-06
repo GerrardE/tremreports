@@ -63,7 +63,7 @@
                         <div class="col-sm-6 input-group">
                         <span class="input-group-addon"><i class="glyphicon glyphicon-map-marker"></i></span>
                         <select name="old"  class="form-control" @change="getZoneName" v-model="activeZone">
-                            <option value="none" selected disabled><-- Please choose one --></option>
+                            <option value="0" selected disabled><-- Please choose one --></option>
                             <option v-for="zone in countryZones" :value="zone.name">@{{zone.name}}</option> 
                             <option v-if="countryZones.length==0" value="none">No zone to display</option>
                         </select>
@@ -93,25 +93,35 @@
         <!-- delete zone tab starts here -->
         <div id="delete" class="tab-pane fade">
             <h3 class="page-header">DELETE ZONE</h3>
-            <div class="form-group col-sm-12">
-                <!-- Load all zones -->
-                <label for="zone" class="col-sm-2 control-label">Select Zone:</label>
-                <div class="col-sm-6 input-group">
-                <span class="input-group-addon"><i class="glyphicon glyphicon-map-marker"></i></span>
-                <select name="zone"  class="form-control">
-                    <option value="none" selected disabled><-- Please choose one --></option>
-                    <option value="1">ZONE 1</option> 
-                    <option value="2">ZONE 2</option>
-                    <option value="3">ZONE 3</option>
-                </select>
-                </div>
-            </div>
+            <form class="ezone" method="POST" action="/delete/zone">
+                    {{ csrf_field() }}
+            <div class="form-group col-sm-12 {{ $errors->has('country') ? ' has-error' : '' }}">
+                        <label for="country" class="col-sm-2 control-label ">Country</label>                
+                        <div class="col-sm-6 input-group">
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-globe"></i></span>
+                            <select class="input-medium bfh-countries form-control" data-country="NG" name="country" value="{{ old('country') }}" id="inputCountry" @change="getCountryZones" v-model="country"></select>
+                        </div>
+                    </div>
+
+                    <div class="form-group col-sm-12">
+                        <label for="zone" class="col-sm-2 control-label">Select Zone:</label>
+                        <div class="col-sm-6 input-group">
+                        <span class="input-group-addon"><i class="glyphicon glyphicon-map-marker"></i></span>
+                        <select name="zone"  class="form-control" @change="getZoneName" v-model="activeZone">
+                            <option value="0" selected disabled><-- Please choose one --></option>
+                            <option v-for="zone in countryZones" :value="zone.name">@{{zone.name}}</option> 
+                            <option v-if="countryZones.length==0" value="none">No zone to display</option>
+                        </select>
+                        </div>
+                    </div>
         
             <div class="col-sm-8">
                 <h5><strong>Delete Forever?</strong></h5>
                 <button class="btn btn-create pull-right" type=" ">YES<i class="glyphicon glyphicon-trash"></i></button>
                 <button type="button" class="btn btn-back pull-left"><i class="glyphicon glyphicon-arrow-left"></i><a href="/czone">NO</a></button> 
             </div>
+
+            </form>
         </div>
         <!-- delete branch tab ends here -->
         </div>

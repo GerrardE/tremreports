@@ -243,24 +243,49 @@
         <!-- delete event tab starts here -->
             <div class="tab-pane fade" id="delete">
                 <h3>DELETE EVENT</h3><hr>
-                <div class="form-group col-sm-12">
-                    <label for="event" class="col-sm-2 control-label">Select Event:</label>
-                    <div class="col-sm-6 input-group">
-                        <span class="input-group-addon"><i class="glyphicon glyphicon-bookmark"></i></span>
-                        <select name="event"  class="form-control">
-                            <option value="none" selected disabled><-- Please choose one --></option>
-                            <option>Power For Living</option> 
-                            <option>Event 2</option>
-                            <option>Event 3</option>
-                        </select>
+                <form class="cbranch" method="POST" action="/delete/event">       
+                    {{ csrf_field() }}
+
+                <div class="form-group col-sm-12 {{ $errors->has('country') ? ' has-error' : '' }}">
+                        <label for="country" class="col-sm-2 control-label ">Country</label>                
+                        <div class="col-sm-6 input-group">
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-globe"></i></span>
+                            <select class="input-medium bfh-countries form-control" data-country="NG" name="country"  id="inputCountry3" v-model="country" @change=getCountryBranches></select>
+                        </div>
                     </div>
-                </div>
+                    
+                    
+                    <div class="form-group col-sm-12">
+                        <label for="branch" class="col-sm-2 control-label">Select Branch:</label>
+                        <div class="col-sm-6 input-group">
+                        <span class="input-group-addon"><i class="glyphicon glyphicon-home"></i></span>
+                        <select name="old"  class="form-control"  v-model="activeBranch" @change="getBranchEvents">
+                            <option value="0" selected disabled><-- Please choose one --></option>
+                            <option v-for="branch in countryBranches" :value="branch.id">@{{branch.name}}</option>
+                            <option v-if="countryBranches.length==0" value="">No branch to display</option>
+                        </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group col-sm-12">
+                        <label for="event" class="col-sm-2 control-label">Select Event:</label>
+                        <div class="col-sm-6 input-group">
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-bookmark"></i></span>
+                            <select name="event"  class="form-control" v-model="activeEvent" @change="getActiveEvent">
+                            <option value="0" selected disabled><-- Please choose one --></option>
+                            <option v-for="event in branchEvents" :value="event.id">@{{event.name}}</option>
+                            <option v-if="branchEvents.length==0" value="">No event to display</option>
+                            </select>
+                        </div>
+                    </div>
                 
                 <div class="col-sm-8">
                     <h5><strong>Delete Forever?</strong></h5>
                     <button class="btn btn-create pull-right" type=" ">YES<i class="glyphicon glyphicon-trash"></i></button>
                     <button type="button" class="btn btn-back pull-left"><i class="glyphicon glyphicon-arrow-left"></i><a href="/cevent">NO</a></button> 
                 </div>
+
+                </form>
             </div>
         <!-- delete event tab ends here -->
     </div>
