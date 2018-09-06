@@ -1,0 +1,16 @@
+/public/storage
+
+/public/storage/images
+
+/storage/log
+
+/storage/app/public/images
+
+*.out
+
+*.rar
+
+*.zip
+
+*.log
+*.env
