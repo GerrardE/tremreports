@@ -211,6 +211,3 @@ Route::get('/get/country/branches/{country}', [
 	'uses' => 'SaveController@countryBranches',
 	'as' => 'countryBranches'
 	]);
-
-
-	

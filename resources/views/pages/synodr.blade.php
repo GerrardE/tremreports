@@ -31,13 +31,13 @@
                     <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt"></i></span>
                     <select name="role" class="form-control">
                         <option value="0" selected disabled><-- Please choose one --></option>
-                        <option>Monday</option>
-                        <option>Tuesday</option>
-                        <option>Wednesday</option>
-                        <option>Thursday</option>
-                        <option>Friday</option>
-                        <option>Saturday</option>
-                        <option>Sunday</option>
+                        <option value="Monday">Monday</option>
+                        <option value="Tuesday">Tuesday</option>
+                        <option value="Wednesday">Wednesday</option>
+                        <option value="Thursday">Thursday</option>
+                        <option value="Friday">Friday</option>
+                        <option value="Saturday">Saturday</option>
+                        <option value="Sunday">Sunday</option>
                     </select>
                 </div> 
             </div>
