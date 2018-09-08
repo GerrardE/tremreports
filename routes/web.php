@@ -24,6 +24,7 @@ Route::get('/downloads', 'PagesController@downloads');
 
 //Route the view pages
 Route::get('/viewr', 'PagesController@viewr');
+Route::get('/synodr', 'PagesController@synodr');
 
 //Route the create pages
 

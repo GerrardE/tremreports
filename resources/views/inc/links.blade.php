@@ -7,13 +7,18 @@
             <li><a href="/gtwelve">G12</a></li>
         </ul>
     </li>
-    @if (auth::user()->role == 6)
-   <li><a href="/viewr">VIEW REPORTS</a></li-->
-    @endif 
 
-     @if (auth::user()->role < 6)
-   <li><a >MY REPORTS</a></li-->
-    @endif 
+    <li class="dropdown" role="presentation">
+        <a class="dropdown-toggle" data-toggle="dropdown" class="pointer">REPORTS<span><i class="glyphicon glyphicon-chevron-down"></i></span></a>
+        <ul class="dropdown-menu">
+           @if (auth::user()->role == 6)
+           <li><a href="/synodr">SYNOD REPORT</a></li>
+           @endif 
+           @if (auth::user()->role <= 6)
+           <li><a href="/viewr">VIEW REPORT</a></li>
+           @endif 
+        </ul>
+    </li>
 
     <li role="presentation"><a href="/downloads">DOWNLOADS</a></li>
     <li class="dropdown" class="pointer" role="presentation">

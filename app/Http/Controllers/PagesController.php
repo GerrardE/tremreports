@@ -138,7 +138,7 @@ class PagesController extends Controller
     
     public function viewr(){
 		
-    if (auth::check() && auth::user()->role==6 ) {
+    if (auth::check() && auth::user()->role<=6 ) {
       
         return view('pages.viewr');
     
@@ -146,6 +146,18 @@ class PagesController extends Controller
       return view('pages.login');
     }
     }
+
+    public function synodr(){
+		
+      if (auth::check() && auth::user()->role==6 ) {
+        
+          return view('pages.synodr');
+      
+      } else {
+        return view('pages.login');
+      }
+      }
+  
 
     public function czone(){
   
