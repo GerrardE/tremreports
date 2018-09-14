@@ -19,11 +19,19 @@ $(document).ready(function(){
         $('.alert').fadeOut(3000);
     });
     
-    $('#data').hide();
-    $("#generate").click(function(){
-        $('button#generate').toggleClass('btn-success');
-        $('#data').fadeIn(2000);
+    $('.table-y').hide();
+    $("#generate-y").click(function(){
+        $('#generate-y').toggleClass('btn-success');
+        $('.table-y').fadeIn(2000);
         $('div.alert.alert-success').remove();
     });
+
+    $('.table-q').hide();
+    $("#generate-q").click(function(){
+        $('#generate-q').toggleClass('btn-success');
+        $('.table-q').fadeIn(2000);
+        $('div.alert.alert-success').remove();
+    });
+
 
  }); 
