@@ -989,297 +989,331 @@ window.Vue = __webpack_require__(35);
  */
 
 Vue.component('example', __webpack_require__(38));
-
+Vue.component('yearly', __webpack_require__(53));
+Vue.component('sunday', __webpack_require__(56));
+Vue.component('tuesday', __webpack_require__(59));
 var app = new Vue({
-	el: '#app',
+		el: '#app',
 
-	data: function data() {
-		var _ref;
+		data: function data() {
+				var _ref;
 
-		return _ref = {
+				return _ref = {
 
-			url: "",
+						url: "",
 
-			uploadDelay: [],
+						uploadDelay: [],
 
-			form: new FormData(),
+						form: new FormData(),
 
-			allDownloads: [],
+						allDownloads: [],
 
-			countryZones: [],
-			zoneName: "",
-			activeZone: 0,
+						countryZones: [],
+						zoneName: "",
+						activeZone: 0,
 
-			country: "NG",
-			countryBranches: [],
-			activeCountry: "NG",
-			activeBranch: 0,
-			activeBranch2: 0,
-			activeState: "none",
-			activeBranchDetails: [],
-			activeEventDetails: [],
-			activeBranchName: "",
-			activeBranchAddress: "",
-			activeBranchCity: "",
-			branchEvents: [],
-			branchG12s: [],
-			activeEvent: 0,
-			oldBranch: "none",
-			activeMonth: "none",
-			activeYear: 0,
-			activeEventName: "",
-			activeEventDescription: "",
-			activeG12: 0,
-			activeName: "",
-			activeAddress: "",
-			activeCity: ""
-		}, _defineProperty(_ref, 'activeState', ""), _defineProperty(_ref, 'activeActiveCountry', ""), _defineProperty(_ref, 'allUsers', []), _defineProperty(_ref, 'userId', 0), _defineProperty(_ref, 'fullName', ""), _defineProperty(_ref, 'userName', ""), _defineProperty(_ref, 'userRole', ""), _defineProperty(_ref, 'userBranch', ""), _defineProperty(_ref, 'userMobile', ""), _defineProperty(_ref, 'userEmail', ""), _defineProperty(_ref, 'allCategories', []), _defineProperty(_ref, 'categoryUploads', []), _defineProperty(_ref, 'activeCategory', 0), _defineProperty(_ref, 'activeUpload', 0), _defineProperty(_ref, 'uploadCategory', 0), _defineProperty(_ref, 'activeName', ""), _defineProperty(_ref, 'activeDescription', ""), _defineProperty(_ref, 'adult', 0), _defineProperty(_ref, 'children', 0), _defineProperty(_ref, 'men', 0), _defineProperty(_ref, 'women', 0), _defineProperty(_ref, 'total', 0), _ref;
-	},
-	mounted: function mounted() {
-
-		this.getAllDownloads();
-		this.getCountryZones();
-		this.getCountryBranches();
-		this.getAllUsers();
-		this.getAllCategories();
-	},
-
-
-	methods: {
-		getAllDownloads: function getAllDownloads() {
-			var _this = this;
-
-			axios.get('/get/all/downloads').then(function (response) {
-
-				response.data.forEach(function (download) {
-					_this.allDownloads.push(download);
-				});
-			});
+						country: "NG",
+						countryBranches: [],
+						activeCountry: "NG",
+						activeBranch: 0,
+						activeBranch2: 0,
+						activeState: "none",
+						activeBranchDetails: [],
+						activeEventDetails: [],
+						activeBranchName: "",
+						activeBranchAddress: "",
+						activeBranchCity: "",
+						branchEvents: [],
+						branchG12s: [],
+						activeEvent: 0,
+						oldBranch: "none",
+						activeMonth: "none",
+						activeYear: 0,
+						activeEventName: "",
+						activeEventDescription: "",
+						activeG12: 0,
+						activeName: "",
+						activeAddress: "",
+						activeCity: ""
+				}, _defineProperty(_ref, 'activeState', ""), _defineProperty(_ref, 'activeActiveCountry', ""), _defineProperty(_ref, 'allUsers', []), _defineProperty(_ref, 'userId', 0), _defineProperty(_ref, 'fullName', ""), _defineProperty(_ref, 'userName', ""), _defineProperty(_ref, 'userRole', ""), _defineProperty(_ref, 'userBranch', ""), _defineProperty(_ref, 'userMobile', ""), _defineProperty(_ref, 'userEmail', ""), _defineProperty(_ref, 'allCategories', []), _defineProperty(_ref, 'categoryUploads', []), _defineProperty(_ref, 'activeCategory', 0), _defineProperty(_ref, 'activeUpload', 0), _defineProperty(_ref, 'uploadCategory', 0), _defineProperty(_ref, 'activeName', ""), _defineProperty(_ref, 'activeDescription', ""), _defineProperty(_ref, 'adult', 0), _defineProperty(_ref, 'children', 0), _defineProperty(_ref, 'men', 0), _defineProperty(_ref, 'women', 0), _defineProperty(_ref, 'total', 0), _defineProperty(_ref, 'from', 2018), _defineProperty(_ref, 'newTo', 0), _defineProperty(_ref, 'to', 2020), _defineProperty(_ref, 'yearly', [2020, 2019, 2018]), _ref;
 		},
-		getAllCategories: function getAllCategories() {
-			var _this2 = this;
+		mounted: function mounted() {
 
-			axios.get('/get/all/categories').then(function (response) {
-
-				response.data.forEach(function (category) {
-					_this2.allCategories.push(category);
-				});
-			});
+				this.getAllDownloads();
+				this.getCountryZones();
+				this.getCountryBranches();
+				this.getAllUsers();
+				this.getAllCategories();
 		},
-		getAllUsers: function getAllUsers() {
-			var _this3 = this;
-
-			axios.get('/get/all/users').then(function (response) {
-
-				response.data.forEach(function (user) {
-					_this3.allUsers.push(user);
-				});
-			});
-		},
-		getCountryZones: function getCountryZones() {
-			var _this4 = this;
-
-			axios.get('/get/country/zones/' + this.country).then(function (response) {
-
-				_this4.countryZones = [];
-				response.data.forEach(function (zone) {
-					_this4.countryZones.push(zone);
-				});
-
-				_this4.getCountryBranches();
-			});
-		},
-		getCategoryUploads: function getCategoryUploads() {
-			var _this5 = this;
-
-			axios.get('/get/category/uploads/' + this.activeCategory).then(function (response) {
-
-				_this5.categoryUploads = [];
-				response.data.forEach(function (upload) {
-					_this5.categoryUploads.push(upload);
-					_this5.allDownloads = [];
-					_this5.allDownloads.push(upload);
-				});
-			});
-		},
-		getBranchEvents: function getBranchEvents() {
-			var _this6 = this;
-
-			axios.get('/get/branch/events/' + this.activeBranch).then(function (response) {
-
-				_this6.branchEvents = [];
-				response.data.forEach(function (event) {
-					_this6.branchEvents.push(event);
-				});
-			});
-		},
-		getBranchG12s: function getBranchG12s() {
-			var _this7 = this;
-
-			this.activeBranch2 = this.activeBranch;
-			axios.get('/get/branch/g12s/' + this.activeBranch).then(function (response) {
-
-				_this7.branchG12s = [];
-				response.data.forEach(function (g12) {
-					_this7.branchG12s.push(g12);
-				});
-			});
-		},
-		getCountryBranches: function getCountryBranches() {
-			var _this8 = this;
-
-			this.activeCountry = this.country;
-			axios.get('/get/country/branches/' + this.country).then(function (response) {
-
-				_this8.countryBranches = [];
-				response.data.forEach(function (branch) {
-					_this8.countryBranches.push(branch);
-				});
-
-				_this8.getCountryZones();
-			});
-		},
-		getZoneName: function getZoneName() {
-
-			this.zoneName = this.activeZone;
-		},
-		getActiveBranch: function getActiveBranch() {
-			var _this9 = this;
-
-			var branch = this.countryBranches.find(function (p) {
-
-				return p.id === _this9.activeBranch;
-			});
-			this.activeState = branch.state;
-			this.activeZone = branch.zone;
-			this.activeBranchName = branch.name;
-			this.activeBranchAddress = branch.address;
-			this.activeBranchCity = branch.city;
-		},
-		getUserDetails: function getUserDetails() {
-			var _this10 = this;
-
-			var user = this.allUsers.find(function (u) {
-
-				return u.id === _this10.userId;
-			});
-			this.fullName = user.name;
-			this.userName = user.username;
-			this.userRole = user.role;
-			this.userBranch = user.branch;
-			this.userMobile = user.mobile;
-			this.userEmail = user.email;
-		},
-		getUploadDetails: function getUploadDetails() {
-			var _this11 = this;
-
-			var upload = this.categoryUploads.find(function (u) {
-
-				return u.id === _this11.activeUpload;
-			});
-			this.uploadCategory = upload.category;
-			this.activeName = upload.name;
-			this.activeMonth = upload.month;
-			this.activeYear = upload.year;
-			this.activeDescription = upload.description;
-			this.url = upload.url;
-		},
-		getActiveEvent: function getActiveEvent() {
-			var _this12 = this;
-
-			var event = this.branchEvents.find(function (e) {
-
-				return e.id === _this12.activeEvent;
-			});
-
-			this.activeEventDetails = [];
-			this.activeEventDetails.push(event);
-			this.oldBranch = event.branch;
-			this.activeMonth = event.month;
-			this.activeYear = event.year;
-			this.activeEventName = event.name;
-			this.activeEventDescription = event.description;
-		},
-		getActiveG12: function getActiveG12() {
-			var _this13 = this;
-
-			var g12 = this.branchG12s.find(function (g) {
-
-				return g.id === _this13.activeG12;
-			});
-
-			this.oldBranch = g12.branch;
-			this.activeName = g12.name;
-			this.activeAddress = g12.address;
-			this.activeCity = g12.city;
-			this.activeState = g12.state;
-			this.activeActiveCountry = g12.country;
-		},
-		showFilePicker: function showFilePicker() {
-			var select = document.getElementById('productimage');
-			select.click();
-		},
-		fileChange: function fileChange(e) {
-			var _this14 = this;
-
-			var selected = e.target.files[0];
-
-			if (!selected) {
-				return 0;
-			}
-
-			this.uploadDelay.push('File');
-
-			var selectedFile = e.target.files[0];
-
-			this.attachment = selectedFile;
-			this.form.append('fl', this.attachment);
-			var config = { headers: { 'Content-Type': 'multipart/form-data' } };
-
-			axios.post('/upload/file', this.form, config).then(function (response) {
-				//success
 
 
-				if (response.data.length == 0) {
-					_this14.uploadDelay = [];
+		methods: {
+				checkTo: function checkTo() {
 
-					return;
+						if (this.newTo > this.from) {
+								this.newTo = this.newTo - 1;
+								this.yearly.push(this.newTo);
+								this.checkTo();
+						}
+				},
+				getAllDownloads: function getAllDownloads() {
+						var _this = this;
+
+						axios.get('/get/all/downloads').then(function (response) {
+
+								response.data.forEach(function (download) {
+										_this.allDownloads.push(download);
+								});
+						});
+				},
+				getAllCategories: function getAllCategories() {
+						var _this2 = this;
+
+						axios.get('/get/all/categories').then(function (response) {
+
+								response.data.forEach(function (category) {
+										_this2.allCategories.push(category);
+								});
+						});
+				},
+				getAllUsers: function getAllUsers() {
+						var _this3 = this;
+
+						axios.get('/get/all/users').then(function (response) {
+
+								response.data.forEach(function (user) {
+										_this3.allUsers.push(user);
+								});
+						});
+				},
+				getCountryZones: function getCountryZones() {
+						var _this4 = this;
+
+						axios.get('/get/country/zones/' + this.country).then(function (response) {
+
+								_this4.countryZones = [];
+								response.data.forEach(function (zone) {
+										_this4.countryZones.push(zone);
+								});
+
+								_this4.getCountryBranches();
+						});
+				},
+				getCategoryUploads: function getCategoryUploads() {
+						var _this5 = this;
+
+						axios.get('/get/category/uploads/' + this.activeCategory).then(function (response) {
+
+								_this5.categoryUploads = [];
+								response.data.forEach(function (upload) {
+										_this5.categoryUploads.push(upload);
+										_this5.allDownloads = [];
+										_this5.allDownloads.push(upload);
+								});
+						});
+				},
+				getBranchEvents: function getBranchEvents() {
+						var _this6 = this;
+
+						axios.get('/get/branch/events/' + this.activeBranch).then(function (response) {
+
+								_this6.branchEvents = [];
+								response.data.forEach(function (event) {
+										_this6.branchEvents.push(event);
+								});
+						});
+				},
+				getBranchG12s: function getBranchG12s() {
+						var _this7 = this;
+
+						this.activeBranch2 = this.activeBranch;
+						axios.get('/get/branch/g12s/' + this.activeBranch).then(function (response) {
+
+								_this7.branchG12s = [];
+								response.data.forEach(function (g12) {
+										_this7.branchG12s.push(g12);
+								});
+						});
+				},
+				getCountryBranches: function getCountryBranches() {
+						var _this8 = this;
+
+						this.activeCountry = this.country;
+						axios.get('/get/country/branches/' + this.country).then(function (response) {
+
+								_this8.countryBranches = [];
+								response.data.forEach(function (branch) {
+										_this8.countryBranches.push(branch);
+								});
+
+								_this8.getCountryZones();
+						});
+				},
+				getZoneName: function getZoneName() {
+
+						this.zoneName = this.activeZone;
+				},
+				getActiveBranch: function getActiveBranch() {
+						var _this9 = this;
+
+						var branch = this.countryBranches.find(function (p) {
+
+								return p.id === _this9.activeBranch;
+						});
+						this.activeState = branch.state;
+						this.activeZone = branch.zone;
+						this.activeBranchName = branch.name;
+						this.activeBranchAddress = branch.address;
+						this.activeBranchCity = branch.city;
+				},
+				getUserDetails: function getUserDetails() {
+						var _this10 = this;
+
+						var user = this.allUsers.find(function (u) {
+
+								return u.id === _this10.userId;
+						});
+						this.fullName = user.name;
+						this.userName = user.username;
+						this.userRole = user.role;
+						this.userBranch = user.branch;
+						this.userMobile = user.mobile;
+						this.userEmail = user.email;
+				},
+				getUploadDetails: function getUploadDetails() {
+						var _this11 = this;
+
+						var upload = this.categoryUploads.find(function (u) {
+
+								return u.id === _this11.activeUpload;
+						});
+						this.uploadCategory = upload.category;
+						this.activeName = upload.name;
+						this.activeMonth = upload.month;
+						this.activeYear = upload.year;
+						this.activeDescription = upload.description;
+						this.url = upload.url;
+				},
+				getActiveEvent: function getActiveEvent() {
+						var _this12 = this;
+
+						var event = this.branchEvents.find(function (e) {
+
+								return e.id === _this12.activeEvent;
+						});
+
+						this.activeEventDetails = [];
+						this.activeEventDetails.push(event);
+						this.oldBranch = event.branch;
+						this.activeMonth = event.month;
+						this.activeYear = event.year;
+						this.activeEventName = event.name;
+						this.activeEventDescription = event.description;
+				},
+				getActiveG12: function getActiveG12() {
+						var _this13 = this;
+
+						var g12 = this.branchG12s.find(function (g) {
+
+								return g.id === _this13.activeG12;
+						});
+
+						this.oldBranch = g12.branch;
+						this.activeName = g12.name;
+						this.activeAddress = g12.address;
+						this.activeCity = g12.city;
+						this.activeState = g12.state;
+						this.activeActiveCountry = g12.country;
+				},
+				showFilePicker: function showFilePicker() {
+						var select = document.getElementById('productimage');
+						select.click();
+				},
+				fileChange: function fileChange(e) {
+						var _this14 = this;
+
+						var selected = e.target.files[0];
+
+						if (!selected) {
+								return 0;
+						}
+
+						this.uploadDelay.push('File');
+
+						var selectedFile = e.target.files[0];
+
+						this.attachment = selectedFile;
+						this.form.append('fl', this.attachment);
+						var config = { headers: { 'Content-Type': 'multipart/form-data' } };
+
+						axios.post('/upload/file', this.form, config).then(function (response) {
+								//success
+
+
+								if (response.data.length == 0) {
+										_this14.uploadDelay = [];
+
+										return;
+								}
+
+								_this14.url = [];
+								_this14.uploadDelay = [];
+								_this14.url = response.data.URL;
+						}).catch(function (response) {
+								//errors
+						});
 				}
+		},
 
-				_this14.url = [];
-				_this14.uploadDelay = [];
-				_this14.url = response.data.URL;
-			}).catch(function (response) {
-				//errors
-			});
+		watch: {
+				to: function to() {
+
+						if (this.to >= 1) {
+								this.yearly = [];
+								this.yearly.push(this.to);
+								if (this.to > this.from) {
+										this.newTo = this.to - 1;
+										this.yearly.push(this.newTo);
+										this.checkTo();
+								}
+						}
+				},
+				from: function from() {
+
+						if (this.to >= 1) {
+								this.yearly = [];
+								this.yearly.push(this.to);
+								if (this.to > this.from) {
+										this.newTo = this.to - 1;
+										this.yearly.push(this.newTo);
+										this.checkTo();
+								}
+						}
+				},
+				adult: function adult() {
+						if (this.adult > 0) {
+								this.total = parseInt(this.adult) + parseInt(this.men) + parseInt(this.women) + parseInt(this.children);
+						}
+				},
+				men: function men() {
+
+						if (this.men > 0) {
+								this.total = parseInt(this.adult) + parseInt(this.men) + parseInt(this.women) + parseInt(this.children);
+						}
+				},
+				women: function women() {
+
+						if (this.women > 0) {
+								this.total = parseInt(this.adult) + parseInt(this.men) + parseInt(this.women) + parseInt(this.children);
+						}
+				},
+				children: function children() {
+
+						if (this.children > 0) {
+								this.total = parseInt(this.adult) + parseInt(this.men) + parseInt(this.women) + parseInt(this.children);
+						}
+				}
 		}
-	},
-
-	watch: {
-		adult: function adult() {
-			if (this.adult > 0) {
-				this.total = parseInt(this.adult) + parseInt(this.men) + parseInt(this.women) + parseInt(this.children);
-			}
-		},
-		men: function men() {
-
-			if (this.men > 0) {
-				this.total = parseInt(this.adult) + parseInt(this.men) + parseInt(this.women) + parseInt(this.children);
-			}
-		},
-		women: function women() {
-
-			if (this.women > 0) {
-				this.total = parseInt(this.adult) + parseInt(this.men) + parseInt(this.women) + parseInt(this.children);
-			}
-		},
-		children: function children() {
-
-			if (this.children > 0) {
-				this.total = parseInt(this.adult) + parseInt(this.men) + parseInt(this.women) + parseInt(this.children);
-			}
-		}
-	}
 });
 
 /***/ }),
@@ -43571,6 +43605,545 @@ if (false) {
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 43 */,
+/* 44 */,
+/* 45 */,
+/* 46 */,
+/* 47 */,
+/* 48 */,
+/* 49 */,
+/* 50 */,
+/* 51 */,
+/* 52 */,
+/* 53 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(39)
+/* script */
+var __vue_script__ = __webpack_require__(54)
+/* template */
+var __vue_template__ = __webpack_require__(55)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources\\assets\\js\\components\\yearly.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-628a48be", Component.options)
+  } else {
+    hotAPI.reload("data-v-628a48be", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 54 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+	mounted: function mounted() {
+		this.fixYear();
+		this.getAllBranches();
+	},
+
+
+	props: ['year'],
+
+	data: function data() {
+
+		return {
+
+			allBranches: [],
+			nYear: 0
+
+		};
+	},
+
+
+	methods: {
+		fixYear: function fixYear() {
+			if (this.year > 0) {
+				this.nYear = this.year;
+			}
+		},
+		getAllBranches: function getAllBranches() {
+			var _this = this;
+
+			axios.get('/get/all/branches/').then(function (response) {
+
+				_this.allBranches = [];
+				response.data.forEach(function (branch) {
+					_this.allBranches.push(branch);
+				});
+			});
+		}
+	}
+
+});
+
+/***/ }),
+/* 55 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { staticClass: "col-sm-3" }, [
+    _c(
+      "table",
+      {
+        staticClass:
+          "table table-y table-striped table-hover table-bordered table-condensed"
+      },
+      [
+        _c("thead", [
+          _c("tr", [
+            _c("th", { attrs: { scope: "col" } }, [
+              _c("strong", [_vm._v(_vm._s(this.year))])
+            ]),
+            _vm._v(" "),
+            _c("th", { attrs: { scope: "col" } }, [_vm._v("Tuesdays")]),
+            _vm._v(" "),
+            _c("th", { attrs: { scope: "col" } }, [_vm._v("Sundays")])
+          ])
+        ]),
+        _vm._v(" "),
+        _c(
+          "tbody",
+          [
+            _vm._l(_vm.allBranches, function(branch) {
+              return _c("tr", [
+                branch.country == "NG"
+                  ? _c("td", [_vm._v(_vm._s(branch.name))])
+                  : _vm._e(),
+                _vm._v(" "),
+                branch.country == "NG"
+                  ? _c(
+                      "td",
+                      [
+                        _c("tuesday", {
+                          attrs: { branch: branch.id, year: _vm.nYear }
+                        })
+                      ],
+                      1
+                    )
+                  : _vm._e(),
+                _vm._v(" "),
+                branch.country == "NG"
+                  ? _c(
+                      "td",
+                      [
+                        _c("sunday", {
+                          attrs: { branch: branch.id, year: _vm.nYear }
+                        })
+                      ],
+                      1
+                    )
+                  : _vm._e()
+              ])
+            }),
+            _vm._v(" "),
+            _vm._m(0),
+            _vm._v(" "),
+            _vm._l(_vm.allBranches, function(branch) {
+              return _c("tr", [
+                branch.country != "NG"
+                  ? _c("td", [_vm._v(_vm._s(branch.name))])
+                  : _vm._e(),
+                _vm._v(" "),
+                branch.country != "NG"
+                  ? _c(
+                      "td",
+                      [
+                        _c("tuesday", {
+                          attrs: { branch: branch.id, year: _vm.nYear }
+                        })
+                      ],
+                      1
+                    )
+                  : _vm._e(),
+                _vm._v(" "),
+                branch.country != "NG"
+                  ? _c(
+                      "td",
+                      [
+                        _c("sunday", {
+                          attrs: { branch: branch.id, year: _vm.nYear }
+                        })
+                      ],
+                      1
+                    )
+                  : _vm._e()
+              ])
+            }),
+            _vm._v(" "),
+            _vm._m(1)
+          ],
+          2
+        )
+      ]
+    )
+  ])
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("tr", [
+      _c("th", { attrs: { scope: "row" } }, [_c("h4", [_vm._v("TOTAL")])]),
+      _vm._v(" "),
+      _c("td", [_vm._v("1000")]),
+      _vm._v(" "),
+      _c("td", [_vm._v("1000")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("tr", [
+      _c("th", { attrs: { scope: "row" } }, [_c("h4", [_vm._v("TOTAL")])]),
+      _vm._v(" "),
+      _c("td", [_vm._v("1000")]),
+      _vm._v(" "),
+      _c("td", [_vm._v("1000")])
+    ])
+  }
+]
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-628a48be", module.exports)
+  }
+}
+
+/***/ }),
+/* 56 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(39)
+/* script */
+var __vue_script__ = __webpack_require__(57)
+/* template */
+var __vue_template__ = __webpack_require__(58)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources\\assets\\js\\components\\sunday.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-af484032", Component.options)
+  } else {
+    hotAPI.reload("data-v-af484032", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 57 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+								mounted: function mounted() {
+
+																this.getAttenndance();
+								},
+								data: function data() {
+
+																return {
+
+																								attendance: 0
+
+																};
+								},
+
+
+								props: ['year', 'branch'],
+
+								methods: {
+																getAttenndance: function getAttenndance() {
+																								var _this = this;
+
+																								if (this.year > 0) {
+																																axios.get('/get/attendance/3/' + this.year + '/' + this.branch).then(function (response) {
+
+																																								response.data.forEach(function (week) {
+																																																_this.attendance = _this.attendance + week.total;
+																																								});
+																																});
+																								}
+																}
+								}
+
+});
+
+/***/ }),
+/* 58 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("span", [_vm._v("\r\n" + _vm._s(_vm.attendance) + "\r\n")])
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-af484032", module.exports)
+  }
+}
+
+/***/ }),
+/* 59 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(39)
+/* script */
+var __vue_script__ = __webpack_require__(60)
+/* template */
+var __vue_template__ = __webpack_require__(61)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources\\assets\\js\\components\\tuesday.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-518d1ac6", Component.options)
+  } else {
+    hotAPI.reload("data-v-518d1ac6", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 60 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+								mounted: function mounted() {
+
+																this.getAttenndance();
+								},
+								data: function data() {
+
+																return {
+
+																								attendance: 0
+
+																};
+								},
+
+
+								props: ['year', 'branch'],
+
+								methods: {
+																getAttenndance: function getAttenndance() {
+																								var _this = this;
+
+																								if (this.year > 0) {
+																																axios.get('/get/attendance/4/' + this.year + '/' + this.branch).then(function (response) {
+
+																																								response.data.forEach(function (week) {
+																																																_this.attendance = _this.attendance + week.total;
+																																								});
+																																});
+																								}
+																}
+								}
+
+});
+
+/***/ }),
+/* 61 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("span", [_vm._v("\r\n" + _vm._s(_vm.attendance) + "\r\n")])
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-518d1ac6", module.exports)
+  }
+}
 
 /***/ })
 /******/ ]);

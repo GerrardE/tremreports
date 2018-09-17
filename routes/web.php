@@ -211,3 +211,13 @@ Route::get('/get/country/branches/{country}', [
 	'uses' => 'SaveController@countryBranches',
 	'as' => 'countryBranches'
 	]);
+
+Route::get('/get/all/branches', [
+	'uses' => 'SaveController@allBranches',
+	'as' => 'allBranches'
+	]);
+
+Route::get('/get/attendance/{day}/{year}/{branch}', [
+	'uses' => 'SaveController@getAttendance',
+	'as' => 'getAttendance'
+	]);

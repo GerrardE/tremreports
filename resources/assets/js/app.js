@@ -16,7 +16,9 @@ window.Vue = require('vue');
  */
 
 Vue.component('example', require('./components/Example.vue'));
-
+Vue.component('yearly', require('./components/yearly.vue'));
+Vue.component('sunday', require('./components/sunday.vue'));
+Vue.component('tuesday', require('./components/tuesday.vue'));
 const app = new Vue({
     el: '#app',
 	
@@ -81,7 +83,10 @@ const app = new Vue({
 	men:0,
 	women:0,
 	total:0,
-
+	from: 2018,
+	newTo:0,
+	to:2020,
+	yearly: [2020, 2019, 2018],
 	}
 		
 		
@@ -98,6 +103,17 @@ const app = new Vue({
 	},
 	
 	methods: {
+
+		checkTo() {
+
+			if(this.newTo>this.from) {
+				this.newTo= this.newTo-1
+				this.yearly.push(this.newTo)
+				this.checkTo()
+			   }
+
+
+		},
 		
 		getAllDownloads() {
 			
@@ -373,6 +389,39 @@ const app = new Vue({
 	},
 
 	watch: {
+		to() {
+
+			if(this.to >= 1) {
+			this.yearly=[]	
+			this.yearly.push(this.to)
+			if(this.to>this.from) {
+			 this.newTo= this.to-1
+			 this.yearly.push(this.newTo)
+			 this.checkTo()
+			}
+			
+
+			}
+
+
+		},
+
+		from() {
+
+			if(this.to >= 1) {
+			this.yearly=[]	
+			this.yearly.push(this.to)
+			if(this.to>this.from) {
+			 this.newTo= this.to-1
+			 this.yearly.push(this.newTo)
+			 this.checkTo()
+			}
+			
+
+			}
+
+
+		},
 
 		adult() {
 			if (this.adult >0) {

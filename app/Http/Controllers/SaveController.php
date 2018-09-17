@@ -838,5 +838,41 @@ public function allDownloads()
 	
 	}
 
+	public function allBranches()
+	
+	{
+	
+	$branches = Branch::get();
+	
+	$all = array();
+	
+	 foreach ($branches as $branch):
 		
+		 array_push($all, $branch); 
+		
+	 endforeach;
+	 
+	 return $all;
+	
+	}
+
+	public function getAttendance($day, $year, $branch)
+	
+	{
+	
+	$weekly = Weekly::where('event', $day)->where('year', $year)
+	->where('branch', $branch)->get();;
+	
+	$all = array();
+	
+	 foreach ($weekly as $attendance):
+		
+		 array_push($all, $attendance); 
+		
+	 endforeach;
+	 
+	 return $all;
+	
+	}
+
 }

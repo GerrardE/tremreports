@@ -121,8 +121,10 @@
                             <span class="input-group-addon"><i class="glyphicon glyphicon-bookmark"></i></span>	
                             <select name="event" required class="form-control" v-model="activeEvent">
                                 <option value="0" selected disabled><-- Please choose one --></option>
-                                <option v-for="event in branchEvents" :value="event.id">@{{event.name}}</option>
-                                <option v-if="branchEvents.length==0" value="">No event to display</option>
+                                <option value="3">Sunday service</option>
+                                <option value="4">Tuesday service</option>
+                                <option v-for="event in branchEvents" v-if="event.id < 3 || event.id > 4" :value="event.id">@{{event.name}}</option>
+                                <option v-if="branchEvents.length==0" value="">No Branch specific event to display</option>
                             </select>
                         </div>
                     </div>
@@ -175,9 +177,9 @@
                             <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>	
                             <select name="preacher" id="preacher" value="{{ old('preacher') }}" class="form-control" required>
                                 <option value="none" selected disabled><-- Please choose one --></option>
-                                <option>Akintola Oni</option> 
-                                <option>Sayo Adebayo</option>
-                                <option>Akaninyene Effiong</option>
+                                
+                                <option v-for="preacher in allUsers" v-if="preacher.role==2" :value="preacher.name">@{{preacher.name}}</option> 
+        
                             </select>
                         </div>
                     </div>
