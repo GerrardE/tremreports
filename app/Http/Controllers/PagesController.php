@@ -12,6 +12,10 @@ class PagesController extends Controller
         return view('pages.login');
     }
 
+    public function forgotP(){
+      return view('pages.forgotP');
+    }
+
     public function dashboard(){
 		if (auth::check()) {
         return view('pages.dashboard');

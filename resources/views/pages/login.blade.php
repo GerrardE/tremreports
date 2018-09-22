@@ -31,6 +31,11 @@
                         </div>
                     </div>
 
+                    <div class="form-group">
+                        <label for="forgotP" class="control-label">FORGOT PASSWORD?</label>
+                        <a href="/forgotP"><span><i class="glyphicon glyphicon-lock"></i>Reset Password</span></a>
+                    </div>
+
                     <div class="input-group">
                         <button type="submit" class="btn btn-block btn-large">LOGIN<span><i class="glyphicon glyphicon-send"></i></span></button>
                     </div>

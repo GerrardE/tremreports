@@ -8381,17 +8381,22 @@ a:hover {
   text-decoration: none;
 }
 
-#login {
+#login,
+.forgotP {
   padding-top: 100px;
   padding-bottom: 30px;
 }
 
 .login h1 {
-  color: black;
+  color: #422929;
   letter-spacing: 1px;
   text-align: center;
   font-weight: 700;
   font-size: 30px;
+}
+
+.login div a {
+  color: #422929 !important;
 }
 
 .form-signin {
