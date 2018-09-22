@@ -12,13 +12,20 @@
                     <h2 class="text-center">Forgot Password?</h2>
                     <p>You can reset your password here.</p>
                     <div class="panel-body">
-        
+                        <!-- they get the link to this page via email -->
                         <form id="register-form" role="form" autocomplete="off" class="form" method="post">
         
                         <div class="form-group">
                             <div class="input-group">
-                            <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-                            <input id="username" name="username" placeholder="Username" class="form-control"  type="username">
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-envelope color-blue"></i></span>
+                            <input id="email" name="email" placeholder="Email" class="form-control"  type="email">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="input-group">
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-certificate"></i></span>
+                            <input id="pin" name="pin" placeholder="Enter Your Pin" class="form-control"  type="pin">
                             </div>
                         </div>
 

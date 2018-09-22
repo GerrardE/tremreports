@@ -17,6 +17,7 @@ Route::get('/', function () {
 //Route the main pages
 Route::get('/login', 'PagesController@login');
 Route::get('/forgotP', 'PagesController@forgotP');
+Route::get('/verifyE', 'PagesController@verifyE');
 Route::get('/', 'PagesController@dashboard');
 Route::get('/gtwelve', 'PagesController@gtwelve');
 Route::get('/monthly', 'PagesController@monthly');

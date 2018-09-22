@@ -1,7 +1,6 @@
 @extends('layouts.app')
 @section('content')
     @include('inc.navbar')
-	
         <div class="login" id="login">
                 <h1>SPIRITUAL REPORT</h2>
                 <hr>
@@ -33,7 +32,7 @@
 
                     <div class="form-group">
                         <label for="forgotP" class="control-label">FORGOT PASSWORD?</label>
-                        <a href="/forgotP"><span><i class="glyphicon glyphicon-lock"></i>Reset Password</span></a>
+                        <a href="/verifyE"><span><i class="glyphicon glyphicon-lock"></i>Reset Password</span></a>
                     </div>
 
                     <div class="input-group">
