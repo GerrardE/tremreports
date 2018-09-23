@@ -14,9 +14,7 @@
            @if (auth::user()->role == 6)
            <li><a href="/synodr">SYNOD REPORT</a></li>
            @endif 
-           @if (auth::user()->role <= 6)
-           <li><a href="/viewr">VIEW REPORT</a></li>
-           @endif 
+          
         </ul>
     </li>
 

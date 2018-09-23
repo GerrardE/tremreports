@@ -8534,6 +8534,11 @@ a:hover {
   max-height: 400px;
 }
 
+.dashboard {
+  padding-top: 100px;
+  padding-bottom: 30px;
+}
+
 @-moz-document url-prefix()  {
   fieldset {
     display: table-cell;

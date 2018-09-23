@@ -9,7 +9,7 @@
                 <div class="panel-body">
                     <div class="text-center">
                     <h3><i class="glyphicon glyphicon-lock"></i></h3>
-                    <h2 class="text-center">Forgot Password?</h2>
+                    <h2 class="text-center"></h2>
                     <p>You can reset your password here.</p>
                     <div class="panel-body">
                         <!-- they get the link to this page via email -->
@@ -25,7 +25,7 @@
                         <div class="form-group">
                             <div class="input-group">
                             <span class="input-group-addon"><i class="glyphicon glyphicon-certificate"></i></span>
-                            <input id="pin" name="pin" placeholder="Enter Your Pin" class="form-control"  type="pin">
+                            <input id="pin" name="pin" placeholder="Enter Recovery Code" class="form-control"  type="pin">
                             </div>
                         </div>
 

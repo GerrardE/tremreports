@@ -9,8 +9,8 @@
                 <div class="panel-body">
                     <div class="text-center">
                     <h3><i class="glyphicon glyphicon-lock"></i></h3>
-                    <h2 class="text-center">Email Verification</h2>
-                    <p>Verify your email here.</p>
+                    <h2 class="text-center">Forgot your password?</h2>
+                    <p>Enter your email here.</p>
                     <div class="panel-body">
         
                         <form id="verifyE" role="form" autocomplete="off" class="form" method="post">
@@ -18,12 +18,12 @@
                         <div class="form-group">
                             <div class="input-group">
                             <span class="input-group-addon"><i class="glyphicon glyphicon-envelope color-blue"></i></span>
-                            <input id="email" name="email" placeholder="Verify Email" class="form-control"  type="email">
+                            <input id="email" name="email" placeholder="Email" class="form-control"  type="email">
                             </div>
                         </div>
 
                         <div class="form-group">
-                            <button type="submit" class="btn btn-block btn-large">VERIFY<span><i class="glyphicon glyphicon-send"></i></span></button>
+                            <button type="submit" class="btn btn-block btn-large">SEND RECOVERY LINK<span><i class="glyphicon glyphicon-send"></i></span></button>
                         </div>
                         <!-- on send email, auto redirect user to login page -->
                         
