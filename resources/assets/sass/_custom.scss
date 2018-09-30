@@ -29,17 +29,21 @@ a:hover {
 }
 
 //Login page
-#login { 
+#login, .forgotP { 
 padding-top: 100px;
 padding-bottom: 30px;
 }
 
 .login h1 { 
-  color: black; 
+  color: rgb(66, 41, 41); 
   letter-spacing:1px; 
   text-align:center; 
   font-weight: 700;
   font-size: 30px;
+}
+
+.login div a{
+  color: rgb(66, 41, 41) !important;
 }
 
 .form-signin {
@@ -179,6 +183,12 @@ padding-bottom: 30px;
 .carousel-inner > .item > img{
   width: 1140px; 
   max-height: 400px;
+}
+
+//Dashboard
+.dashboard {
+  padding-top: 100px;
+  padding-bottom: 30px;
 }
 
 //Responsive tables
