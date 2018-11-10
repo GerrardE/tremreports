@@ -23,12 +23,12 @@
                               <!-- Total will be displayed here -->
                                 <tr>
                                     <th scope="row"><h4>TOTAL</h4></th>
-                                     <td>1000</td>
-                                    <td>1000</td>
+                                     <td><total :event="4" :year="this.year"></total></td>
+                                    <td><total :event="3" :year="this.year"></total></td>
                                 </tr>
 
                                <!-- This will loop through foreign branches--> 
-                               
+                               <!--
                                 <tr v-for="branch in allBranches">
                                     
                                     <td v-if="branch.country !='NG'">{{branch.name}}</td>
@@ -38,14 +38,14 @@
                                     
                                 </tr>
                                 
-                                <!-- Total will be displayed here -->
+                               
                                 <tr>
                                     <th scope="row"><h4>TOTAL</h4></th>
                                     <td>1000</td>
                                     <td>1000</td>
                                 </tr>
 
-                                
+                                -->
                             </tbody>
                         </table>
                     </div>

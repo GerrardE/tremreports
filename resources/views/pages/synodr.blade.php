@@ -21,8 +21,9 @@
                         <label for="year" class="control-label">From:</label>
                         <div class="input-group">
                         <span class="input-group-addon"><i class="glyphicon glyphicon-yen"></i></span>
-                        <select name="year"  class="form-control">
+                        <select name="year"  class="form-control" v-model="from">
                             <option value="0" selected disabled><-- Please choose one --></option>   
+                            <option value="2018">2019</option>
                             <option value="2018">2018</option>
                             <option value="2017">2017</option>
                             <option value="2016">2016</option>
@@ -41,8 +42,9 @@
                         <label for="year" class="control-label">To:</label>
                         <div class="input-group">
                         <span class="input-group-addon"><i class="glyphicon glyphicon-yen"></i></span>
-                        <select name="year"  class="form-control">
+                        <select name="year"  class="form-control" v-model="to">
                             <option value="0" selected disabled><-- Please choose one --></option>   
+                            <option value="2018">2019</option>
                             <option value="2018">2018</option>
                             <option value="2017">2017</option>
                             <option value="2016">2016</option>
@@ -103,6 +105,7 @@
                                     <span class="input-group-addon"><i class="glyphicon glyphicon-yen"></i></span>
                                     <select name="year"  class="form-control">
                                         <option value="0" selected disabled><-- Please choose one --></option>   
+                                        <option value="2018">2019</option>
                                         <option value="2018">2018</option>
                                         <option value="2017">2017</option>
                                         <option value="2016">2016</option>

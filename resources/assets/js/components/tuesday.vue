@@ -1,7 +1,7 @@
 <template>
 
 <span>
-{{attendance}}
+{{attendance.reduce(add,0)}}
 </span>
 
 </template>
@@ -22,7 +22,7 @@ data() {
 
 return {
 
-attendance: 0
+attendance: [],
 
 }
 
@@ -32,12 +32,19 @@ props: ['year', 'branch'],
 
 methods: {
 
+add(a,b) {
+
+return a+b;
+
+},
+
 getAttenndance() {
         if(this.year>0){
         axios.get('/get/attendance/4/' + this.year + '/' + this.branch).then(response=>{
 				
 				response.data.forEach((week) => {
-				this.attendance= this.attendance + week.total
+				this.attendance.push(week.total)
+				
 				
 				})
 				 

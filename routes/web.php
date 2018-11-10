@@ -188,6 +188,12 @@ Route::get('/get/all/users', [
 	'as' => 'allUsers'
 	]);
 
+Route::get('/get/ng/reports/{year}', [
+		'uses' => 'SaveController@getNgReports',
+		'as' => 'getNgReports'
+		]);
+	
+
 Route::get('/get/country/zones/{country}', [
 	'uses' => 'SaveController@countryZones',
 	'as' => 'countryZones'
@@ -222,4 +228,10 @@ Route::get('/get/all/branches', [
 Route::get('/get/attendance/{day}/{year}/{branch}', [
 	'uses' => 'SaveController@getAttendance',
 	'as' => 'getAttendance'
+	]);
+
+
+Route::get('/get/total/{year}/{event}', [
+	'uses' => 'SaveController@getTotal',
+	'as' => 'getTotal'
 	]);

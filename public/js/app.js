@@ -377,33 +377,6 @@ module.exports = {
 /* 1 */
 /***/ (function(module, exports) {
 
-var g;
-
-// This works in non-strict mode
-g = (function() {
-	return this;
-})();
-
-try {
-	// This works if eval is allowed (see CSP)
-	g = g || Function("return this")() || (1,eval)("this");
-} catch(e) {
-	// This works if the window reference is available
-	if(typeof window === "object")
-		g = window;
-}
-
-// g can still be undefined, but nothing to do about it...
-// We return undefined, instead of nothing here, so it's
-// easier to handle this case. if(!global) { ...}
-
-module.exports = g;
-
-
-/***/ }),
-/* 2 */
-/***/ (function(module, exports) {
-
 /* globals __VUE_SSR_CONTEXT__ */
 
 // IMPORTANT: Do NOT use ES2015 features in this file.
@@ -507,6 +480,33 @@ module.exports = function normalizeComponent (
     options: options
   }
 }
+
+
+/***/ }),
+/* 2 */
+/***/ (function(module, exports) {
+
+var g;
+
+// This works in non-strict mode
+g = (function() {
+	return this;
+})();
+
+try {
+	// This works if eval is allowed (see CSP)
+	g = g || Function("return this")() || (1,eval)("this");
+} catch(e) {
+	// This works if the window reference is available
+	if(typeof window === "object")
+		g = window;
+}
+
+// g can still be undefined, but nothing to do about it...
+// We return undefined, instead of nothing here, so it's
+// easier to handle this case. if(!global) { ...}
+
+module.exports = g;
 
 
 /***/ }),
@@ -1072,7 +1072,7 @@ module.exports = Cancel;
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(11);
-module.exports = __webpack_require__(51);
+module.exports = __webpack_require__(54);
 
 
 /***/ }),
@@ -1101,6 +1101,7 @@ Vue.component('example', __webpack_require__(39));
 Vue.component('yearly', __webpack_require__(42));
 Vue.component('sunday', __webpack_require__(45));
 Vue.component('tuesday', __webpack_require__(48));
+Vue.component('total', __webpack_require__(51));
 var app = new Vue({
 		el: '#app',
 
@@ -1144,7 +1145,7 @@ var app = new Vue({
 						activeName: "",
 						activeAddress: "",
 						activeCity: ""
-				}, _defineProperty(_ref, 'activeState', ""), _defineProperty(_ref, 'activeActiveCountry', ""), _defineProperty(_ref, 'allUsers', []), _defineProperty(_ref, 'userId', 0), _defineProperty(_ref, 'fullName', ""), _defineProperty(_ref, 'userName', ""), _defineProperty(_ref, 'userRole', ""), _defineProperty(_ref, 'userBranch', ""), _defineProperty(_ref, 'userMobile', ""), _defineProperty(_ref, 'userEmail', ""), _defineProperty(_ref, 'allCategories', []), _defineProperty(_ref, 'categoryUploads', []), _defineProperty(_ref, 'activeCategory', 0), _defineProperty(_ref, 'activeUpload', 0), _defineProperty(_ref, 'uploadCategory', 0), _defineProperty(_ref, 'activeName', ""), _defineProperty(_ref, 'activeDescription', ""), _defineProperty(_ref, 'adult', 0), _defineProperty(_ref, 'children', 0), _defineProperty(_ref, 'men', 0), _defineProperty(_ref, 'women', 0), _defineProperty(_ref, 'total', 0), _defineProperty(_ref, 'from', 2018), _defineProperty(_ref, 'newTo', 0), _defineProperty(_ref, 'to', 2020), _defineProperty(_ref, 'yearly', [2020, 2019, 2018]), _ref;
+				}, _defineProperty(_ref, 'activeState', ""), _defineProperty(_ref, 'activeActiveCountry', ""), _defineProperty(_ref, 'allUsers', []), _defineProperty(_ref, 'userId', 0), _defineProperty(_ref, 'fullName', ""), _defineProperty(_ref, 'userName', ""), _defineProperty(_ref, 'userRole', ""), _defineProperty(_ref, 'userBranch', ""), _defineProperty(_ref, 'userMobile', ""), _defineProperty(_ref, 'userEmail', ""), _defineProperty(_ref, 'allCategories', []), _defineProperty(_ref, 'categoryUploads', []), _defineProperty(_ref, 'activeCategory', 0), _defineProperty(_ref, 'activeUpload', 0), _defineProperty(_ref, 'uploadCategory', 0), _defineProperty(_ref, 'activeName', ""), _defineProperty(_ref, 'activeDescription', ""), _defineProperty(_ref, 'adult', 0), _defineProperty(_ref, 'children', 0), _defineProperty(_ref, 'men', 0), _defineProperty(_ref, 'women', 0), _defineProperty(_ref, 'total', 0), _defineProperty(_ref, 'from', 0), _defineProperty(_ref, 'newTo', 0), _defineProperty(_ref, 'to', 0), _defineProperty(_ref, 'yearly', []), _ref;
 		},
 		mounted: function mounted() {
 
@@ -18594,7 +18595,7 @@ if (token) {
   }
 }.call(this));
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1), __webpack_require__(14)(module)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(2), __webpack_require__(14)(module)))
 
 /***/ }),
 /* 14 */
@@ -43216,7 +43217,7 @@ Vue.compile = compileToFunctions;
 
 module.exports = Vue;
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1), __webpack_require__(37).setImmediate))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(2), __webpack_require__(37).setImmediate))
 
 /***/ }),
 /* 37 */
@@ -43286,7 +43287,7 @@ exports.clearImmediate = (typeof self !== "undefined" && self.clearImmediate) ||
                          (typeof global !== "undefined" && global.clearImmediate) ||
                          (this && this.clearImmediate);
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(2)))
 
 /***/ }),
 /* 38 */
@@ -43479,14 +43480,14 @@ exports.clearImmediate = (typeof self !== "undefined" && self.clearImmediate) ||
     attachTo.clearImmediate = clearImmediate;
 }(typeof self === "undefined" ? typeof global === "undefined" ? this : global : self));
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1), __webpack_require__(5)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(2), __webpack_require__(5)))
 
 /***/ }),
 /* 39 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
-var normalizeComponent = __webpack_require__(2)
+var normalizeComponent = __webpack_require__(1)
 /* script */
 var __vue_script__ = __webpack_require__(40)
 /* template */
@@ -43605,7 +43606,7 @@ if (false) {
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
-var normalizeComponent = __webpack_require__(2)
+var normalizeComponent = __webpack_require__(1)
 /* script */
 var __vue_script__ = __webpack_require__(43)
 /* template */
@@ -43816,41 +43817,21 @@ var render = function() {
               ])
             }),
             _vm._v(" "),
-            _vm._m(0),
-            _vm._v(" "),
-            _vm._l(_vm.allBranches, function(branch) {
-              return _c("tr", [
-                branch.country != "NG"
-                  ? _c("td", [_vm._v(_vm._s(branch.name))])
-                  : _vm._e(),
-                _vm._v(" "),
-                branch.country != "NG"
-                  ? _c(
-                      "td",
-                      [
-                        _c("tuesday", {
-                          attrs: { branch: branch.id, year: _vm.nYear }
-                        })
-                      ],
-                      1
-                    )
-                  : _vm._e(),
-                _vm._v(" "),
-                branch.country != "NG"
-                  ? _c(
-                      "td",
-                      [
-                        _c("sunday", {
-                          attrs: { branch: branch.id, year: _vm.nYear }
-                        })
-                      ],
-                      1
-                    )
-                  : _vm._e()
-              ])
-            }),
-            _vm._v(" "),
-            _vm._m(1)
+            _c("tr", [
+              _vm._m(0),
+              _vm._v(" "),
+              _c(
+                "td",
+                [_c("total", { attrs: { event: 4, year: this.year } })],
+                1
+              ),
+              _vm._v(" "),
+              _c(
+                "td",
+                [_c("total", { attrs: { event: 3, year: this.year } })],
+                1
+              )
+            ])
           ],
           2
         )
@@ -43863,25 +43844,7 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("tr", [
-      _c("th", { attrs: { scope: "row" } }, [_c("h4", [_vm._v("TOTAL")])]),
-      _vm._v(" "),
-      _c("td", [_vm._v("1000")]),
-      _vm._v(" "),
-      _c("td", [_vm._v("1000")])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("tr", [
-      _c("th", { attrs: { scope: "row" } }, [_c("h4", [_vm._v("TOTAL")])]),
-      _vm._v(" "),
-      _c("td", [_vm._v("1000")]),
-      _vm._v(" "),
-      _c("td", [_vm._v("1000")])
-    ])
+    return _c("th", { attrs: { scope: "row" } }, [_c("h4", [_vm._v("TOTAL")])])
   }
 ]
 render._withStripped = true
@@ -43898,7 +43861,7 @@ if (false) {
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
-var normalizeComponent = __webpack_require__(2)
+var normalizeComponent = __webpack_require__(1)
 /* script */
 var __vue_script__ = __webpack_require__(46)
 /* template */
@@ -43966,7 +43929,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 																return {
 
-																								attendance: 0
+																								attendance: []
 
 																};
 								},
@@ -43975,6 +43938,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 								props: ['year', 'branch'],
 
 								methods: {
+																add: function add(a, b) {
+
+																								return a + b;
+																},
 																getAttenndance: function getAttenndance() {
 																								var _this = this;
 
@@ -43982,7 +43949,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 																																axios.get('/get/attendance/3/' + this.year + '/' + this.branch).then(function (response) {
 
 																																								response.data.forEach(function (week) {
-																																																_this.attendance = _this.attendance + week.total;
+																																																_this.attendance.push(week.total);
 																																								});
 																																});
 																								}
@@ -43999,7 +43966,9 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("span", [_vm._v("\r\n" + _vm._s(_vm.attendance) + "\r\n")])
+  return _c("span", [
+    _vm._v("\r\n" + _vm._s(_vm.attendance.reduce(_vm.add, 0)) + "\r\n")
+  ])
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -44016,7 +43985,7 @@ if (false) {
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
-var normalizeComponent = __webpack_require__(2)
+var normalizeComponent = __webpack_require__(1)
 /* script */
 var __vue_script__ = __webpack_require__(49)
 /* template */
@@ -44084,7 +44053,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 																return {
 
-																								attendance: 0
+																								attendance: []
 
 																};
 								},
@@ -44093,6 +44062,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 								props: ['year', 'branch'],
 
 								methods: {
+																add: function add(a, b) {
+
+																								return a + b;
+																},
 																getAttenndance: function getAttenndance() {
 																								var _this = this;
 
@@ -44100,7 +44073,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 																																axios.get('/get/attendance/4/' + this.year + '/' + this.branch).then(function (response) {
 
 																																								response.data.forEach(function (week) {
-																																																_this.attendance = _this.attendance + week.total;
+																																																_this.attendance.push(week.total);
 																																								});
 																																});
 																								}
@@ -44117,7 +44090,9 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("span", [_vm._v("\r\n" + _vm._s(_vm.attendance) + "\r\n")])
+  return _c("span", [
+    _vm._v("\r\n" + _vm._s(_vm.attendance.reduce(_vm.add, 0)) + "\r\n")
+  ])
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -44131,6 +44106,130 @@ if (false) {
 
 /***/ }),
 /* 51 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(1)
+/* script */
+var __vue_script__ = __webpack_require__(52)
+/* template */
+var __vue_template__ = __webpack_require__(53)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources\\assets\\js\\components\\total.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-62f14706", Component.options)
+  } else {
+    hotAPI.reload("data-v-62f14706", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 52 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+								mounted: function mounted() {
+
+																this.getTotal();
+								},
+								data: function data() {
+
+																return {
+
+																								total: []
+
+																};
+								},
+
+
+								props: ['year', 'event'],
+
+								methods: {
+																add: function add(a, b) {
+
+																								return a + b;
+																},
+																getTotal: function getTotal() {
+																								var _this = this;
+
+																								if (this.year > 0) {
+																																axios.get('/get/total/' + this.year + '/' + this.event).then(function (response) {
+
+																																								response.data.forEach(function (event) {
+																																																_this.total.push(event.total);
+																																								});
+																																});
+																								}
+																}
+								}
+
+});
+
+/***/ }),
+/* 53 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("span", [
+    _vm._v("\r\n" + _vm._s(_vm.total.reduce(_vm.add, 0)) + "\r\n")
+  ])
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-62f14706", module.exports)
+  }
+}
+
+/***/ }),
+/* 54 */
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin

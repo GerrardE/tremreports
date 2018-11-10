@@ -19,6 +19,7 @@ Vue.component('example', require('./components/Example.vue'));
 Vue.component('yearly', require('./components/yearly.vue'));
 Vue.component('sunday', require('./components/sunday.vue'));
 Vue.component('tuesday', require('./components/tuesday.vue'));
+Vue.component('total', require('./components/total.vue'));
 const app = new Vue({
     el: '#app',
 	
@@ -83,10 +84,10 @@ const app = new Vue({
 	men:0,
 	women:0,
 	total:0,
-	from: 2018,
+	from: 0,
 	newTo:0,
-	to:2020,
-	yearly: [2020, 2019, 2018],
+	to:0,
+	yearly: [],
 	}
 		
 		

@@ -838,6 +838,24 @@ public function allDownloads()
 	
 	}
 
+	public function getNgReports($year)
+	
+	{
+	
+	$branches = Branch::where('country', 'NG')->get();
+	
+	$all = array();
+	
+	 foreach ($branches as $branch):
+		
+		 array_push($all, $branch); 
+		
+	 endforeach;
+	 
+	 return $all;
+	
+	}
+
 	public function allBranches()
 	
 	{
@@ -868,6 +886,24 @@ public function allDownloads()
 	 foreach ($weekly as $attendance):
 		
 		 array_push($all, $attendance); 
+		
+	 endforeach;
+	 
+	 return $all;
+	
+	}
+
+	public function getTotal($year, $event)
+	
+	{
+	
+	$weekly = Weekly::where('event', $event)->where('year', $year)->get();
+	
+	$all = array();
+	
+	 foreach ($weekly as $event):
+		
+		 array_push($all, $event); 
 		
 	 endforeach;
 	 
