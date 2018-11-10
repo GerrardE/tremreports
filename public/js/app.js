@@ -43940,7 +43940,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 								methods: {
 																add: function add(a, b) {
 
-																								return a + b;
+																								return parseInt(a) + parseInt(b);
 																},
 																getAttenndance: function getAttenndance() {
 																								var _this = this;
@@ -44064,7 +44064,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 								methods: {
 																add: function add(a, b) {
 
-																								return a + b;
+																								return parseInt(a) + parseInt(b);
 																},
 																getAttenndance: function getAttenndance() {
 																								var _this = this;
@@ -44188,7 +44188,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 								methods: {
 																add: function add(a, b) {
 
-																								return a + b;
+																								return parseInt(a) + parseInt(b);
 																},
 																getTotal: function getTotal() {
 																								var _this = this;
